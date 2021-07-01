@@ -1,12 +1,13 @@
 #!/usr/bin/env node
+//first line is the interpreter
 
 /**
  * Module dependencies.
  */
 
-var app = require('../app');
+var app = require('../app'); //brings in app with all middlewares, routes, and error handling
 var debug = require('debug')('website:server');
-var http = require('http');
+var http = require('http'); //this will open listening/connection ports on the pc
 
 /**
  * Get port from environment and store in Express.
@@ -25,6 +26,7 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
+//this are events that the server attends to, and we pass a callback
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
