@@ -15,9 +15,9 @@ html {
 * {box-sizing:border-box; padding:0; margin:0}
 
 body {
+	position:relative;
 	display:grid;
 	place-items:center;
-	padding: 2rem;
 	padding-top: 1rem;
 	min-height:100vh;
 	background-color:$bodyBackground;
@@ -27,59 +27,92 @@ body {
 
 ul {list-style-type:none}
 
+.h1Wrapper{
+	background-image:url("/images/theFields.jpg");
+	background-size:cover;
+	background-repeat:no-repeat;
+	min-height:400px;
+	position:relative;
+	width:100%;
+	display:grid;
+	place-items:center
+}
+
 h1 {
-	margin-top: 0;
 	text-align:center; 
-	padding:1rem;
 	color:transparent;
 	background-clip:text;
 	background-image:url("/images/tree.jpg");
-	//text-shadow: -2px -2px 2px rgba(0,0,0,0.7)
-}
 
-h2 { text-align:left; }
+	/*
+	position:absolute;
+	top:50%;
+	left:50;
+	transform:translate(-50%,-50%);
+	margin:0;
+	padding:0
+	*/
+}
 
 a {
 	color: $linkColor;
-	background-color: $linkBackgroundHover;
 	display:inline-block;
 	text-decoration:none;
+	&:hover{ 
+	transition: background-color 0.1s linear; 
+	background-color: $linkBackgroundHover
+}
 }
 
 .welcome{
-	//@include flexRow;	
-	//font-weight:300;
-	//	font-size:2rem;
+	@include flexRow;	
 	color:$welcomeColor;
+
 	&_image {
 		display:block;
-		float:right;
-		width:4rem;
-		
-		
-	}
-	// round picture, if browser supports it, and floating right or left
-	&_text::first-letter{
-		//		font-size:1.5rem;
-		color:blue; 
-		font-weight:700;
-	}
+		width:10rem;
+		height:10rem;
+		} 
+	} 
+
+ul.tasks > li {
+	@include flexRow;
+	align-items:center; //controls vertical position
+         .tasks_checkmark {width:2rem;height:2rem;margin-right:0.5rem;}
+}
+
+ul.navbar{ 
+font-weight:600; 
+font-size:1.0rem;
+z-index:10;
+position:absolute;
+top:0;
+left:50%;
+transform:translateX(-50%);
 } 
 
-ul.navbar{
-	font-weight:600; 
-	font-size:1.0rem; 
-}
 
 ul.navbar, footer{
 	align-self:start;
-	box-shadow:0px 1px 1px $darkGrey;
-	color: #aabbcc;
+	box-shadow: 0px 1px $darkGrey;
 }
 
 footer{ align-self:end	}
 
-@media screen and (min-width:1200px){
+@media screen and (min-width:900px){
+.h1Wrapper{
+	height:50vh;
+	max-height:700px;
+}
+p {padding: 0 1rem;}
+.welcome{
+        flex-direction:row;
+	&_image {
+		display:block;
+		width:10rem;
+		height:10rem;
+		} 
+	} 
 	main {
 		min-width:750px;
 		width:60%;

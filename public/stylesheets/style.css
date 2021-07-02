@@ -64,9 +64,9 @@ html {
 }
 
 body {
+  position: relative;
   display: grid;
   place-items: center;
-  padding: 2rem;
   padding-top: 1rem;
   min-height: 100vh;
   background-color: #f4f4f4;
@@ -77,55 +77,102 @@ ul {
   list-style-type: none;
 }
 
+.h1Wrapper {
+  background-image: url("/images/theFields.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 400px;
+  position: relative;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
 h1 {
-  margin-top: 0;
   text-align: center;
-  padding: 1rem;
   color: transparent;
   background-clip: text;
   background-image: url("/images/tree.jpg");
-}
-
-h2 {
-  text-align: left;
+  /*
+  position:absolute;
+  top:50%;
+  left:50;
+  transform:translate(-50%,-50%);
+  margin:0;
+  padding:0
+  */
 }
 
 a {
   color: #00B7FF;
-  background-color: rgba(218, 219, 223, 0.25);
   display: inline-block;
   text-decoration: none;
 }
+a:hover {
+  transition: background-color 0.1s linear;
+  background-color: rgba(218, 219, 223, 0.25);
+}
 
 .welcome {
+  display: flex;
+  flex-direction: row;
   color: #699;
 }
 .welcome_image {
   display: block;
-  float: right;
-  width: 4rem;
+  width: 10rem;
+  height: 10rem;
 }
-.welcome_text::first-letter {
-  color: blue;
-  font-weight: 700;
+
+ul.tasks > li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+ul.tasks > li .tasks_checkmark {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 0.5rem;
 }
 
 ul.navbar {
   font-weight: 600;
   font-size: 1rem;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 ul.navbar, footer {
   align-self: start;
-  box-shadow: 0px 1px 1px #444;
-  color: #aabbcc;
+  box-shadow: 0px 1px #444;
 }
 
 footer {
   align-self: end;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 900px) {
+  .h1Wrapper {
+    height: 50vh;
+    max-height: 700px;
+  }
+
+  p {
+    padding: 0 1rem;
+  }
+
+  .welcome {
+    flex-direction: row;
+  }
+  .welcome_image {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+  }
+
   main {
     min-width: 750px;
     width: 60%;

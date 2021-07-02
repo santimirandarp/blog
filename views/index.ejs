@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-	<%- include("includes/head", {title:title}) -%>
+	<%- include("includes/head", {title, page}) -%>
 	<body>
 
 		<%- include("includes/navbar", {navigationLinks:["Home", "Reviews", "Pictures"]}) %>
 
+		<div class='h1Wrapper'>
 		<h1><%= title %></h1>
-
+		</div>
 
 		<main>
 
@@ -14,7 +15,7 @@
 			<div class="welcome_text">
 				<p><%= greeting %></p>
 				<p>We are Linda (Germany) and Santi (Argentina). We are both EU citizens and speak english, apart from german and spanish. At the moment (<%= date %>) we are in <%= where %>.</p>
-				<p>Over the next few lines, we succintly describe <a href="#firstSec"> <%= firstSec %> </a>,<a href="#secondSec"> <%= secondSec %> </a>,<a href="#thirdSec"> <%= thirdSec %> </a>.
+				<p>Over the next few lines, we succintly describe <a href="#firstSec"> <%= firstSec %> </a>, <a href="#secondSec"> <%= secondSec %> </a>, <a href="#thirdSec"> <%= thirdSec %> </a>.
 
 			</div>
 			<img 
@@ -32,14 +33,12 @@
 
 			<section class="secondSec" id="secondSec" >
 				<h2><%= secondSec %></h2>
-				<p>
-				In 2021, we have been involved in:
-
+				<p> In 2021, we have been involved in: </p>
 				<ul class="tasks">
-					<li> Building wooden fences and doors w/ recycled material</li>
-					<li> Painting & limewashing, Cooking, Gardening</li>
-					<li> Changeovers and reception at hostels</li>
-					<li> Basic repairs, IT help</li>
+					<li>Building wooden fences and doors w/ recycled material</li>
+					<li>Painting & limewashing, Cooking, Gardening</li>
+					<li>Changeovers and reception at hostels</li>
+					<li>Basic repairs, IT help</li>
 				</ul>
 
 				<h3>Places we've worked in</h3>
@@ -62,6 +61,6 @@
 		</main>
 
 		<%- include('includes/footer')%>
-		<!--<script src="./javascripts/<file.js>"></script>-->
+		<script src="./javascripts/addCheckMarks.js"></script>
 	</body>
 </html>

@@ -6,6 +6,7 @@ const date=require('../local_modules/lastUpdated')
 router.get('/', function(req, res, next) {
   res.render('index', { 
 	  title: 'Two Travellers', 
+	  page:'Home',
 	  date, 
 	  firstSec:"Why do we travel", 
 	  secondSec:"How can we help", 

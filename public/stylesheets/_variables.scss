@@ -17,4 +17,8 @@ $serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", 
 	flex-direction:row
 }
 
+@mixin flexColumn(){
+	display:flex;
+	flex-direction:column
+}
 
