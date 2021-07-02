@@ -13,9 +13,9 @@ $welcomeColor:#699;
 	display:flex;
 	flex-direction:row
 }
-$fontFamily: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$sans: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 ///$fontFamily: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
+$serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 //general styles
 
@@ -25,7 +25,7 @@ html {font-size: 16px; word-break:break-word; cursor:default}
 
 body {
 	line-height: 1.5;
-	font-family: $fontFamily;
+	font-family: $sans;
 	text-rendering: optimizeLegibility;
   display:grid;
   place-items:center;
@@ -38,7 +38,8 @@ body {
 
 ul {list-style-type:none}
 
-h1 {text-align:center; line-height:1; font-size:5rem;font-weight:300;}
+h1 {text-align:center; line-height:1; font-size:5rem; font-weight:300;}
+h2 {text-align:center; line-height:1; font-size:2.5rem; font-weight:300; font-family:$serif}
 a {
 color: $linkColor;
 background-color: $linkBackgroundHover;
