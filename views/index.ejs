@@ -2,35 +2,65 @@
 <html>
 	<%- include("includes/head", {title:title}) -%>
 	<body>
+
 		<%- include("includes/navbar", {navigationLinks:["Home", "Reviews", "Pictures"]}) %>
+
 		<h1><%= title %></h1>
-		<div class="welcome"/>
-		<div class="welcome_text">
-		<p>Welcome to <%= title %></p>
-		<p> We are Linda (24, Germany/UK) and Santi (27, Italy/Argentina)</p>
-		<p>Over the next few lines, we succintly describe <em><%= firstSec %></em>, <em><%= secondSec %></em>, and <em><%= thirdSec %></em>.
-		</div>
-		<img class="welcome_image" src="" alt="Picture of Linda and Santi"/>
-		</div>
 
-		<main class="aboutUs">
-			<section class="<%= firstSec %>"/>
+
+		<main>
+
+		<section class="welcome">
+			<div class="welcome_text">
+				<p><%= greeting %></p>
+				<p>We are Linda (Germany) and Santi (Argentina). We are both EU citizens and speak english, apart from german and spanish. At the moment (<%= date %>) we are in <%= where %>.</p>
+				<p>Over the next few lines, we succintly describe <a href="#firstSec"> <%= firstSec %> </a>,<a href="#secondSec"> <%= secondSec %> </a>,<a href="#thirdSec"> <%= thirdSec %> </a>.
+
+			</div>
+			<img 
+			class="welcome_image" 
+			src="<%= mainImg %>" 
+			alt="Picture of Linda and Santi"
+			/>
+		</section>
+
+			<section id="firstSec" class="firstSec">
 				<h2><%= firstSec %></h2>
-				<p>Although the internet brings the distant close, reading isn't the same than experiencing in first person. We like visiting new places and cultures, people and ideas. 
+				<p>Although the internet brings the distant close, reading isn't the same than first person experiences. We like visiting new places and cultures; people and ideas. 
 				</p>
 			</section>
 
-			<section class="<%= secondSec %><"/>
+			<section class="secondSec" id="secondSec" >
 				<h2><%= secondSec %></h2>
-				<p>Although the internet brings the distant close, reading isn't the same than experiencing in first person. We like visiting new places and cultures, people and ideas. 
-				</p>
+				<p>
+				In 2021, we have been involved in:
+
+				<ul class="tasks">
+					<li> Building wooden fences and doors w/ recycled material</li>
+					<li> Painting & limewashing, Cooking, Gardening</li>
+					<li> Changeovers and reception at hostels</li>
+					<li> Basic repairs, IT help</li>
+				</ul>
+
+				<h3>Places we've worked in</h3>
+				<ul class="places">
+					<li> Cotna, Cornwall (6 weeks)</li>
+					<li> South Ward Farm, Devon (2 months):</li>
+					<li> Rosie's Place (6 weeks)</li>
+					<li> Skye Backpackers Hostel (5 months)</li>
+				</ul>
+
+				<p>
+				After volunteering in the UK for a few months, we would like to explore new destinations in Europe. We are looking for a place to stay for about for weeks, and potentially extend depending on how things develop.</p>
 			</section>
-			<section class="secondSec"/>
-				<h2>What Do We Do</h2>
+
+			<section class="thirdSec" id="thirdSec"/>
+				<h2><%= thirdSec %></h2>
 				<p>For us this is a strange question, How not to travel? Although the internet brings the distant close, reading isn't the same than experiencing in first person. We like visiting new places and cultures, people and ideas. 
 				</p>
 			</section>
 		</main>
+
 		<%- include('includes/footer')%>
 		<!--<script src="./javascripts/<file.js>"></script>-->
 	</body>

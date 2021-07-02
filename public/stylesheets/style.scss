@@ -1,73 +1,88 @@
-@use "./navbar";
+@use "./variables" as *;
+@use "./fonts";
+@use "./navbar"; 
 @use "./footer";
 
-//Variables & Mixings
-$darkGrey:#444;
-$linkColor:#00B7FF;
-$linkBackgroundHover:rgba(218,219,223,0.25);
-$bodyBackground:#f4f4f4;
-$bodyColor:#6b717f;
-$welcomeColor:#699;
-
-@mixin flexRow(){
-	display:flex;
-	flex-direction:row
-}
-$sans: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-///$fontFamily: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 //general styles
 
-html {font-size: 16px; word-break:break-word; cursor:default}
+html {
+	font-size: 100%;
+	word-break:break-word; 
+	cursor:default
+}
 
 * {box-sizing:border-box; padding:0; margin:0}
 
 body {
-	line-height: 1.5;
-	font-family: $sans;
-	text-rendering: optimizeLegibility;
-  display:grid;
-  place-items:center;
-  padding: 2rem;
-  padding-top: 1rem;
-  min-height:100vh;
-  background-color:$bodyBackground;
-  color:$bodyColor;
+	display:grid;
+	place-items:center;
+	padding: 2rem;
+	padding-top: 1rem;
+	min-height:100vh;
+	background-color:$bodyBackground;
+	color:$bodyColor;
 }
+
 
 ul {list-style-type:none}
 
-h1 {text-align:center; line-height:1; font-size:5rem; font-weight:300;}
-h2 {text-align:center; line-height:1; font-size:2.5rem; font-weight:300; font-family:$serif}
+h1 {
+	margin-top: 0;
+	text-align:center; 
+	padding:1rem;
+	color:transparent;
+	background-clip:text;
+	background-image:url("/images/tree.jpg");
+	//text-shadow: -2px -2px 2px rgba(0,0,0,0.7)
+}
+
+h2 { text-align:left; }
+
 a {
-color: $linkColor;
-background-color: $linkBackgroundHover;
-display:inline-block;
-text-decoration:none;
+	color: $linkColor;
+	background-color: $linkBackgroundHover;
+	display:inline-block;
+	text-decoration:none;
 }
 
 .welcome{
-@include flexRow;	
-font-weight:300;
-font-size:2rem;
-color:$welcomeColor;
-> &_image {
-	float:left;
-	width:2rem;
-	height:2rem;
-	background-color:blue;
-}
-// round picture, if browser supports it, and floating right or left
-> &_text::first-letter{font-size:1.5rem;color:blue; weight:700 }
+	//@include flexRow;	
+	//font-weight:300;
+	//	font-size:2rem;
+	color:$welcomeColor;
+	&_image {
+		display:block;
+		float:right;
+		width:4rem;
+		
+		
+	}
+	// round picture, if browser supports it, and floating right or left
+	&_text::first-letter{
+		//		font-size:1.5rem;
+		color:blue; 
+		font-weight:700;
+	}
 } 
 
-ul.navbar{font-weight:600; }
+ul.navbar{
+	font-weight:600; 
+	font-size:1.0rem; 
+}
+
 ul.navbar, footer{
 	align-self:start;
-	width:100%;
 	box-shadow:0px 1px 1px $darkGrey;
 	color: #aabbcc;
 }
 
 footer{ align-self:end	}
+
+@media screen and (min-width:1200px){
+	main {
+		min-width:750px;
+		width:60%;
+		margin:auto;
+
+}}

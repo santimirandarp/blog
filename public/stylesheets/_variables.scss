@@ -1,0 +1,20 @@
+
+//Variables & Mixings
+$darkGrey:#444;
+$linkColor:#00B7FF;
+$linkBackgroundHover:rgba(218,219,223,0.25);
+$bodyBackground:#f4f4f4;
+$bodyColor:#6b717f;
+$welcomeColor:#699;
+
+
+$sans: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+@mixin flexRow(){
+	display:flex;
+	flex-direction:row
+}
+
+

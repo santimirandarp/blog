@@ -4,7 +4,16 @@ const date=require('../local_modules/lastUpdated')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Two Travellers', date, firstSec:"Why do we travel", secondSec:"How can we help",thirdSec:"I don't know yet"} );
+  res.render('index', { 
+	  title: 'Two Travellers', 
+	  date, 
+	  firstSec:"Why do we travel", 
+	  secondSec:"How can we help", 
+	  thirdSec:"I don't know yet",
+          mainImg:"/images/cropped_mainImg.jpg",
+	  where:"Lazio, Italy",
+	  greeting:"Hi there!"
+  });
 });
 
 module.exports = router;

@@ -1,0 +1,45 @@
+body {
+  font-family: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 400;
+  line-height: 1.75;
+  text-rendering: optimizeLegibility;
+  font-size: 1.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 3rem 0 1.38rem;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 5.653rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 3.998rem;
+}
+
+h3 {
+  font-size: 2.827rem;
+}
+
+h4 {
+  font-size: 1.999rem;
+}
+
+h5 {
+  font-size: 1.414rem;
+}
+
+small, .text_small {
+  font-size: 0.707rem;
+}
+
+/*# sourceMappingURL=fonts.css.map */
