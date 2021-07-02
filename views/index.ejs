@@ -5,7 +5,10 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+	  <%- include("includes/navbar", {navigationLinks:["Home", "Reviews", "Pictures"]}) %>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+	  <%- include('includes/footer')%>
+	  <script src="./javascripts/lastUpdated.js"></script>
   </body>
 </html>

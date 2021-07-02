@@ -11,9 +11,11 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); 
+app.set('view engine', 'ejs'); 
 
+//middlewares access the req object and -may- do something, 
+//for every type of request
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -21,14 +23,17 @@ app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
-  indentedSyntax: true, // true = .sass and false = .scss
-  sourceMap: true
+  indentedSyntax: false, // true = .sass and false = .scss
+  sourceMap: true,
+  debug:true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//enables routes for exact match on path
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+// Only gets here if none of prev routes was a match
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

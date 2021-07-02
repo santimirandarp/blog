@@ -1,0 +1,16 @@
+@use "navbar";
+@use "footer";
+ul.navbar, footer {
+  background-color: #444;
+  width: 100%;
+  box-shadow: 0px 1px 1px #444;
+  color: #aabbcc; }
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+a {
+  color: #00B7FF; }
+
+/*# sourceMappingURL=style.css.map */

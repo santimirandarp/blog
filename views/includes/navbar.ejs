@@ -1,0 +1,7 @@
+<ul class="navbar">
+  <% navigationLinks.forEach( link => { %>
+    <li class="<%= link %>">
+<a href="./views/<%= link %>.html">
+<%= link %></a></li>
+  <% }); %>
+</ul>
