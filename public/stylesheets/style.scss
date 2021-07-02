@@ -14,18 +14,18 @@ html {
 
 * {box-sizing:border-box; padding:0; margin:0}
 
+ul {list-style-type:none}
+
 body {
-	position:relative;
 	display:grid;
 	place-items:center;
-	padding-top: 1rem;
-	min-height:100vh;
+	position:relative;
+	//min-height:100vh;
 	background-color:$bodyBackground;
 	color:$bodyColor;
 }
 
 
-ul {list-style-type:none}
 
 .h1Wrapper{
 	background-image:url("/images/theFields.jpg");
@@ -43,16 +43,9 @@ h1 {
 	color:transparent;
 	background-clip:text;
 	background-image:url("/images/tree.jpg");
-
-	/*
-	position:absolute;
-	top:50%;
-	left:50;
-	transform:translate(-50%,-50%);
-	margin:0;
-	padding:0
-	*/
 }
+
+h2 { text-align:right; }
 
 a {
 	color: $linkColor;
@@ -70,7 +63,7 @@ a {
 
 	&_image {
 		display:block;
-		width:10rem;
+		width: 10rem;
 		height:10rem;
 		} 
 	} 
@@ -106,11 +99,12 @@ footer{ align-self:end	}
 }
 p {padding: 0 1rem;}
 .welcome{
-        flex-direction:row;
+        flex-direction:column;
 	&_image {
 		display:block;
-		width:10rem;
-		height:10rem;
+		margin:auto;
+		width:25rem;
+		height:25rem;
 		} 
 	} 
 	main {

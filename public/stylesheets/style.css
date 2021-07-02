@@ -63,18 +63,16 @@ html {
   margin: 0;
 }
 
-body {
-  position: relative;
-  display: grid;
-  place-items: center;
-  padding-top: 1rem;
-  min-height: 100vh;
-  background-color: #f4f4f4;
-  color: #6b717f;
-}
-
 ul {
   list-style-type: none;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  position: relative;
+  background-color: #f4f4f4;
+  color: #6b717f;
 }
 
 .h1Wrapper {
@@ -93,18 +91,14 @@ h1 {
   color: transparent;
   background-clip: text;
   background-image: url("/images/tree.jpg");
-  /*
-  position:absolute;
-  top:50%;
-  left:50;
-  transform:translate(-50%,-50%);
-  margin:0;
-  padding:0
-  */
+}
+
+h2 {
+  text-align: right;
 }
 
 a {
-  color: #00B7FF;
+  color: #6c94c7;
   display: inline-block;
   text-decoration: none;
 }
@@ -165,12 +159,13 @@ footer {
   }
 
   .welcome {
-    flex-direction: row;
+    flex-direction: column;
   }
   .welcome_image {
     display: block;
-    width: 10rem;
-    height: 10rem;
+    margin: auto;
+    width: 25rem;
+    height: 25rem;
   }
 
   main {
