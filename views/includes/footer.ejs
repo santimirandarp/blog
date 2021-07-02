@@ -15,7 +15,11 @@ Linda & Santi
 </div>
 
 <div class="footer_lastUpdated" id="lastUpdated">
+<% if (date) { %>
+Last Updated: <%= date %>
+<% } else { %>
 Last Updated: Today
+<% } %>
 </div>
 
 </footer>

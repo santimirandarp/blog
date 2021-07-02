@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-	  <%- include("includes/navbar", {navigationLinks:["Home", "Reviews", "Pictures"]}) %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-	  <%- include('includes/footer')%>
-	  <script src="./javascripts/lastUpdated.js"></script>
-  </body>
+	<%- include("includes/head", {title:title}) -%>
+	<body>
+		<%- include("includes/navbar", {navigationLinks:["Home", "Reviews", "Pictures"]}) %>
+		<h1><%= title %></h1>
+		<div class="welcome"/>
+		<div class="welcome_text">
+		<p>Welcome to <%= title %></p>
+		<p> We are Linda (24, Germany/UK) and Santi (27, Italy/Argentina)</p>
+		<p>Over the next few lines, we succintly describe <em><%= firstSec %></em>, <em><%= secondSec %></em>, and <em><%= thirdSec %></em>.
+		</div>
+		<img class="welcome_image" src="" alt="Picture of Linda and Santi"/>
+		</div>
+
+		<main class="aboutUs">
+			<section class="<%= firstSec %>"/>
+				<h2><%= firstSec %></h2>
+				<p>Although the internet brings the distant close, reading isn't the same than experiencing in first person. We like visiting new places and cultures, people and ideas. 
+				</p>
+			</section>
+
+			<section class="<%= secondSec %><"/>
+				<h2><%= secondSec %></h2>
+				<p>Although the internet brings the distant close, reading isn't the same than experiencing in first person. We like visiting new places and cultures, people and ideas. 
+				</p>
+			</section>
+			<section class="secondSec"/>
+				<h2>What Do We Do</h2>
+				<p>For us this is a strange question, How not to travel? Although the internet brings the distant close, reading isn't the same than experiencing in first person. We like visiting new places and cultures, people and ideas. 
+				</p>
+			</section>
+		</main>
+		<%- include('includes/footer')%>
+		<!--<script src="./javascripts/<file.js>"></script>-->
+	</body>
 </html>

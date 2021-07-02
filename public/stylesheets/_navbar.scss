@@ -1,4 +1,6 @@
 .navbar {
 display:flex;
 flex-direction:row;
+list-style-type:none;
+ > li > a { padding:0.9rem }
 }
