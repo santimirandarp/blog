@@ -5,8 +5,7 @@
 @use "./footer";
 
 body {
-	display:grid;
-	place-items:center;
+	@include gridCenter;
 	position:relative;
 	background-color:$bodyBackground;
 	color:$bodyColor;
@@ -97,8 +96,9 @@ footer{ align-self:end	}
 
 @media screen and (min-width:900px){
 	.h1Wrapper{
+		min-height:600px;
 		height:50vh;
-		max-height:700px;
+		max-height:900px;
 	}
 	p {padding: 0 1rem;}
 	.welcome{ flex-direction:column; } 
@@ -111,8 +111,8 @@ footer{ align-self:end	}
 .taskImgFlex{ @include flexRow(); }
   .aroundImg_img {
 width:50%;
-  }
 img { width: 100%;
 clip-path:circle(192px at 230px 252px);
 }
+  }
 }

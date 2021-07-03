@@ -96,7 +96,7 @@ body {
   display: grid;
   place-items: center;
   position: relative;
-  background-image: url("/images//tree.jpg");
+  background-image: url("/images//theFields.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 400px;
@@ -107,7 +107,7 @@ h1 {
   text-align: center;
   color: transparent;
   background-clip: text;
-  background-image: url("/images//theFields.jpg");
+  background-image: url("/images//tree.jpg");
 }
 
 h2 {
@@ -194,8 +194,9 @@ footer {
 
 @media screen and (min-width: 900px) {
   .h1Wrapper {
+    min-height: 600px;
     height: 50vh;
-    max-height: 700px;
+    max-height: 900px;
   }
 
   p {
@@ -220,8 +221,7 @@ footer {
   .aroundImg_img {
     width: 50%;
   }
-
-  img {
+  .aroundImg_img img {
     width: 100%;
     clip-path: circle(192px at 230px 252px);
   }

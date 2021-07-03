@@ -12,8 +12,8 @@ $sans: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, 
 
 $serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-$h1BackgroundClip:"/theFields.jpg";
-$wallpaper:"/tree.jpg";
+$h1BackgroundClip:"/tree.jpg";
+$wallpaper:"/theFields.jpg";
 
 @mixin flexRow(){
 	display:flex;
