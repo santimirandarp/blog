@@ -1,3 +1,36 @@
+html {
+  font-size: 100%;
+  word-break: break-word;
+  cursor: default;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+a:hover {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+figcaption {
+  text-align: center;
+}
+
 body {
   font-family: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 400;
@@ -51,22 +84,6 @@ small, .text_small {
   padding: 0.9rem;
 }
 
-html {
-  font-size: 100%;
-  word-break: break-word;
-  cursor: default;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-ul {
-  list-style-type: none;
-}
-
 body {
   display: grid;
   place-items: center;
@@ -75,26 +92,22 @@ body {
   color: #333;
 }
 
-img {
-  display: block;
-}
-
 .h1Wrapper {
-  background-image: url("/images/theFields.jpg");
+  display: grid;
+  place-items: center;
+  position: relative;
+  background-image: url("/images//tree.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 400px;
-  position: relative;
   width: 100%;
-  display: grid;
-  place-items: center;
 }
 
 h1 {
   text-align: center;
   color: transparent;
   background-clip: text;
-  background-image: url("/images/tree.jpg");
+  background-image: url("/images//theFields.jpg");
 }
 
 h2 {
@@ -104,8 +117,6 @@ h2 {
 
 a {
   color: #333;
-  display: inline-block;
-  text-decoration: none;
   background-color: #65bb462b;
 }
 a:hover {
@@ -159,9 +170,22 @@ ul.navbar {
   transform: translateX(-50%);
 }
 
+.aroundImg_img {
+  width: 60%;
+  min-width: 300px;
+  border-radius: 1rem;
+}
+
 ul.navbar, footer {
   align-self: start;
   box-shadow: 0px 1px #333;
+}
+
+.quoteLikePar {
+  clear: both;
+  margin-top: 2rem;
+  padding: 1rem;
+  border-left: 3px dashed #1c3e68;
 }
 
 footer {
@@ -186,6 +210,20 @@ footer {
     min-width: 750px;
     width: 60%;
     margin: auto;
+  }
+
+  .taskImgFlex {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .aroundImg_img {
+    width: 50%;
+  }
+
+  img {
+    width: 100%;
+    clip-path: circle(192px at 230px 252px);
   }
 }
 

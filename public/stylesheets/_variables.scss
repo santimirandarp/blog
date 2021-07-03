@@ -12,6 +12,9 @@ $sans: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, 
 
 $serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
+$h1BackgroundClip:"/theFields.jpg";
+$wallpaper:"/tree.jpg";
+
 @mixin flexRow(){
 	display:flex;
 	flex-direction:row
@@ -22,3 +25,7 @@ $serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", 
 	flex-direction:column
 }
 
+@mixin gridCenter(){
+	display:grid;
+	place-items:center;
+}

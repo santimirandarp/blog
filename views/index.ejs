@@ -2,7 +2,7 @@
 <html>
 	<%- include("includes/head", {title, page}) -%>
 	<body>
-
+		<!--this Include is useful for reusing pieces of HTML-->
 		<%- include("includes/navbar", {navigationLinks:["Home", "Reviews", "Pictures"]}) %>
 
 		<div class='h1Wrapper'>
@@ -15,7 +15,7 @@
 			<div class="welcome_text">
 				<p><%= greeting %></p>
 				<p>We are Linda (Germany) and Santi (Argentina). We are both EU citizens and speak english, apart from german and spanish. At the moment (<%= date %>) we are in <%= where %>.</p>
-				<p>Over the next few lines, we succintly describe <a href="#firstSec"> <%= firstSec %> </a>, <a href="#secondSec"> <%= secondSec %> </a>, <a href="#thirdSec"> <%= thirdSec %> </a>.
+				<p>Over the next few lines, we succintly describe <a href="#firstSec"> <%= firstSec %> </a>, <a href="#secondSec"> <%= secondSec %> </a>.
 
 			</div>
 			<figure class="welcome_figure">
@@ -36,29 +36,29 @@
 			<section class="secondSec" id="secondSec" >
 				<h2><%= secondSec %></h2>
 				<p> In 2021, we have been involved in: </p>
+				<div class="taskImgFlex">
 				<ul class="tasks">
-					<li>Building wooden fences and doors w/ recycled material</li>
-					<li>Painting & limewashing, Cooking, Gardening</li>
-					<li>Changeovers and reception at hostels</li>
-					<li>Basic repairs, IT help</li>
+					<li>Building wooden fences and doors w/ recycled material.</li>
+					<li>Painting & limewashing, Cooking, Gardening.</li>
+					<li>Changeovers and reception at hostels.</li>
+					<li>Basic repairs, IT help.</li>
 				</ul>
 
+				<figure class="aroundImg_img" >
+				<img src="/images/cropped_IMG_0926.JPG" alt="linda fitting a door"/>
+				<figcaption>Door made with recycled wood</figcaption>
+				</figure>
+				</div>
 				<h3>Places we've worked in</h3>
 				<ul class="places">
-					<li> Cotna, Cornwall (6 weeks)</li>
-					<li> South Ward Farm, Devon (2 months):</li>
-					<li> Rosie's Place (6 weeks)</li>
-					<li> Skye Backpackers Hostel (5 months)</li>
+					<li> <a href="https://cotna.co.uk/">Cotna</a> Eco Retreat (6 weeks), Cornwall.</li>
+					<li> <a href="https://www.theenchantedwilderness.co.uk/">Enchanted Wilderness</a>  (2 months), Devon.</li>
+					<li> Rosie's Place (6 weeks), Aberdeen.</li>
+					<li> <a href="http://skyebackpackers.com/">Skye Backpackers</a> Hostel (5 months), Isle of Skye</li>
 				</ul>
 
-				<p>
-				After volunteering in the UK for a few months, we would like to explore new destinations in Europe. We are looking for a place to stay for about for weeks, and potentially extend depending on how things develop.</p>
-			</section>
-
-			<section class="thirdSec" id="thirdSec"/>
-				<h2><%= thirdSec %></h2>
-				<p>For us this is a strange question, How not to travel? Although the internet brings the distant close, reading isn't the same than experiencing in first person. We like visiting new places and cultures, people and ideas. 
-				</p>
+				<p class="quoteLikePar">
+				After volunteering in the UK for a few months, we are now looking for new destinations in Europe<span style="font-size:2rem; color:red; font-weight:bold">!!!</span> Get in touch using the links below, or drop us an email at <a mailto="santi+linda@pm.me&subject=Volunteering">santi+linda@pm.me</a>.</p>
 			</section>
 		</main>
 

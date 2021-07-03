@@ -1,56 +1,39 @@
 @use "./variables" as *;
+@use "./resets";
 @use "./fonts";
 @use "./navbar"; 
 @use "./footer";
-
-
-//general styles
-
-html {
-	font-size: 100%;
-	word-break:break-word; 
-	cursor:default
-}
-
-* {box-sizing:border-box; padding:0; margin:0}
-
-ul {list-style-type:none}
 
 body {
 	display:grid;
 	place-items:center;
 	position:relative;
-	//min-height:100vh;
 	background-color:$bodyBackground;
 	color:$bodyColor;
 }
-img{ display:block;}
 
 
 .h1Wrapper{
-	background-image:url("/images/theFields.jpg");
+	@include gridCenter;
+	position:relative;
+	background-image:url("/images/#{$wallpaper}");
 	background-size:cover;
 	background-repeat:no-repeat;
 	min-height:400px;
-	position:relative;
 	width:100%;
-	display:grid;
-	place-items:center
 }
 
 h1 {
 	text-align:center; 
 	color:transparent;
 	background-clip:text;
-	background-image:url("/images/tree.jpg");
+	background-image:url("/images/#{$h1BackgroundClip}");
 }
 
 h2 { text-align:right;color:$darkBlue;}
 
 a {
 	color: $bodyColor;
-	display:inline-block;
-	text-decoration:none;
 	background-color: $linkBackground;
 	&:hover{ 
 		transition: background-color 0.1s linear; 
@@ -94,11 +77,22 @@ ul.navbar{
 } 
 
 
+.aroundImg_img {
+width:60%;
+min-width:300px;
+border-radius:1rem;
+}
 ul.navbar, footer{
 	align-self:start;
 	box-shadow: 0px 1px $bodyColor;
 }
 
+.quoteLikePar{
+	clear:both;
+margin-top:2rem;
+padding:1rem;
+border-left:3px dashed $darkBlue;
+}
 footer{ align-self:end	}
 
 @media screen and (min-width:900px){
@@ -113,4 +107,12 @@ footer{ align-self:end	}
 		width:60%;
 		margin:auto;
 
-}}
+}
+.taskImgFlex{ @include flexRow(); }
+  .aroundImg_img {
+width:50%;
+  }
+img { width: 100%;
+clip-path:circle(192px at 230px 252px);
+}
+}

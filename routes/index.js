@@ -10,7 +10,6 @@ router.get('/', function(req, res, next) {
 	  date, 
 	  firstSec:"Why do we travel", 
 	  secondSec:"How can we help", 
-	  thirdSec:"I don't know yet",
           mainImg:"/images/cropped_mainImg.jpg",
 	  where:"Lazio, Italy",
 	  greeting:"Hi there!"
