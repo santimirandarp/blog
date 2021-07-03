@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   font-size: 100%;
   word-break: break-word;
@@ -75,15 +76,6 @@ small, .text_small {
   font-size: 0.707rem;
 }
 
-.navbar {
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-}
-.navbar > li > a {
-  padding: 0.9rem;
-}
-
 body {
   display: grid;
   place-items: center;
@@ -92,27 +84,11 @@ body {
   color: #333;
 }
 
-.h1Wrapper {
-  display: grid;
-  place-items: center;
-  position: relative;
-  background-image: url("/images//theFields.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 400px;
-  width: 100%;
+main {
+  padding: 1rem;
 }
-
-h1 {
-  text-align: center;
-  color: transparent;
-  background-clip: text;
-  background-image: url("/images//tree.jpg");
-}
-
-h2 {
-  text-align: right;
-  color: #1c3e68;
+main li {
+  margin-bottom: 1rem;
 }
 
 a {
@@ -125,18 +101,92 @@ a:hover {
   color: #266210;
 }
 
-.welcome {
+h2 {
+  text-align: right;
+  color: #1c3e68;
+  text-shadow: 1px 1px 0.1px rgba(0, 0, 0, 0.7);
+}
+
+.footer, .navbar {
+  box-shadow: 0px 1px #333;
+}
+
+.banner {
+  display: grid;
+  place-items: center;
+  position: relative;
+  background-image: url("/images//theFields.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 400px;
+  width: 100%;
+}
+.banner > h1 {
+  text-align: center;
+  color: transparent;
+  background-clip: text;
+  background-image: url("/images//tree.jpg");
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+ul.navbar {
   display: flex;
   flex-direction: row;
-  padding: 2rem 0;
+  font-weight: 600;
+  font-size: 1rem;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+ul.navbar > li a {
+  padding: 0.7rem;
+}
+
+@media screen and (min-width: 900px) {
+  ul.navbar {
+    font-size: 1.5rem;
+  }
+}
+.footer {
+  align-self: end;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+.footer_links {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.footer_links li {
+  display: flex;
+  padding: 0.5rem;
+}
+.footer_links .helpx {
+  background-color: #314d6d;
+}
+.footer_links a {
+  background-color: transparent;
+  align-self: center;
+}
+.footer_lastUpdated {
+  color: #333;
+}
+
+.welcome {
+  display: flex;
+  flex-direction: column;
 }
 .welcome_figure {
   width: 16rem;
   height: 16rem;
   align-self: center;
-}
-.welcome_figure figcaption {
-  text-align: center;
+  margin-bottom: 1rem;
 }
 .welcome_figure img {
   transform: rotateZ(0deg);
@@ -146,65 +196,62 @@ a:hover {
 }
 .welcome_figure img:hover {
   transform: rotateZ(2deg);
-  transition: tranform 0.1s linear;
+  transition: transform 0.1s linear;
 }
 
 ul.tasks > li {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: start;
 }
 ul.tasks > li .tasks_checkmark {
   width: 2rem;
   height: 2rem;
   margin-right: 0.5rem;
 }
-
-ul.navbar {
-  font-weight: 600;
-  font-size: 1rem;
-  z-index: 10;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+ul.tasks > li::before {
+  content: "✅";
+  margin-right: 0.4rem;
 }
 
-.aroundImg_img {
+ul.places > li::before {
+  content: "—";
+  margin-right: 0.4rem;
+}
+
+.taskImgFlex {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.roundFig {
   width: 60%;
   min-width: 300px;
-  border-radius: 1rem;
+  align-self: center;
 }
-
-ul.navbar, footer {
-  align-self: start;
-  box-shadow: 0px 1px #333;
-}
-
-.quoteLikePar {
-  clear: both;
-  margin-top: 2rem;
-  padding: 1rem;
-  border-left: 3px dashed #1c3e68;
-}
-
-footer {
-  align-self: end;
+.roundFig_img {
+  border-radius: 50%;
 }
 
 @media screen and (min-width: 900px) {
-  .h1Wrapper {
-    min-height: 600px;
-    height: 50vh;
-    max-height: 900px;
+  ul.navbar {
+    font-size: 1.5rem;
   }
 
   p {
     padding: 0 1rem;
   }
 
+  .h1Wrapper {
+    min-height: 600px;
+    height: 50vh;
+    max-height: 900px;
+  }
+
   .welcome {
     flex-direction: column;
+    padding: 2rem 0;
   }
 
   main {
@@ -213,17 +260,19 @@ footer {
     margin: auto;
   }
 
+  .quoteLikePar {
+    border-left: 3px dashed #1c3e68;
+    margin-top: 3rem;
+  }
+
+  .roundFig_img {
+    border-radius: 0px;
+    clip-path: circle(192px at 230px 252px);
+  }
+
   .taskImgFlex {
     display: flex;
     flex-direction: row;
-  }
-
-  .aroundImg_img {
-    width: 50%;
-  }
-  .aroundImg_img img {
-    width: 100%;
-    clip-path: circle(192px at 230px 252px);
   }
 }
 

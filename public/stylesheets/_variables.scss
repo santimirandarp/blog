@@ -13,7 +13,19 @@ $sans: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, 
 $serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 $h1BackgroundClip:"/tree.jpg";
-$wallpaper:"/theFields.jpg";
+$banner:"/theFields.jpg";
+
+//symbols
+$checkMarkSize:2rem;
+$checkMarkSize:2rem;
+$checkMarkMargin:0.5rem;
+@mixin symbol($code, $margin){ content:"#{$code}"; margin-right:$margin;};
+@mixin checkMark($size, $margin){
+	width:$size;
+	height:$size;
+	margin-right:$margin;
+}
+
 
 @mixin flexRow(){
 	display:flex;

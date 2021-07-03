@@ -5,7 +5,7 @@
 		<!--this Include is useful for reusing pieces of HTML-->
 		<%- include("includes/navbar", {navigationLinks:["Home", "Reviews", "Pictures"]}) %>
 
-		<div class='h1Wrapper'>
+		<div class='banner'>
 		<h1><%= title %></h1>
 		</div>
 
@@ -44,8 +44,8 @@
 					<li>Basic repairs, IT help.</li>
 				</ul>
 
-				<figure class="aroundImg_img" >
-				<img src="/images/cropped_IMG_0926.JPG" alt="linda fitting a door"/>
+				<figure class="roundFig" >
+				<img class="roundFig_img" src="/images/cropped_IMG_0926.JPG" alt="linda fitting a door"/>
 				<figcaption>Door made with recycled wood</figcaption>
 				</figure>
 				</div>
@@ -56,13 +56,13 @@
 					<li> Rosie's Place (6 weeks), Aberdeen.</li>
 					<li> <a href="http://skyebackpackers.com/">Skye Backpackers</a> Hostel (5 months), Isle of Skye</li>
 				</ul>
-
+				<h3>Heads up!</h3>
 				<p class="quoteLikePar">
-				After volunteering in the UK for a few months, we are now looking for new destinations in Europe<span style="font-size:2rem; color:red; font-weight:bold">!!!</span> Get in touch using the links below, or drop us an email at <a mailto="santi+linda@pm.me&subject=Volunteering">santi+linda@pm.me</a>.</p>
+				We are now looking for new destinations in Europe<span style="font-size:2rem; color:red; font-weight:bold">!!!</span> Get in touch using the links below, or drop us an email at <a mailto="santi+linda@pm.me&subject=Volunteering">santi+linda@pm.me</a>.</p>
 			</section>
 		</main>
 
 		<%- include('includes/footer')%>
-		<script src="./javascripts/addCheckMarks.js"></script>
+		<!--		<script src="./javascripts/addCheckMarks.js"></script> -->
 	</body>
 </html>

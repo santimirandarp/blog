@@ -1,0 +1,7 @@
+@use "./variables" as *;
+body {
+	@include gridCenter;
+	position:relative;
+	background-color:$bodyBackground;
+	color:$bodyColor;
+}
