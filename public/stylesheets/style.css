@@ -150,6 +150,7 @@ ul.navbar > li a {
   }
 }
 .footer {
+  margin-top: 3rem;
   align-self: end;
   justify-content: center;
   text-align: center;
@@ -176,6 +177,8 @@ ul.navbar > li a {
 }
 .footer_lastUpdated {
   color: #333;
+  align-self: end;
+  font-size: 1rem;
 }
 
 .welcome {

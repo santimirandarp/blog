@@ -1,6 +1,7 @@
 @use "./variables" as *;
 
 .footer{ 
+	margin-top:3rem;
 	align-self:end;
 	justify-content:center;
 	text-align:center;
@@ -11,7 +12,6 @@
 	.helpx{background-color:#314d6d}
 	a {background-color:transparent; align-self:center;}
 }
-&_lastUpdated{color:#333;}
-
+&_lastUpdated{color:#333;align-self:end; font-size:1rem}
 }
 
