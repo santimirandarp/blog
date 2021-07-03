@@ -24,7 +24,7 @@ body {
 	background-color:$bodyBackground;
 	color:$bodyColor;
 }
-
+img{ display:block;}
 
 
 .h1Wrapper{
@@ -45,68 +45,69 @@ h1 {
 	background-image:url("/images/tree.jpg");
 }
 
-h2 { text-align:right; }
+h2 { text-align:right;color:$darkBlue;}
 
 a {
-	color: $linkColor;
+	color: $bodyColor;
 	display:inline-block;
 	text-decoration:none;
+	background-color: $linkBackground;
 	&:hover{ 
-	transition: background-color 0.1s linear; 
-	background-color: $linkBackgroundHover
-}
+		transition: background-color 0.1s linear; 
+		background-color:transparent;
+		color:$linkColorHover;
+	}
 }
 
 .welcome{
 	@include flexRow;	
-	color:$welcomeColor;
-
-	&_image {
-		display:block;
-		width: 10rem;
-		height:10rem;
-		} 
-	} 
+	padding:2rem 0;
+	&_figure {
+		width: $imageSize;
+		height:$imageSize;
+		align-self:center;
+		figcaption{text-align:center;}
+		img {
+			transform:rotateZ(0deg);
+			width:100%;
+			border-radius:5px;
+			box-shadow:1px 1px 2px $bodyColor;
+			&:hover{
+				transform:rotateZ(2deg);
+				transition:tranform 0.1s linear; 
+} } } } 
 
 ul.tasks > li {
 	@include flexRow;
 	align-items:center; //controls vertical position
-         .tasks_checkmark {width:2rem;height:2rem;margin-right:0.5rem;}
+	.tasks_checkmark {width:2rem;height:2rem;margin-right:0.5rem;}
 }
 
 ul.navbar{ 
-font-weight:600; 
-font-size:1.0rem;
-z-index:10;
-position:absolute;
-top:0;
-left:50%;
-transform:translateX(-50%);
+	font-weight:600; 
+	font-size:1.0rem;
+	z-index:10;
+	position:absolute;
+	top:0;
+	left:50%;
+	transform:translateX(-50%);
 } 
 
 
 ul.navbar, footer{
 	align-self:start;
-	box-shadow: 0px 1px $darkGrey;
+	box-shadow: 0px 1px $bodyColor;
 }
 
 footer{ align-self:end	}
 
 @media screen and (min-width:900px){
-.h1Wrapper{
-	height:50vh;
-	max-height:700px;
-}
-p {padding: 0 1rem;}
-.welcome{
-        flex-direction:column;
-	&_image {
-		display:block;
-		margin:auto;
-		width:25rem;
-		height:25rem;
-		} 
-	} 
+	.h1Wrapper{
+		height:50vh;
+		max-height:700px;
+	}
+	p {padding: 0 1rem;}
+	.welcome{ flex-direction:column; } 
 	main {
 		min-width:750px;
 		width:60%;

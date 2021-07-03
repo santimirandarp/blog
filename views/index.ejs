@@ -11,19 +11,21 @@
 
 		<main>
 
-		<section class="welcome">
+		<div class="welcome">
 			<div class="welcome_text">
 				<p><%= greeting %></p>
 				<p>We are Linda (Germany) and Santi (Argentina). We are both EU citizens and speak english, apart from german and spanish. At the moment (<%= date %>) we are in <%= where %>.</p>
 				<p>Over the next few lines, we succintly describe <a href="#firstSec"> <%= firstSec %> </a>, <a href="#secondSec"> <%= secondSec %> </a>, <a href="#thirdSec"> <%= thirdSec %> </a>.
 
 			</div>
+			<figure class="welcome_figure">
 			<img 
-			class="welcome_image" 
 			src="<%= mainImg %>" 
 			alt="Picture of Linda and Santi"
 			/>
-		</section>
+			<figcaption>Isle of Ischia, 2021</figcaption>
+			<figure>
+		</div>
 
 			<section id="firstSec" class="firstSec">
 				<h2><%= firstSec %></h2>

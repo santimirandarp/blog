@@ -72,7 +72,11 @@ body {
   place-items: center;
   position: relative;
   background-color: #f4f4f4;
-  color: #6b717f;
+  color: #333;
+}
+
+img {
+  display: block;
 }
 
 .h1Wrapper {
@@ -95,27 +99,43 @@ h1 {
 
 h2 {
   text-align: right;
+  color: #1c3e68;
 }
 
 a {
-  color: #6c94c7;
+  color: #333;
   display: inline-block;
   text-decoration: none;
+  background-color: #65bb462b;
 }
 a:hover {
   transition: background-color 0.1s linear;
-  background-color: rgba(218, 219, 223, 0.25);
+  background-color: transparent;
+  color: #266210;
 }
 
 .welcome {
   display: flex;
   flex-direction: row;
-  color: #699;
+  padding: 2rem 0;
 }
-.welcome_image {
-  display: block;
-  width: 10rem;
-  height: 10rem;
+.welcome_figure {
+  width: 16rem;
+  height: 16rem;
+  align-self: center;
+}
+.welcome_figure figcaption {
+  text-align: center;
+}
+.welcome_figure img {
+  transform: rotateZ(0deg);
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #333;
+}
+.welcome_figure img:hover {
+  transform: rotateZ(2deg);
+  transition: tranform 0.1s linear;
 }
 
 ul.tasks > li {
@@ -141,7 +161,7 @@ ul.navbar {
 
 ul.navbar, footer {
   align-self: start;
-  box-shadow: 0px 1px #444;
+  box-shadow: 0px 1px #333;
 }
 
 footer {
@@ -160,12 +180,6 @@ footer {
 
   .welcome {
     flex-direction: column;
-  }
-  .welcome_image {
-    display: block;
-    margin: auto;
-    width: 25rem;
-    height: 25rem;
   }
 
   main {
