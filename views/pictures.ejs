@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
-	<%- include("includes/head", {vars, page}) -%>
+	<%- include("includes/head", {title, page}) -%>
 	<body>
 		<!--this Include is usful for reusing pieces of HTML-->
-		<%- include("includes/navbar",vars) %>
+		<%- include("includes/navbar",navigationLinks) %>
 
 		<div class='banner'>
-		<h1> <%= vars.title %> </h1>
+		<h1> <%= title %> </h1>
 		</div>
 
 		<main>
