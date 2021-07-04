@@ -41,7 +41,7 @@ ul.places > li::before {@include symbol("\2014",0.4rem)}
 }
 
 
-
+.blueBox{padding:1rem; margin:1rem; border:2px dashed $darkBlue;border-radius:5px; text-align:center}
 @media screen and (min-width:900px){
 	ul.navbar {font-size:1.5rem;}
 	p {padding: 0 1rem;}

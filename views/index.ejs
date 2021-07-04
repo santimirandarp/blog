@@ -2,8 +2,8 @@
 <html>
 	<%- include("includes/head", {title, page}) -%>
 	<body>
-		<!--this Include is useful for reusing pieces of HTML-->
-		<%- include("includes/navbar", {navigationLinks:["Home", "Reviews", "Pictures"]}) %>
+		<!--this Include is usful for reusing pieces of HTML-->
+		<%- include("includes/navbar", navigationLinks) %>
 
 		<div class='banner'>
 		<h1><%= title %></h1>
@@ -14,8 +14,8 @@
 		<div class="welcome">
 			<div class="welcome_text">
 				<p><%= greeting %></p>
-				<p>We are Linda (Germany) and Santi (Argentina). We are both EU citizens and speak english, apart from german and spanish. At the moment (<%= date %>) we are in <%= where %>.</p>
-				<p>Over the next few lines, we succintly describe <a href="#firstSec"> <%= firstSec %> </a>, <a href="#secondSec"> <%= secondSec %> </a>.
+				<p>We are Linda (24, Germany) and Santi (27, Argentina). We are both EU citizens and speak English fluently, apart from German and Spanish. At the moment (<%= date %>) we are in <%= where %>.</p>
+				<!--				<p>In the next few lines, we briefly describe <a href="#firstSec"> <%= firstSec %> </a>, <a href="#secondSec"> <%= secondSec %> </a>. -->
 
 			</div>
 			<figure class="welcome_figure">
@@ -23,13 +23,15 @@
 			src="<%= mainImg %>" 
 			alt="Picture of Linda and Santi"
 			/>
-			<figcaption>Isle of Ischia, 2021</figcaption>
+			<figcaption>Ischia, 2021</figcaption>
 			<figure>
 		</div>
 
 			<section id="firstSec" class="firstSec">
 				<h2><%= firstSec %></h2>
-				<p>Although the internet brings the distant close, reading isn't the same than first person experiences. We like visiting new places and cultures; people and ideas. 
+				<p>Although the internet brings the distant close, reading isn't the same as first-hand experiences. We have both been volunteering on and off for the last few years after finishing university, where we studied Chemistry (Santi) and Social Sciences (Linda), and spent several years living in the UK.</p>
+<p>We like getting to know new places and cultures, people and ideas. We are interested in sustainability and enjoy learning new building and gardening skills. We love spending time in nature and doing various activities such as running, swimming, yoga and meditation. Santi is interested in everything related to technology and Linda loves cooking; it would be great to evolve these skills while volunteering.</p>
+
 				</p>
 			</section>
 
@@ -38,23 +40,29 @@
 				<p> In 2021, we have been involved in: </p>
 				<div class="taskImgFlex">
 				<ul class="tasks">
-					<li>Building wooden fences and doors w/ recycled material.</li>
-					<li>Painting & limewashing, Cooking, Gardening.</li>
-					<li>Changeovers and reception at hostels.</li>
-					<li>Basic repairs, IT help.</li>
+					<li>Building wooden fences and doors w/ recycled material</li>
+					<li>Painting & limewashing
+					<li>Cooking</li>
+					<li>Gardening, permaculture, Hugelkultur, Charles Dowdings' no-dig approach</li>
+					<li>Using power tools: chainsaw, miter and circular saw, strimmer</li>					<li>Changeovers and reception at hostels</li>
+					<li>Basic repairs, IT help </li>
 				</ul>
-
 				<figure class="roundFig" >
 				<img class="roundFig_img" src="/images/cropped_IMG_0926.JPG" alt="linda fitting a door"/>
 				<figcaption>Door made with recycled wood</figcaption>
 				</figure>
 				</div>
+				 <p class='blueBox'>Check out our <a href='/pictures'>pictures</a>  to see some of the things we've done.</p>
+	
 				<h3>Places we've worked in</h3>
 				<ul class="places">
-					<li> <a href="https://cotna.co.uk/">Cotna</a> Eco Retreat (6 weeks), Cornwall.</li>
-					<li> <a href="https://www.theenchantedwilderness.co.uk/">Enchanted Wilderness</a>  (2 months), Devon.</li>
-					<li> Rosie's Place (6 weeks), Aberdeen.</li>
-					<li> <a href="http://skyebackpackers.com/">Skye Backpackers</a> Hostel (5 months), Isle of Skye</li>
+					<li> <a href="<%= hosts.cotna.url %>"><%= hosts.cotna.aname %></a> <%= hosts.cotna.plus %> (<%= hosts.cotna.howLong %>), <%= hosts.cotna.area %>.</li>
+					<li> <a href="<%= hosts.jonathan.url %>"><%= hosts.jonathan.aname %></a> <%= hosts.jonathan.plus %> (<%= hosts.jonathan.howLong %>), <%= hosts.jonathan.area %>.</li>
+					<!--<li> Rosie's Place (6 weeks), Aberdeen.</li>-->
+					<li> <a href="<%= hosts.skye.url %>"><%= hosts.skye.aname %></a> <%= hosts.skye.plus %> (<%= hosts.skye.howLong %>), <%= hosts.skye.area %>.</li>
+<li> <a href="<%= hosts.bosavern.url %>"><%= hosts.bosavern.aname %></a> <%= hosts.bosavern.plus %> (<%= hosts.bosavern.howLong %>), <%= hosts.bosavern.area %>.</li>
+
+
 				</ul>
 				<h3>Heads up!</h3>
 				<p class="quoteLikePar">
