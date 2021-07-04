@@ -1,9 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const date=require('../local_modules/lastUpdated')
+const {title, navigationLinks } = require('./variables')
+console.log(title,navigationLinks)
+const page='Home';
+const firstSec="Who we are";
+const secondSec="How we can help";
+const mainImg="/images/cropped_mainImg.jpg";
+const where="Lazio, Italy";
+const greeting="Hi there!"
 
-const hosts = { 
-	cotna:{
+const hosts = {	cotna:{
 		url:'https://cotna.co.uk/',
 		aname:'Cotna',
 		plus:'Eco Retreat',
@@ -34,26 +41,10 @@ const hosts = {
 		area:'Cornwall'
 }
 }
-const navigationLinks= [
-		  {name:'Home', path:'/'}, 
-		  {name:'Pictures',path:'/pictures'},
-		  {name:'About', path:'/about'}
-	  ]
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { 
-	  hosts,
-	  navigationLinks,
-	  title: 'Two Travellers', 
-	  page:'Home',
-	  date, 
-	  firstSec:"Who we are", 
-	  secondSec:"How we can help", 
-          mainImg:"/images/cropped_mainImg.jpg",
-	  where:"Lazio, Italy",
-	  greeting:"Hi there!"
-  });
+ res.render('index', {page,firstSec,secondSec,mainImg,where,greeting,hosts,title,navigationLinks,date} );
 });
 
 module.exports = router;

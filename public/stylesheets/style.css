@@ -115,20 +115,31 @@ h2 {
   display: grid;
   place-items: center;
   position: relative;
-  background-image: url("/images//theFields.jpg");
+  background-image: url("/images//FullSizeRender_3try.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 400px;
+  background-position: center center;
   width: 100%;
 }
 .banner > h1 {
   text-align: center;
-  color: transparent;
-  background-clip: text;
-  background-image: url("/images//tree.jpg");
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.7);
+  background-image: none;
 }
 
+@supports (background-clip: text) {
+  .banner > h1 {
+    color: transparent;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.7);
+    background-clip: text;
+    background-image: url("/images//tree.jpg");
+  }
+}
+@media screen and (min-width: 900px) {
+  .banner {
+    min-height: 500px;
+  }
+}
 ul.navbar {
   display: flex;
   flex-direction: row;

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<%- include("includes/head", {vars, page}) -%>
+	<body>
+		<!--this Include is usful for reusing pieces of HTML-->
+		<%- include("includes/navbar",vars) %>
+
+		<div class='banner'>
+		<h1> <%= vars.title %> </h1>
+		</div>
+
+		<main>
+
+               <% images.forEach(img => { %>
+	       <figure class="pictures">
+	       <img src='/gallery/<%=img%>' alt=""/> 
+	       <figcaption><%= img %> </figcaption>
+	       </figure>
+	       <%})%>
+		</main>
+
+		<%- include('includes/footer')%>
+		<!--		<script src="./javascripts/addCheckMarks.js"></script> -->
+	</body>
+</html>
