@@ -50,6 +50,6 @@ ul.places > li::before {@include symbol("\2014",0.4rem)}
 	.welcome{ flex-direction:column; padding:2rem 0; } 
 	main { min-width:750px; width:60%; margin:auto; }
 	.quoteLikePar{ border-left:3px dashed $darkBlue;margin-top:3rem; }
-	.roundFig_img { border-radius:0px; clip-path:circle(192px at 230px 252px); }
+	.roundFig_img { border-radius:0px; clip-path:circle(192px at 196px 339px); }
         .taskImgFlex{ @include flexRow(); }
 }
