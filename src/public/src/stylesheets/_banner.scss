@@ -1,0 +1,28 @@
+@use "./variables" as *;
+
+
+.banner{
+	@include gridCenter;
+	position:relative;
+	background-image:url("/images/#{$banner}");
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:center center;
+	width:100%;
+ > h1 {
+	text-align:center; 
+	text-shadow:2px 2px 0px rgba(255,255,255,0.7);
+	background-image:none;
+} }
+@supports(background-clip:text){
+	.banner > h1{
+	color:transparent;
+	text-shadow:1px 1px 0px rgba(0,0,0,0.7);
+	background-clip:text;
+	background-image:url("/images/#{$h1BackgroundClip}");
+	}
+}
+
+@media screen and (min-width:900px){
+	.banner{min-height:500px;}
+}
