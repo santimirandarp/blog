@@ -9,7 +9,7 @@ const page = "about"
 
 router.get('/', (req,res)=>{	
 // list all files in the directory
-fs.readdir("./public/dist/images/gallery", (err, files) => {
+fs.readdir("/home/ec2-user/blog/public/dist/images/gallery", (err, files) => {
     if (err) {
         throw err;
     }

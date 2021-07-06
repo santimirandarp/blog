@@ -2,7 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+//const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
 const picturesRouter = require('./routes/pictures');
@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 
 //middlewares access the req object and -may- do something, 
 //for every type of request
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

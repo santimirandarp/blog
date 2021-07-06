@@ -1,3 +1,4 @@
-rsync -avu --delete "./src/" "./dist" --exclude 'node_modules/' --exclude 'gulpfile.js' --exclude 'app.js'
+rsync -avu --delete "./src/" "./dist" --exclude 'node_modules/' --exclude 'gulpfile.js' --exclude 'app.js' --exclude 'public/src/'
 cd dist
 npm install --only=prod 
+

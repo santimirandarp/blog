@@ -1,0 +1,1 @@
+rsync --delete -av -e "ssh -i ../.ssh/aws_cloud.pem" dist/  ec2-user@ec2-18-118-139-201.us-east-2.compute.amazonaws.com:blog 
