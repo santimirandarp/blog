@@ -1,5 +1,5 @@
 const path = require('path');
-const {src,dest,watch,series,parallel}  = require("gulp")
+const {src,dest,watch,series,parallel} = require("gulp")
 const imagemin = require("gulp-imagemin")
 const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
@@ -8,22 +8,20 @@ const nodemon = require('gulp-nodemon');
 
 
 function cleanFilename(filename, extension){
-  if (typeof(filename)=='string' && typeof(extension)=='string'){
     //spaces with underscore and ' or " with nothing
     filename = filename.replace('/\s+/g','_').replace('/[\'\"]/g','')
       //lowercase the extension
       extension = extension.toLowerCase()
       return filename, extension
-  } else{ 
-    throw "One of the parameters is not a string"
-  }
-}
+  } 
 
 //path
 const tpath = {
 src:{ js:'public/src/javascripts/**/*',
       images:'public/src/images/**/*.{png,PNG,svg,jpg,jpeg,JPG,JPEG}',
       scss:'public/src/stylesheets/**/*.scss',
+      routes:'routes/*.js',
+      views:'views/**/*.ejs',
     },
 dest:{
 js:'public/dist/javascripts/',
@@ -67,11 +65,12 @@ function js(){
 }
 
 function watcher (cb) {
+// nodemon
    const stream = nodemon({
 script: './bin/www' , 
 ext: 'js scss ejs',
 ignore: [ 'public/dist/', 'node_modules/' ],
-watch:    [tpath.src.js, tpath.src.scss],
+watch:    [tpath.src.js, tpath.src.scss, tpath.src.routes, tpath.src.views],
 tasks: function (changedFiles) {
 var tasks = []
 if (!changedFiles) return tasks;

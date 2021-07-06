@@ -17,7 +17,7 @@
 @supports(background-clip:text){
 	.banner > h1{
 	color:transparent;
-	text-shadow:1px 1px 0px rgba(0,0,0,0.7);
+	text-shadow:1px 1px 1px rgba(0,0,0,0.2);
 	background-clip:text;
 	background-image:url("/images/#{$h1BackgroundClip}");
 	}

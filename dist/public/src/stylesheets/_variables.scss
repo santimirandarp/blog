@@ -1,0 +1,43 @@
+
+//Variables & Mixings
+$linkColorHover:#266210;
+$linkBackground:#65bb462b;
+$bodyBackground:#f4f4f4;
+$bodyColor:#333;
+$darkBlue:#1c3e68;
+
+$imageSize:16rem;
+
+$sans: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$h1BackgroundClip:"tree.jpg";
+$banner:"FullSizeRender.jpg";
+
+//symbol
+$checkMarkSize:2rem;
+$checkMarkSize:2rem;
+$checkMarkMargin:0.5rem;
+@mixin symbol($code, $margin){ content:"#{$code}"; margin-right:$margin;};
+@mixin checkMark($size, $margin){
+	width:$size;
+	height:$size;
+	margin-right:$margin;
+}
+
+
+@mixin flexRow(){
+	display:flex;
+	flex-direction:row
+}
+
+@mixin flexColumn(){
+	display:flex;
+	flex-direction:column
+}
+
+@mixin gridCenter(){
+	display:grid;
+	place-items:center;
+}

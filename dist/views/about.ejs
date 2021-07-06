@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<%- include("includes/head", {title, page, cssPath}) -%>
+	<body>
+		<!--this Include is usful for reusing pieces of HTML-->
+		<%- include("includes/navbar", navigationLinks) %>
+
+		<div class='banner'>
+		<h1><%= title %></h1>
+		</div>
+
+		<main>
+
+<h2>This Website</h2>
+<p>After several days working together we manage to get a very basic website up and running.</p>
+<p>These days having a website shows many relevant skills: attention, writing, IT awareness.
+And more importantly it's a efficient way to communicate with the world.</p>
+<p>The website was done from scratch. It runs an Express server, that renders part of the pages on-the-fly, using 
+ejs. There are also a few simple javascripts running on the client. The style on the other hand is written in Sass.</p>
+<p>There are no cookies whatsoever; the only external link is to google fonts, and will be removed in the future.</p>
+<h2>Other Projects</h2>
+<p>Linda is learning to produce music using Ableton, and brushing up statistics in SPSS. Santi is tinkering with raspberry pis.</p>
+<p>Both of us regularly practice yoga and meditation; we do sports, don't smoke, and follow a vegetarian diet.</p>
+<p> In the future there will be a blog and a comments section. The source code for this site can be found on <a href="github.com/santimirandarp/">Github.</a></p>
+		</main>
+
+		<%- include('includes/footer')%>
+		<!--		<script src="./javascripts/addCheckMarks.js"></script> -->
+	</body>
+</html>
