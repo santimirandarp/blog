@@ -68,10 +68,11 @@
 <img class='reviewImg' src='./images/reviews/jonathan.png'/>
 </li>
 					<!--<li> Rosie's Place (6 weeks), Aberdeen.</li>-->
-					<li> <a href="<%= hosts.skye.url %>"><%= hosts.skye.aname %></a> <%= hosts.skye.plus %> (<%= hosts.skye.howLong %>), <%= hosts.skye.area %>.</li>
-<li> <a href="<%= hosts.bosavern.url %>"><%= hosts.bosavern.aname %></a> <%= hosts.bosavern.plus %> (<%= hosts.bosavern.howLong %>), <%= hosts.bosavern.area %>.
+					<li> <a href="<%= hosts.skye.url %>"><%= hosts.skye.aname %></a> <%= hosts.skye.plus %> (<%= hosts.skye.howLong %>), <%= hosts.skye.area %>.
 <span class='reviewSpan' >See Review</span>
 <img class='reviewImg' src='./images/reviews/skye.png'/>
+</li>
+<li> <a href="<%= hosts.bosavern.url %>"><%= hosts.bosavern.aname %></a> <%= hosts.bosavern.plus %> (<%= hosts.bosavern.howLong %>), <%= hosts.bosavern.area %>.
 </li>
 
 
@@ -88,7 +89,7 @@
 			<script >
 const spans = document.querySelectorAll('.places .reviewSpan')
 spans.forEach(span=> {
-addEventListener('click', (e)=> {
+span.addEventListener('click', (e)=> {
 const img = span.nextElementSibling
 img.style.display=='' || img.style.display=='none'? 
 img.style.display='block': img.style.display='none'
