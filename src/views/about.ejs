@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 
-	<%- include("includes/head", {title, page, cssPath}) -%>
-	<body>
-		<!--this Include is usful for reusing pieces of HTML-->
-		<%- include("includes/navbar", navigationLinks) %>
+<%- include("includes/head", {title, page, cssPath}) -%>
+<body>
+<!--this Include is usful for reusing pieces of HTML-->
+<%- include("includes/navbar", navigationLinks) %>
 
-		<div class='banner'>
-		<h1><%= title %></h1>
-		</div>
+<div class='banner'>
+<h1><%= title %></h1>
+</div>
 
-		<main>
+<main>
 
 <h2>This Website</h2>
 <p>After several days working together we manage to get a very basic website up and running.</p>
@@ -24,9 +24,9 @@ And more importantly it's a efficient way to communicate with the world.</p>
 <p>Both of us regularly practice yoga and meditation; we do sports, don't smoke, and follow a vegetarian diet.</p>
 <p> In the future there will be a blog and a comments section. The source code for this site can be found on <a href="https://github.com/santimirandarp/">Github.</a></p>
 
-		</main>
+</main>
 
-		<%- include('includes/footer')%>
-		<!--		<script src="./javascripts/addCheckMarks.js"></script> -->
-	</body>
+<%- include('includes/footer')%>
+
+</body>
 </html>

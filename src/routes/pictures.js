@@ -1,28 +1,22 @@
-var express = require('express');
-var router = express.Router();
-const fs = require("fs")
-const date=require('../local_modules/lastUpdated')
-const {title, navigationLinks} = require("./variables")
-const cssPath = 'pictures/pictures'
-const page = "Pictures"
-/* GET users listing. */
+const express = require('express');
+const router = express.Router();
+const fs = require("fs");
+const path = require('path');
+
+//local
+const date=require('../local_modules/date');
+const {title, navigationLinks} = require("./variables");
+const cssPath = 'pictures/pictures';
+const page = "Pictures";
 
 router.get('/', (req,res)=>{	
-// list all files in the directory
-fs.readdir("./public/dist/images/gallery", (err, files) => {
-    if (err) {
-        throw err;
-    }
+// __dirname is very useful for fs module
+    const gallery =  path.join(__dirname, "/../public/dist/images/gallery")
 
-let images =  []
-    // files object contains all files names
-    // log them on console
-    files.forEach(file => {
-        console.log(file);
-	images.push(file)
-    });
-	res.render('pictures', {page,cssPath,images,title,navigationLinks,date})
-
-}) });
+    fs.readdir(gallery, (err, files) => {
+        if (err)  throw err;
+        const images = files;
+        res.render('pictures', {page,cssPath,images,title,navigationLinks,date})
+        }) });
 
 module.exports = router;

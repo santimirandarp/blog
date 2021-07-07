@@ -1,13 +1,14 @@
+require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+// Routes
 const indexRouter = require('./routes/index');
 const picturesRouter = require('./routes/pictures');
 const aboutRouter = require('./routes/about');
-const usersRouter = require('./routes/users');
 
 const app = express();
 
@@ -22,8 +23,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/gallery',express.static(path.join(__dirname, '/public/dist/images/gallery')));
-app.use('/images',express.static(path.join(__dirname, '/public/dist/images/')));
+app.use('/public/gallery',express.static(path.join(__dirname, '/public/dist/images/gallery')));
+app.use('/public/reviews',express.static(path.join(__dirname, '/public/dist/images/reviews')));
+app.use('/public/images',express.static(path.join(__dirname, '/public/dist/images/')));
 app.use(express.static(path.join(__dirname, 'public/dist')));
 
 //enables routes for exact match on path

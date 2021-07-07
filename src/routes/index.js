@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const date=require('../local_modules/lastUpdated')
+const date=require('../local_modules/date')
 const {title, navigationLinks } = require('./variables')
 console.log(title,navigationLinks)
 const cssPath='home';
 const page='Home';
 const firstSec="Who we are";
 const secondSec="How we can help";
-const mainImg="images/cropped_mainImg.jpg";
+const mainImg="public/images/cropped_mainImg.jpg";
 const where="Lazio, Italy";
 const greeting="Hi there!"
 
