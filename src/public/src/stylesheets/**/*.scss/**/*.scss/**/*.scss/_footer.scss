@@ -1,24 +1,17 @@
-@use "./variables"
-as * ;
+@use "./variables" as *;
 
-.footer {
-    margin - top: 3 rem;
-    align - self: end;
-    justify - content: center;
-    text - align: center;
-    @include flexRow; &
-    _links {
-        width: 100 % ;margin: 0;@include flexRow;
-        align - items: center;
-        li {
-            display: flex;padding: 0.5 rem
-        }
-        .helpx {
-            background - color: #314d6d}
+.footer{ 
+	margin-top:3rem;
+	align-self:end;
+	justify-content:center;
+	text-align:center;
+       	@include flexRow;
+       &_links  { width:100%; margin:0;@include flexRow;
+	       align-items:center;
+	li {display:flex; padding:0.5rem}
+	.helpx{background-color:#314d6d}
 	a {background-color:transparent; align-self:center;}
 }
-&_lastUpdated{color:# 333;
-            align - self: end;
-            font - size: 1 rem
-        }
-    }
+&_lastUpdated{color:#333;align-self:end; font-size:1rem}
+}
+

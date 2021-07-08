@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "debug": "~2.6.9",
+    "esm": "^3.2.25",
     "gulp": "^4.0.2",
     "gulp-eslint": "^6.0.0",
     "gulp-imagemin": "^3.4.0",

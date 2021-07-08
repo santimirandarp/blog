@@ -12,7 +12,7 @@ const app = require('./app');
 //return path to the TLS certificate and private key
 const options = require('./local_modules/https')(SERVER)
 //return port 443, 80 or 8443 and 8080 for Server or Local set
-const {portSecure, port} = require('./local-modules/ports')(SERVER)
+const {portSecure, port} = require('./local_modules/ports')(SERVER)
 
 const httpsServer = https.createServer(options,app)
   .listen(portSecure, function(){

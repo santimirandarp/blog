@@ -1,29 +1,11 @@
-html {
-    font - size: 100 % ;
-    word -
-        break :break -word;
-    cursor: default
-}
+html { font-size: 100%; word-break:break-word; cursor:default }
 
-*{
-    box - sizing: border - box;padding: 0;margin: 0
-}
+* {box-sizing:border-box; padding:0; margin:0}
 
-ul {
-    list - style - type: none
-}
+ul {list-style-type:none}
 
-a {
-    text - decoration: none;
-    display: inline - block; &: hover {
-        cursor: pointer
-    }
-}
+a {text-decoration:none; display:inline-block; &:hover{cursor:pointer}}
 
-img {
-    display: block;width: 100 %
-}
+img{ display:block; width:100%}
 
-figcaption {
-    text - align: center;
-}
+figcaption { text-align: center; }

@@ -4,11 +4,15 @@
 module.exports = SERVER => {
   try{
     const server = SERVER.toUpperCase()
-      server==='LOCAL'? { 
+      console.log(server)
+      if(server==='LOCAL') {return { 
 key: fs.readFileSync(KEYLOCAL),
-       cert: fs.readFileSync(CERTLOCAL) 
-      }: server==='REMOTE'?  {
+       cert: fs.readFileSync(CERTLOCAL)
+      }} else if(server==='REMOTE') {
+return { 
 key: fs.readFileSync(KEYREMOTE),
-       cert: fs.readFileSync(CERTREMOTE)
-      }: throw 'SERVER not defined, or not equal to LOCAL or REMOTE' 
-} catch(err){ console.error(err) }}
+     cert: fs.readFileSync(CERTREMOTE)
+        }} else {
+throw 'SERVER isnt REMOTE or LOCAL or is not defined'
+}}
+       catch(err){ console.error(err) }}
