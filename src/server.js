@@ -10,7 +10,7 @@ const express = require('express');
 const app = require('./app');
 
 //return path to the TLS certificate and private key
-const options = require('./local_modules/https')(SERVER)
+const options = require('./local_modules/https')(SERVER,KEYLOCAL,CERTLOCAL,KEYREMOTE,CERTREMOTE)
 //return port 443, 80 or 8443 and 8080 for Server or Local set
 const {portSecure, port} = require('./local_modules/ports')(SERVER)
 

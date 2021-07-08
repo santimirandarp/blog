@@ -38,6 +38,7 @@ function genCSS() {
     .pipe(sourcemaps.init()) //line in css, maps to source (file & line).
     .pipe(sass.sync({outputStyle:'compressed'}).on('error', sass.logError))
     .pipe(sourcemaps.write())
+    .pipe(autoprefixer({ cascade: false }))
     // dest will be a single index.css file, and some from folders (blog, about, etc).
     .pipe(dest(tpath.dest.scss))
 };

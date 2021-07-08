@@ -1,7 +1,8 @@
 //exports.foo = 'foo';
 //module.exports.bar = 'bar';
 // default, use module.exports
-module.exports = SERVER => {
+import fs from 'fs';
+module.exports = (SERVER, KEYLOCAL, CERTLOCAL, KEYREMOTE,CERTREMOTE) => {
   try{
     const server = SERVER.toUpperCase()
       console.log(server)
