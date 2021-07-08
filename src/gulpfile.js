@@ -5,34 +5,36 @@ const sass = require('gulp-sass')(require('sass'));
 const sourcemaps = require('gulp-sourcemaps');
 const rename = require('gulp-rename');
 const nodemon = require('gulp-nodemon');
-
+const eslint = require('gulp-eslint');
 
 function cleanFilename(filename, extension){
-    //spaces with underscore and ' or " with nothing
-    filename = filename.replace('/\s+/g','_').replace('/[\'\"]/g','')
-      //lowercase the extension
-      extension = extension.toLowerCase()
-      return filename, extension
-  } 
+  //spaces with underscore and ' or " with nothing
+  filename = filename.replace('/\s+/g','_').replace('/[\'\"]/g','')
+    //lowercase the extension
+    extension = extension.toLowerCase()
+    return filename, extension
+} 
 
 //path
 const tpath = {
-src:{ js:'public/src/javascripts/**/*',
-      images:'public/src/images/**/*.{png,PNG,svg,jpg,jpeg,JPG,JPEG}',
+src:{ js:'public/src/javascripts/**/*.js',
+      es6:'**/*.js',
+      images:'public/src/images/**/*.+(png|svg|jpeg|jpg)', //case insensitive on src()
       scss:'public/src/stylesheets/**/*.scss',
       routes:'routes/*.js',
-      views:'views/**/*.ejs',
+                      views:'views/**/*.ejs',
     },
-dest:{
-js:'public/dist/javascripts/',
-   images:'public/dist/images/',
-   scss:'public/dist/stylesheets/',
+dest:{ js:'public/dist/javascripts/',
+       //'public/dist/javascripts/',
+       images:'public/dist/images/',
+       scss:'public/dist/stylesheets/',
      }}
 
 function genCSS() {
   //compiles scss and builds a source map useful for debugging in browser
   //this finds a line in css, and maps it to the source (file and line).
   return src(tpath.src.scss)
+    .pipe(dest(tpath.src.scss))
     .pipe(sourcemaps.init())
     .pipe(sass.sync({outputStyle:'compressed'}).on('error', sass.logError))
     .pipe(sourcemaps.write())
@@ -46,7 +48,7 @@ function minify(){
   //improve the extension (all lowercase)
   // move them to dist folder
 
-  return src(tpath.src.images)
+  return src(tpath.src.images, nocase=true)
     .pipe( imagemin([
           //imagemin.gifsicle({interlaced: true}),
           imagemin.mozjpeg({quality: 75, progressive: true}),
@@ -59,14 +61,29 @@ function minify(){
   .pipe(dest(tpath.dest.images))
 }
 
+function es6(){
+  // eslint() attaches the lint output to the "eslint" property
+  // of the file object so it can be used by other modules.
+  .pipe(src(es6))
+    .pipe(eslint())
+    // eslint.format() outputs the lint results to the console.
+    // Alternatively use eslint.formatEach() (see Docs).
+    .pipe(eslint.format())
+    // To have the process exit with an error code (1) on
+    // lint error, return the stream and pipe to failAfterError last.
+    .pipe(eslint.failAfterError())
+  .pipe(dest(es6))
+
+}
 function js(){ 
   //just copy the js files from src over to dest
-  return src(tpath.src.js).pipe(dest(tpath.dest.js)) 
+  return src(tpath.src.js)
+    .pipe(dest(tpath.dest.js)) 
 }
 
 function watcher (cb) {
-// nodemon
-   const stream = nodemon({
+  // nodemon
+  const stream = nodemon({
 script: './bin/www' , 
 ext: 'js scss ejs',
 ignore: [ 'public/dist/', 'node_modules/' ],
@@ -86,9 +103,10 @@ return tasks } })
       console.error('Application has crashed!\n')
       stream.emit('restart', 10)  // restart the server in 10 seconds
       })
-cb()
+  cb()
 }
 
+exports.es6 = es6
 exports.minify = minify
 exports.genCSS = genCSS
   exports.js = js

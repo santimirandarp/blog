@@ -1,0 +1,32 @@
+@use "./variables"
+as * ;
+
+main {
+    padding: 1 rem;
+    li {
+        margin - bottom: 1 rem;
+    }
+}
+
+a {
+    color: $bodyColor;
+    background - color: $linkBackground; &
+    : hover {
+        transition: background - color 0.1 s linear;
+        background - color: transparent;
+        color: $linkColorHover;
+    }
+}
+
+
+
+h2 {
+    text - align: right;
+    color: $darkBlue;
+    text - shadow: 1 px 1 px 0.1 px rgba(0, 0, 0, 0.7)
+}
+
+
+.footer, .navbar {
+    box - shadow: 0 px 1 px $bodyColor;
+}

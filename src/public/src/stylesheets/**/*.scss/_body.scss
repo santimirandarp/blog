@@ -1,0 +1,16 @@
+@use "./variables"
+as * ;
+
+body {
+
+    @include gridCenter;
+    position: relative;
+    background - color: $bodyBackground;
+    color: $bodyColor;
+}
+@media screen and(min - width: 900 px) {
+    body {
+        min - width: 750 px;
+        max - width: 1200 px
+    }
+}
