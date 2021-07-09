@@ -32,10 +32,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-app.use('/public/gallery',express.static(path.join(__dirname,'public/dist/images/gallery')));
-app.use('/public/reviews',express.static(path.join(__dirname,'public/dist/images/reviews')));
-app.use('/public/images',express.static(path.join(__dirname,'public/dist/images/images')));
-app.use(express.static(path.join(__dirname,'public/dist')));
+app.use('/public/gallery',express.static(path.join(__dirname,'public/images/gallery')));
+app.use('/public/reviews',express.static(path.join(__dirname,'public/images/reviews')));
+app.use('/public/images',express.static(path.join(__dirname,'public/images/images')));
+app.use(express.static(path.join(__dirname,'public/')));
 
 //enables routes for exact match on path
 app.use('/', indexRouter);
