@@ -13,7 +13,8 @@ The reviews will be comments written by Hosts.
 
 July 8th 
 
-Part of the site is done:
+Site is now hosted on an EC2 instance in Amazon Cloud (AWS).
+
 * It's an Express server using ejs to render html. 
 * Style is written in Sass (scss).
 
@@ -21,6 +22,6 @@ On development it uses Gulp to compile scss, minify images, and move files from 
 
 Now trying to switch to ES6 syntax, to use import/export both in server and browser JS, and run a linter.
 
-This is not easy because Gulp binary does not read ES6 files, so `type:'module'` won't work.
+`type:modules` enables ES6 for node js, but not for gulp, and so `gulpfile.js` can't be ES6.
 
 Trying to use **esm** for this matter.

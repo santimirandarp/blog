@@ -1,14 +1,15 @@
-require('dotenv').config();
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+import dotenv from 'dotenv';
+dotenv.config();
+import createError from 'http-errors';
+import express from 'express';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
 
 // Routes
-const indexRouter = require('./routes/index');
-const picturesRouter = require('./routes/pictures');
-const aboutRouter = require('./routes/about');
+import indexRouter from './routes/index';
+import picturesRouter from './routes/pictures';
+import aboutRouter from './routes/about';
 
 const app = express();
 
@@ -51,4 +52,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+export app;

@@ -1,13 +1,14 @@
 // environmental variables
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
+
 const {SERVER,KEYLOCAL,CERTLOCAL,KEYREMOTE,CERTREMOTE} = process.env;
 
-const fs = require('fs'); //read filesystem
-
-const https = require('https');
-const http = require('http');
-const express = require('express');
-const app = require('./app');
+import fs from 'fs'; //read filesystem
+import https from 'https';
+import http from 'http';
+import express from 'express';
+import app from './app';
 
 //return path to the TLS certificate and private key
 const options = require('./local_modules/https')(SERVER,KEYLOCAL,CERTLOCAL,KEYREMOTE,CERTREMOTE)

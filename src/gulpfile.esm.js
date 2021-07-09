@@ -1,11 +1,11 @@
-require = require("esm")(module/*, options*/)
 import path from 'path';
 import {src,dest,watch,series,parallel} from "gulp";
 import imagemin from "gulp-imagemin";
 import gulpSass from 'gulp-sass';
 import sassBin from 'sass';
 const sass = gulpSass(sassBin)
-import sourcemaps from 'gulp-sourcemaps';
+import postcss from 'gulp-postcss';
+import autoprefixer from 'autoprefixer';
 import rename from 'gulp-rename';
 import nodemon from 'gulp-nodemon';
 import eslint from 'gulp-eslint';
@@ -36,9 +36,9 @@ dest:{ js:'public/dist/javascripts/',
 function genCSS() {
   return src(tpath.src.scss)
     .pipe(sourcemaps.init()) //line in css, maps to source (file & line).
-    .pipe(sass.sync({outputStyle:'compressed'}).on('error', sass.logError))
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(postcss({plugins:[autoprefixer()]}))
     .pipe(sourcemaps.write())
-    .pipe(autoprefixer({ cascade: false }))
     // dest will be a single index.css file, and some from folders (blog, about, etc).
     .pipe(dest(tpath.dest.scss))
 };
