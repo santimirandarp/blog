@@ -18,11 +18,10 @@ import logger from 'morgan';
 import indexRouter from './routes/index.js';
 import picturesRouter from './routes/pictures.js';
 import aboutRouter from './routes/about.js';
-console.log(import.meta.url)
 const app = express();
 
 // view engine setup
-app.set('views', path.join(import.meta.url, 'views')); 
+app.set('views', path.join(__dirname, 'views')); 
 app.set('view engine', 'ejs'); 
 
 //middlewares access the req object and -may- do something, 
