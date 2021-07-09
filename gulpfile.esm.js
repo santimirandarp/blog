@@ -14,7 +14,6 @@ import postcss from 'gulp-postcss';
 import postcssScss from 'postcss-scss' 
 import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'autoprefixer';
-import cssnano from 'cssnano';
 
 
 function cleanFilename(filename, extension){
@@ -42,8 +41,8 @@ dest:{ js:'dist/public/javascripts/',
 function genCSS(){
   return src(tpath.src.scss)
     .pipe(sourcemaps.init()) //line in css, maps to source (file & line).
-    .pipe(sass.sync().on('error', sass.logError))
-    .pipe(postcss({ syntax: 'postcss-scss', plugins:[autoprefixer(), cssnano()] }))
+    .pipe(postcss({ syntax: 'postcss-scss', plugins:[autoprefixer()] }))
+    .pipe(sass.sync({outputStyle:'compressed'}).on('error', sass.logError))
     .pipe(sourcemaps.write())
     .pipe(dest(tpath.dest.css))
 }
