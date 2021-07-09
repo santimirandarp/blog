@@ -1,4 +1,4 @@
-import {src,dest,watch,series,parallel} from "gulp";
+import {src,lastRun, dest,watch,series,parallel} from "gulp";
 
 import path from 'path';
 import imagemin from "gulp-imagemin";
@@ -15,7 +15,6 @@ import postcssScss from 'postcss-scss'
 import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'autoprefixer';
 
-
 function cleanFilename(filename, extension){
   //spaces w underscore; ' or " with nothing; lowercase extension
     return filename.replace('/\s+/g','_').replace('/[\'\"]/g',''), extension.toLowerCase()
@@ -26,7 +25,7 @@ const tpath = {
 src:{ public:'/src/public/',
       js:'src/**/*.js', 
       copyRest:['src/**/*', '!src/node_modules', '!src/public'], 
-      images:'src/public/images/**/*.+(png|svg|jpeg|jpg)', //case insensitive on src()
+      images:'src/public/images/**/*.{png,svg,jpeg,jpg}', //case insensitive on src()
       scss:'src/public/stylesheets/**/*.scss',
       routes:'routes/*.js',
                       views:'views/**/*.ejs',
@@ -41,29 +40,27 @@ dest:{ js:'dist/public/javascripts/',
 function genCSS(){
   return src(tpath.src.scss)
     .pipe(sourcemaps.init()) //line in css, maps to source (file & line).
-    .pipe(postcss({ syntax: 'postcss-scss', plugins:[autoprefixer()] }))
+    .pipe(postcss([autoprefixer()],{syntax: postcssScss}))
     .pipe(sass.sync({outputStyle:'compressed'}).on('error', sass.logError))
     .pipe(sourcemaps.write())
     .pipe(dest(tpath.dest.css))
 }
 
 function minify(){
-  // minify jpg, png, svg images; 
-  //replace whitespace with underscore
-  //improve the extension (all lowercase)
-  // move them to dist folder
-
-  return src(tpath.src.images, {since:gulpLastRun(minify), nocase:true})
-    .pipe( imagemin([
+/*
+   minify jpg, png, svg images; 
+  replace whitespace with underscore
+  improve the extension (all lowercase)
+   move them to dist folder
+*/
+  return src(tpath.src.images, {nocase:true,since:lastRun(minify)}).pipe( imagemin([
           //imagemin.gifsicle({interlaced: true}),
-          imagemin.mozjpeg({quality: 75, progressive: true}),
           imagemin.optipng({optimizationLevel: 5}),
-          imagemin.svgo({ plugins: [ {removeViewBox: true}, {cleanupIDs: false} ] })
-    ]))
-    .pipe(rename(function (path) {
+          imagemin.svgo({ plugins: [ {removeViewBox: true}, {cleanupIDs: false} ] }),
+          imagemin.mozjpeg({quality: 75, progressive: true})
+    ])).pipe(rename(function (path) {
           path.basename, path.extname = cleanFilename(path.basename, path.extname)
-          }))
-  .pipe(dest(tpath.dest.images))
+          })).pipe(dest(tpath.dest.images))
 }
 
 //function es6(){
@@ -139,8 +136,9 @@ function watcher () {
 }
 
 //exports.es6 = es6
-//exports.minify = minify
-//exports.genCSS = genCSS
-//exports.copy = copy
+exports.minify = minify
+exports.genCSS = genCSS
+exports.copy = copy
+exports.build = series(genCSS, minify, copy)
 exports.default = watcher
 

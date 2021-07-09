@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang='en'>
+<%- include("includes/head", {title, page,cssPath}) -%>
+<body>
+
+<%- include("includes/navbar",navigationLinks) %>
+
+<div class='banner'>
+<h1> <%= title %> </h1>
+</div>
+
+<main>
+<div class='imgGal'>
+<% images.forEach(img => { %>
+    <%const text= img.replace(/_/g, " ").split('.')[0]%>
+    <a href="public/gallery/<%= img %>">
+    <figure class="pictures">
+    <img src='public/gallery/<%=img%>' alt='<%= text %>'/>
+    <figcaption><%= text %></figcaption>
+    </figure></a>
+    <%})%>
+</div>
+</main>
+
+<%- include('includes/footer')%>
+<!--		<script src="./javascripts/addCheckMarks.js"></script> -->
+</body>
+</html>
