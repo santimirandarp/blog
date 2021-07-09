@@ -1,0 +1,72 @@
+@use "./variables" as *;
+@use "./resets";
+@use "./fonts";
+@use "./body";
+@use "./general";
+@use "./banner";
+@use "./navbar"; 
+@use "./footer";
+
+// tag, general styling
+
+
+.welcome{
+  @include flexColumn;	
+  &_figure {
+width: $imageSize;
+height:$imageSize;
+       align-self:center;
+       margin-bottom:1rem;
+       img {
+transform:rotateZ(0deg);
+width:100%;
+      border-radius:5px;
+      box-shadow:1px 1px 2px $bodyColor;
+      &:hover{
+transform:rotateZ(2deg);
+transition:transform 0.1s linear; 
+      } } } } 
+
+ul.tasks > li {
+  @include flexRow;
+  align-items:start; //aligns first text line with the checkmark
+  .tasks_checkmark {@include checkMark($checkMarkSize, $checkMarkMargin)}
+  &::before{@include symbol("\2705",0.4rem)} //includes checkmark
+}
+
+ul.places > li::before {@include symbol("\2014",0.4rem)} //include em dash
+
+.taskImgFlex{@include flexColumn;align-self:center}
+
+.roundFig { width:60%; min-width:300px; align-self:center; 
+  &_img{border-radius:50%;}
+}
+
+
+.blueBox{padding:1rem; margin:1rem; border:2px dashed $darkBlue;border-radius:5px; text-align:center}
+
+.reviewSpan{border-bottom:2px solid rgba(125,0,0,0.5); &:hover{border-bottom:0px solid transparent;cursor:pointer}}
+
+.reviewImg {
+margin:1.5rem 0;
+display:none;
+        max-width:450px;
+        box-shadow:1px 1px 2px rgba(0,0,0,0.7)
+}
+main{padding:1rem}
+@media screen and (min-width:420px){
+  main {padding:calc(2rem + 5vw)}}
+
+  @media screen and (min-width:700px){
+    .roundFig_img { border-radius:0px; clip-path:circle(192px at 196px 339px); }
+  }
+@media screen and (min-width:900px){
+  ul.navbar {font-size:1.5rem;}
+  p {padding: 0 1rem;}
+  .h1Wrapper{ min-height:500px; height:50vh; max-height:900px; }
+  .welcome{ flex-direction:column; padding:2rem 0; } 
+  main {width:75%; margin:auto; padding:0 }
+  .quoteLikePar{ border-left:3px dashed $darkBlue;margin-top:3rem; }
+  .roundFig_img { border-radius:0px; clip-path:circle(192px at 196px 339px); }
+  .taskImgFlex{ @include flexRow; }
+}
