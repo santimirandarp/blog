@@ -2,7 +2,7 @@
 //module.exports.bar = 'bar';
 // default, use module.exports
 import fs from 'fs';
-module.exports = (SERVER, KEYLOCAL, CERTLOCAL, KEYREMOTE,CERTREMOTE) => {
+export default (SERVER, KEYLOCAL, CERTLOCAL, KEYREMOTE,CERTREMOTE) => {
   try{
     const server = SERVER.toUpperCase()
       console.log(server)

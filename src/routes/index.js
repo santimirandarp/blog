@@ -1,11 +1,10 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const date=require('../local_modules/date')
-const {title, navigationLinks } = require('./variables')
-console.log(title,navigationLinks)
-const cssPath='home';
-const page='Home';
-const firstSec="Who we are";
+import date from '../local_modules/date.js'
+import {title, navigationLinks } from './variables.js'
+const cssPath = 'home';
+const page = 'Home';
+const firstSec = "Who we are";
 const secondSec="How we can help";
 const mainImg="public/images/cropped_mainImg.jpg";
 const where="Lazio, Italy";

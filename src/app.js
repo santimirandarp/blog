@@ -1,5 +1,13 @@
 import dotenv from 'dotenv';
 dotenv.config();
+
+//workaround for __dirname
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+
 import createError from 'http-errors';
 import express from 'express';
 import path from 'path';
@@ -10,11 +18,11 @@ import logger from 'morgan';
 import indexRouter from './routes/index.js';
 import picturesRouter from './routes/pictures.js';
 import aboutRouter from './routes/about.js';
-
+console.log(import.meta.url)
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views')); 
+app.set('views', path.join(import.meta.url, 'views')); 
 app.set('view engine', 'ejs'); 
 
 //middlewares access the req object and -may- do something, 
@@ -24,10 +32,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/public/gallery',express.static(path.join(__dirname, '/public/dist/images/gallery')));
-app.use('/public/reviews',express.static(path.join(__dirname, '/public/dist/images/reviews')));
-app.use('/public/images',express.static(path.join(__dirname, '/public/dist/images/')));
-app.use(express.static(path.join(__dirname, 'public/dist')));
+
+app.use('/public/gallery',express.static(path.join(__dirname,'public/dist/images/gallery')));
+app.use('/public/reviews',express.static(path.join(__dirname,'public/dist/images/reviews')));
+app.use('/public/images',express.static(path.join(__dirname,'public/dist/images/images')));
+app.use(express.static(path.join(__dirname,'public/dist')));
 
 //enables routes for exact match on path
 app.use('/', indexRouter);

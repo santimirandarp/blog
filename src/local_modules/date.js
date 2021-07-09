@@ -8,4 +8,4 @@ const year = date.getFullYear()
 
 date= `${dayNum}/${mon}/${year}`
 
-module.exports = date
+export default date

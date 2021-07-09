@@ -1,11 +1,11 @@
-import express from 'express';
-const router = express.Router();
+const express = require('express');
+import router from express.Router(;
 import fs from "fs";
 import path from 'path';
 
 // local
-import date from '../local_modules/date.js';
-import {title, navigationLinks} from "./variables.js";
+import date from '../local_modules/date'
+import {title, navigationLinks} from "./variables"
 const cssPath = 'about/about'
 const page = "about"
 /* GET users listing. */

@@ -1,9 +1,15 @@
-import {src,lastRun, dest,watch,series,parallel} from "gulp";
+import {src,lastRun,dest,watch,series,parallel} from "gulp";
+//workaround for __dirname
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 import path from 'path';
 import imagemin from "gulp-imagemin";
 import rename from 'gulp-rename';
 import nodemon from 'gulp-nodemon';
+import livereload from 'gulp-livereload';
 //import eslint from 'gulp-eslint';
 
 //css
@@ -22,7 +28,9 @@ function cleanFilename(filename, extension){
 
 //path
 const tpath = {
-src:{ public:'/src/public/',
+src:{ 
+serverFiles:['./src/*.js','./src/local_modules/*.js'],
+      public:'/src/public/',
       js:'src/**/*.js', 
       copyRest:['src/**/*', '!src/node_modules', '!src/public'], 
       images:'src/public/images/**/*.{png,svg,jpeg,jpg}', //case insensitive on src()
@@ -109,36 +117,32 @@ function minify(){
 //
 //}
 
-function copy(){ 
-  //just copy the js files from src over to dest
-  return src(tpath.src.copyRest).pipe(dest('./dist')) 
-}
+const copy = () => src(tpath.src.copyRest).pipe(dest('./dist')) 
 
-function restart(cb){
-  var stream = nodemon({ script: './src/index.js' })
-    .on('restart', function () {
-        console.log('restarted!')
-        })
-  .on('crash', function() {
-      console.error('Application has crashed!\n')
-      stream.emit('restart', 10)  // restart the server in 10 seconds
-      })
-  return stream
-  cb()
-}
+//function restart(cb){
+//  var stream = nodemon({ 
+//script: './src/server.js', exec: `node -r dotenv/config dotenv_config_path=${__dirname}/src/.env`})
+//    .on('restart', function () {
+//        console.log('restarted!')
+//        })
+//  .on('crash', function() {
+//      console.error('Application has crashed!\n')
+//      stream.emit('restart', 10)  // restart the server in 10 seconds
+//      })
+//  return stream
+//  cb()
+//}
 
 function watcher () {
-  // nodemon
-  watch(['./src/**/*', '!node_modules'], restart) 
+  //watch(tpath.src.serverFiles, restart) 
     watch(tpath.src.copyRest, copy)
     watch(tpath.src.scss, genCSS)
     watch(tpath.src.images, minify)  
+    watch('dist/public/**/*', livereload)  
 }
 
 //exports.es6 = es6
-exports.minify = minify
-exports.genCSS = genCSS
-exports.copy = copy
-exports.build = series(genCSS, minify, copy)
-exports.default = watcher
+const build = series(genCSS, minify, copy)
+export {minify, genCSS, copy, build}
+export default series(/*restart,*/ watcher)
 

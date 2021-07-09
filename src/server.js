@@ -1,6 +1,3 @@
-// environmental variables
-import dotenv from 'dotenv';
-dotenv.config();
 
 const {SERVER,KEYLOCAL,CERTLOCAL,KEYREMOTE,CERTREMOTE} = process.env;
 
@@ -11,9 +8,12 @@ import express from 'express';
 import app from './app.js';
 
 //return path to the TLS certificate and private key
-const options = require('./local_modules/https')(SERVER,KEYLOCAL,CERTLOCAL,KEYREMOTE,CERTREMOTE)
+import httpsOpts from './local_modules/https.js'
+const options = httpsOpts(SERVER,KEYLOCAL,CERTLOCAL,KEYREMOTE,CERTREMOTE)
+
 //return port 443, 80 or 8443 and 8080 for Server or Local set
-const {portSecure, port} = require('./local_modules/ports')(SERVER)
+import portOpts from './local_modules/ports.js'
+const {portSecure, port} = portOpts(SERVER)
 
 const httpsServer = https.createServer(options,app)
   .listen(portSecure, function(){
