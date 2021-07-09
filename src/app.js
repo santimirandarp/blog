@@ -7,9 +7,9 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 // Routes
-import indexRouter from './routes/index';
-import picturesRouter from './routes/pictures';
-import aboutRouter from './routes/about';
+import indexRouter from './routes/index.js';
+import picturesRouter from './routes/pictures.js';
+import aboutRouter from './routes/about.js';
 
 const app = express();
 
@@ -52,4 +52,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-export app;
+export default app

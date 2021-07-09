@@ -48,4 +48,4 @@ router.get('/', function(req, res, next) {
  res.render('index', {page,cssPath,firstSec,secondSec,mainImg,where,greeting,hosts,title,navigationLinks,date} );
 });
 
-module.exports = router;
+export default router;

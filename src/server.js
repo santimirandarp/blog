@@ -8,7 +8,7 @@ import fs from 'fs'; //read filesystem
 import https from 'https';
 import http from 'http';
 import express from 'express';
-import app from './app';
+import app from './app.js';
 
 //return path to the TLS certificate and private key
 const options = require('./local_modules/https')(SERVER,KEYLOCAL,CERTLOCAL,KEYREMOTE,CERTREMOTE)

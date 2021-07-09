@@ -18,4 +18,4 @@ router.get('/', (req,res)=> res.render('about', {
       date
 }));
 
-module.exports = router;
+export default router;

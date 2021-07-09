@@ -19,4 +19,4 @@ router.get('/', (req,res)=>{
         res.render('pictures', {page,cssPath,images,title,navigationLinks,date})
         }) });
 
-module.exports = router;
+export default router;
