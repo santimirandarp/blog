@@ -21,6 +21,9 @@ width:100%; text-align:center;
 
       background-color:rgba(255,255,255,0.5);
          }
-         img {@include fitIt}
+         img {
+@include fitIt;
+&:hover{transform:scale(1.05); transition:0.5s ease-out transform}
+}
         }}}
 

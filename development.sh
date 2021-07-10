@@ -1,6 +1,6 @@
 #npm install --only=prod 
-cd src
-npm start &
+cd dist
+npm run nodemon &
 cd ../
 gulp
 

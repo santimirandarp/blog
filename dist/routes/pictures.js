@@ -1,17 +1,21 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const fs = require("fs");
-const path = require('path');
+import fs from "fs";
+import path from 'path';
 
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 //local
-const date=require('../local_modules/date');
-const {title, navigationLinks} = require("./variables");
+import date from '../local_modules/date.js';
+import {title, navigationLinks} from "./variables.js";
 const cssPath = 'pictures/pictures';
 const page = "Pictures";
 
 router.get('/', (req,res)=>{	
 // __dirname is very useful for fs module
-    const gallery =  path.join(__dirname, "/../public/dist/images/gallery")
+    const gallery =  path.join(__dirname, "../public/images/gallery")
 
     fs.readdir(gallery, (err, files) => {
         if (err)  throw err;
@@ -19,4 +23,4 @@ router.get('/', (req,res)=>{
         res.render('pictures', {page,cssPath,images,title,navigationLinks,date})
         }) });
 
-module.exports = router;
+export default router;

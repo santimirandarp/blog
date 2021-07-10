@@ -1,5 +1,13 @@
 import dotenv from 'dotenv';
 dotenv.config();
+
+//workaround for __dirname
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+
 import createError from 'http-errors';
 import express from 'express';
 import path from 'path';
@@ -7,10 +15,9 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 // Routes
-import indexRouter from './routes/index';
-import picturesRouter from './routes/pictures';
-import aboutRouter from './routes/about';
-
+import indexRouter from './routes/index.js';
+import picturesRouter from './routes/pictures.js';
+import aboutRouter from './routes/about.js';
 const app = express();
 
 // view engine setup
@@ -24,10 +31,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/public/gallery',express.static(path.join(__dirname, '/public/dist/images/gallery')));
-app.use('/public/reviews',express.static(path.join(__dirname, '/public/dist/images/reviews')));
-app.use('/public/images',express.static(path.join(__dirname, '/public/dist/images/')));
-app.use(express.static(path.join(__dirname, 'public/dist')));
+
+app.use('/public/gallery',express.static(path.join(__dirname,'public/images/gallery')));
+app.use('/public/reviews',express.static(path.join(__dirname,'public/images/reviews')));
+app.use('/public/images',express.static(path.join(__dirname,'public/images/')));
+app.use(express.static(path.join(__dirname,'public/')));
 
 //enables routes for exact match on path
 app.use('/', indexRouter);
@@ -52,4 +60,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-export app;
+export default app

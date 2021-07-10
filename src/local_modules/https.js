@@ -2,18 +2,16 @@
 //module.exports.bar = 'bar';
 // default, use module.exports
 import fs from 'fs';
-export default (SERVER, KEYLOCAL, CERTLOCAL, KEYREMOTE,CERTREMOTE) => {
+export default (NODE_ENV, KEYLOCAL, CERTLOCAL, KEYREMOTE,CERTREMOTE) => {
   try{
-    const server = SERVER.toUpperCase()
-      console.log(server)
-      if(server==='LOCAL') {return { 
+      if(NODE_ENV==='development') {return { 
 key: fs.readFileSync(KEYLOCAL),
        cert: fs.readFileSync(CERTLOCAL)
-      }} else if(server==='REMOTE') {
+      }} else if(NODE_ENV==='production') {
 return { 
 key: fs.readFileSync(KEYREMOTE),
      cert: fs.readFileSync(CERTREMOTE)
         }} else {
-throw 'SERVER isnt REMOTE or LOCAL or is not defined'
+throw 'NODE_ENV != development or production'
 }}
        catch(err){ console.error(err) }}

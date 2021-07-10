@@ -1,11 +1,11 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const fs = require("fs");
-const path = require('path');
+import fs from "fs";
+import path from 'path';
 
 // local
-const date=require('../local_modules/date')
-const {title, navigationLinks} = require("./variables")
+import date from '../local_modules/date.js';
+import {title, navigationLinks} from "./variables.js";
 const cssPath = 'about/about'
 const page = "about"
 /* GET users listing. */
@@ -18,4 +18,4 @@ router.get('/', (req,res)=> res.render('about', {
       date
 }));
 
-module.exports = router;
+export default router;
