@@ -91,27 +91,17 @@ const toggleForm = document.getElementById('toggleForm')
 const getMsgs = (e)=>console.log(e)
 const postMsg = (e)=>{
 e.preventDefault();
-const data = {
-"name" : document.getElementById('name').value, 
-"email" : document.getElementById('email').value,
-"comment": document.getElementById('comment').value
-}
-console.log(data)
 fetch('comments', {   
    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-    mode: 'cors', // no-cors, *cors, same-origin
-    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-    credentials: 'same-origin', // include, *same-origin, omit
-    headers: {
-      'Content-Type': 'application/json'
-      // 'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    redirect: 'follow', // manual, *follow, error
-    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
+   mode: 'cors', // no-cors, *cors, same-origin
+   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+   credentials: 'same-origin', // include, *same-origin, omit
+   redirect: 'follow', // manual, *follow, error
+   referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: new FormData(form)
   })
-.then(res=>res.json())
-.then(res=>console.log(res))
+.then(r=>res.json(r))
+.then(c=>console.log(c))
 .catch(e=>console.log(e))
 }
 

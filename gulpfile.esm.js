@@ -25,7 +25,7 @@ import autoprefixer from 'autoprefixer';
 const tpath = {
 src:{ 
      docs:['src/local_modules/**/*.js', 'src/routes/**/*.js', '*.js'],
-     lintPaths:['src/**/*.js', '!src/node_modules'],
+     lintPaths:['src/**/*.js', '!src/node_modules/**'],
      copyRest:['src/**/*', 'src/**/.*', '!src/node_modules/**/*', '!src/public/**/*'], 
      images:'src/public/images/**/*.{png,svg,jpeg,jpg}', //case insensitive on src()
      scss:'src/public/stylesheets/**/*.scss',
@@ -81,11 +81,12 @@ All the project uses ES6 javascript
 const lint = () => {
     return src(tpath.src.lintPaths)
         .pipe(eslint())
-        .pipe(eslint.formatEach())
+        .pipe(eslint.format())
         .pipe(eslint.failAfterError());
 }
 
 const copy = () => src(tpath.src.copyRest).pipe(dest('./dist')) 
+
 
 /** Watch this set of directories and run functions on change */
 function watcher () {
