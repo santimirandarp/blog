@@ -15,11 +15,11 @@ const page = "Pictures";
 
 router.get('/', (req,res)=>{	
 // __dirname is very useful for fs module
-    const gallery =  path.join(__dirname, "../public/images/gallery")
+    const gallery =  path.join(__dirname, "../public/images/gallery/")
 
     fs.readdir(gallery, (err, files) => {
         if (err)  throw err;
-        const images = files;
+        const images = files.filter(file=>file.substring(0,7)==='gallery');
         res.render('pictures', {page,cssPath,images,title,navigationLinks,date})
         }) });
 
