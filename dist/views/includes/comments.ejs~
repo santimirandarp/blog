@@ -1,0 +1,21 @@
+<section id='comments'>
+<h2>Comments</h2>
+<button id='toggleForm'>Write Comment</button>
+<form id='form' method='POST'>
+<div>
+<label for='name'>Name</label>
+<input id='name' name='name' value='' placeholder='name'/>
+</div>
+<div>
+<label for='email'>Email</label>
+<input name='email' value='' placeholder='john@gmail.com'/>
+</div>
+<textarea name='message' id='message' placeholder='Type message Here'>
+</textarea>
+
+<div>
+ <button type='submit' id='send' >Send</button>
+</div>
+</form>
+
+</section>

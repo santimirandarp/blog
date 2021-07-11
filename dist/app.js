@@ -13,6 +13,11 @@ import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import mongoose from 'mongoose';
+
+const uri_db = 'mongodb+srv://randomaccess:salame@cluster0.bozot.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+mongoose.connect(uri_db, {useNewUrlParser: true, useUnifiedTopology: true});
+import {Comment} from './db/models.js'
 
 // Routes
 import indexRouter from './routes/index.js';
@@ -32,9 +37,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
+app.use('/reviews',express.static(path.join(__dirname,'public/images/reviews')));
 app.use('/public/gallery',express.static(path.join(__dirname,'public/images/gallery')));
-app.use('/public/reviews',express.static(path.join(__dirname,'public/images/reviews')));
-app.use('/public/images',express.static(path.join(__dirname,'public/images/')));
+app.use('public/images',express.static(path.join(__dirname,'public/images/')));
+app.use('/favicon',express.static(path.join(__dirname,'public/images/meta')));
 app.use(express.static(path.join(__dirname,'public/')));
 
 //enables routes for exact match on path
@@ -42,6 +48,20 @@ app.use('/', indexRouter);
 app.use('/pictures', picturesRouter);
 app.use('/about', aboutRouter);
 //app.use('/users', usersRouter);
+
+app.route('/comments').get((req,res)=>res
+.send())
+.post((req,res)=>{
+console.log('the requets body is: ', req.body)
+const {body} = req.body?req.body:'empty'
+//save To Db
+console.log(body)
+const comment = new Comment({ name: 'Zildjian' });
+comment.save().then((ans) => console.log(ans));
+res.json( {msg:'Comment Was Sent!'})
+
+})
+
 
 // Only gets here if none of prev routes was a match
 // catch 404 and forward to error handler

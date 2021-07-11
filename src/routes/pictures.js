@@ -8,8 +8,8 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 //local
-import date from '../local_modules/date.js';
-import {title, navigationLinks} from "./variables.js";
+import date from '../views/settings/date.js';
+import {title, navigationLinks} from "../views/settings/variables.js";
 const cssPath = 'pictures/pictures';
 const page = "Pictures";
 

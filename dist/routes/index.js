@@ -1,12 +1,12 @@
 import express from 'express';
 const router = express.Router();
-import date from '../local_modules/date.js'
-import {title, navigationLinks } from './variables.js'
+import date from '../views/settings/date.js'
+import {title, navigationLinks } from '../views/settings/variables.js'
 const cssPath = 'home';
 const page = 'Home';
 const firstSec = "Who we are";
 const secondSec="How we can help";
-const mainImg="public/images/cropped_mainImg.jpg";
+const mainImg="/images/cropped_mainImg.jpg";
 const where="Lazio, Italy";
 const greeting="Hi there!"
 

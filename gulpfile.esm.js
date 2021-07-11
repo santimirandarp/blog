@@ -8,11 +8,11 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 import path from 'path';
 import imagemin from "gulp-imagemin";
 import rename from 'gulp-rename';
-//import nodemon from 'gulp-nodemon';
 import livereload from 'gulp-livereload';
-//import eslint from 'gulp-eslint';
 
-//css
+import jsdoc from 'gulp-jsdoc3';
+import eslint from 'gulp-eslint';
+
 import gulpSass from 'gulp-sass';
 import sassBin from 'sass';
 const sass = gulpSass(sassBin);
@@ -21,31 +21,27 @@ import postcssScss from 'postcss-scss'
 import sourcemaps from 'gulp-sourcemaps';
 import autoprefixer from 'autoprefixer';
 
-function cleanFilename(filename, extension){
-  //spaces w underscore; ' or " with nothing; lowercase extension
-    return filename.replace('/\s+/g','_').replace('/[\'\"]/g',''), extension.toLowerCase()
-} 
 
-//path
 const tpath = {
 src:{ 
-serverFiles:['./src/*.js','./src/local_modules/*.js'],
-      public:'/src/public/',
-      js:'src/**/*.js', 
-      copyRest:['src/**/*', 'src/**/.*', '!src/node_modules/**/*', '!src/public/**/*'], 
-      images:'src/public/images/**/*.{png,svg,jpeg,jpg}', //case insensitive on src()
-      scss:'src/public/stylesheets/**/*.scss',
-      routes:'routes/*.js',
-                      views:'views/**/*.ejs',
+     docs:['src/local_modules/**/*.js', 'src/routes/**/*.js', '*.js'],
+     lintPaths:['src/**/*.js', '!src/node_modules'],
+     copyRest:['src/**/*', 'src/**/.*', '!src/node_modules/**/*', '!src/public/**/*'], 
+     images:'src/public/images/**/*.{png,svg,jpeg,jpg}', //case insensitive on src()
+     scss:'src/public/stylesheets/**/*.scss',
     },
-dest:{ js:'dist/public/javascripts/',
-       //'public/dist/javascripts/',
+dest:{ 
        images:'dist/public/images/',
        css:'dist/public/stylesheets/',
      }}
 
+const makeDocs = cb => src(tpath.src.docs,{read: false}).pipe(jsdoc(cb))
 
-function genCSS(){
+/**
+Generates prefixed, compressed single CSS file from the SCSS files. 
+It holds a sourcemap used by the browser to link the CSS code line to source SCSS line (sourcemap).
+*/
+const genCSS = () => {
   return src(tpath.src.scss)
     .pipe(sourcemaps.init()) //line in css, maps to source (file & line).
     .pipe(postcss([autoprefixer()],{syntax: postcssScss}))
@@ -54,13 +50,21 @@ function genCSS(){
     .pipe(dest(tpath.dest.css))
 }
 
-function minify(){
-/*
-   minify jpg, png, svg images; 
+/** Function used in @minify(). Replaces filename spaces with underscores, 
+' and " are removed, extension is lowercase.
+*/
+const cleanFilename = (filename, extension)=>{
+  //spaces w underscore; ' or " with nothing; lowercase extension
+    return filename.replace('/\s+/g','_').replace('/[\'\"]/g',''), extension.toLowerCase()
+} 
+
+/**
+  minify jpg, png, svg images; 
   replace whitespace with underscore
   improve the extension (all lowercase)
-   move them to dist folder
+  move them to dist folder
 */
+const minify = () => {
   return src(tpath.src.images, {nocase:true,since:lastRun(minify)}).pipe( imagemin([
           //imagemin.gifsicle({interlaced: true}),
           imagemin.optipng({optimizationLevel: 5}),
@@ -71,28 +75,28 @@ function minify(){
           })).pipe(dest(tpath.dest.images))
 }
 
-//function es6(){
-//  return  src(tpath.src.js)
-//    .pipe(eslint())
-//  .pipe(eslint.format())
-//    .pipe(eslint.failAfterError())
-//    .pipe(dest(tpath.src.js))
-//
-//}
+/** Lint uses gulp-eslint & lint to inspect all js code on the project src.
+All the project uses ES6 javascript
+*/
+const lint = () => {
+    return src(tpath.src.lintPaths)
+        .pipe(eslint())
+        .pipe(eslint.formatEach())
+        .pipe(eslint.failAfterError());
+}
 
 const copy = () => src(tpath.src.copyRest).pipe(dest('./dist')) 
 
-
+/** Watch this set of directories and run functions on change */
 function watcher () {
-  //watch(tpath.src.serverFiles, restart) 
+    watch(tpath.src.lintPaths, lint)
     watch(tpath.src.copyRest, copy)
     watch(tpath.src.scss, genCSS)
     watch(tpath.src.images, minify)  
     watch('dist/public/**/*', livereload)  
 }
 
-//exports.es6 = es6
-const build = series(genCSS, minify, copy)
-export {minify, genCSS, copy, build}
-export default series(/*restart,*/ watcher)
-
+const build = series(genCSS, minify, copy, makeDocs)
+/*export each task so they can be run from command line using gulp <taskName>*/
+export {minify, genCSS, copy, makeDocs, build}
+export default series(watcher)

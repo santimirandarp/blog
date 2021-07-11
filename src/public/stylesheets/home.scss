@@ -54,6 +54,8 @@ display:none;
         box-shadow:1px 1px 2px rgba(0,0,0,0.7)
 }
 main{padding:1rem}
+
+#form {display:none; width:100%; & textarea {width:100%}}
 @media screen and (min-width:420px){
   main {padding:calc(2rem + 5vw)}}
 
@@ -69,4 +71,5 @@ main{padding:1rem}
   .quoteLikePar{ border-left:3px dashed $darkBlue;margin-top:3rem; }
   .roundFig_img { border-radius:0px; clip-path:circle(192px at 196px 339px); }
   .taskImgFlex{ @include flexRow; }
+#form {display:none; width:65%; margin:auto;  textarea {width:100%}}
 }

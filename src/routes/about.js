@@ -4,8 +4,8 @@ import fs from "fs";
 import path from 'path';
 
 // local
-import date from '../local_modules/date.js';
-import {title, navigationLinks} from "./variables.js";
+import date from '../views/settings/date.js';
+import {title, navigationLinks} from "../views/settings/variables.js";
 const cssPath = 'about/about'
 const page = "about"
 /* GET users listing. */
