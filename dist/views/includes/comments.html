@@ -1,7 +1,7 @@
 <section id='comments'>
 <h2>Comments</h2>
-<button id='toggleForm'>Write Comment</button>
-<form id='form' method='POST' >
+<button id='comments_toggleForm'>Write Comment</button>
+<form id='comments_form' method='POST' >
 <div>
 <label for='name'>Name</label>
 <input type='text' id='name' name='name' value='' placeholder='name'/>
@@ -14,8 +14,11 @@
 </textarea>
 
 <div>
- <button type='submit' id='send' >Send</button>
+<button type='submit' id='send' >Send</button>
 </div>
 </form>
+<ul id='comments_commentList'>
 
+</ul>
+<button id='comments_moreComments'>Older Comments</button>
 </section>

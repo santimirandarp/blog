@@ -12,6 +12,9 @@ import livereload from 'gulp-livereload';
 
 import jsdoc from 'gulp-jsdoc3';
 import eslint from 'gulp-eslint';
+import concat from 'gulp-concat';
+import babel from 'gulp-babel';
+import uglify from 'gulp-uglify';
 
 import gulpSass from 'gulp-sass';
 import sassBin from 'sass';
@@ -29,10 +32,12 @@ src:{
      copyRest:['src/**/*', 'src/**/.*', '!src/node_modules/**/*', '!src/public/**/*'], 
      images:'src/public/images/**/*.{png,svg,jpeg,jpg}', //case insensitive on src()
      scss:'src/public/stylesheets/**/*.scss',
+     publicJS:['src/public/javascripts/utils/common.js', 'src/public/javascripts/*.js']
     },
 dest:{ 
        images:'dist/public/images/',
        css:'dist/public/stylesheets/',
+       publicJS:'dist/public/javascripts/'
      }}
 
 const makeDocs = cb => src(tpath.src.docs,{read: false}).pipe(jsdoc(cb))
@@ -87,17 +92,23 @@ const lint = () => {
 
 const copy = () => src(tpath.src.copyRest).pipe(dest('./dist')) 
 
+const concatJS = ()=> src(tpath.src.publicJS)
+.pipe(babel())
+.pipe(concat('index.js'))
+.pipe(uglify())
+.pipe(dest(tpath.dest.publicJS));
 
 /** Watch this set of directories and run functions on change */
 function watcher () {
     watch(tpath.src.lintPaths, lint)
     watch(tpath.src.copyRest, copy)
+    watch(tpath.src.publicJS, concatJS)
     watch(tpath.src.scss, genCSS)
     watch(tpath.src.images, minify)  
     watch('dist/public/**/*', livereload)  
 }
 
-const build = series(genCSS, minify, copy, makeDocs)
+const build = series(genCSS, concatJS, minify, copy, makeDocs)
 /*export each task so they can be run from command line using gulp <taskName>*/
-export {minify, genCSS, copy, makeDocs, build}
+export {minify,genCSS,copy,makeDocs,concatJS,build}
 export default series(watcher)

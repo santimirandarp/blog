@@ -1,16 +1,14 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
-import fs from "fs";
-import path from 'path';
 
 // local
-import date from '../views/settings/date.js';
+import date from "../views/settings/date.js";
 import {title, navigationLinks} from "../views/settings/variables.js";
-const cssPath = 'about/about'
+const cssPath = "about/about"
 const page = "about"
 /* GET users listing. */
 
-router.get('/', (req,res)=> res.render('about', {
+router.get("/", (req,res)=> res.render("about", {
       page,
       cssPath,
       title,

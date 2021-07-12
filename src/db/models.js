@@ -1,6 +1,6 @@
-import {CommentSch} from './Schemas.js';
-import mongoose from 'mongoose';
+import {CommentSch} from "./Schemas.js";
+import mongoose from "mongoose";
 
-const Comment = mongoose.model('comment', CommentSch)
+const Comment = mongoose.model("comment", CommentSch);
 
-export {Comment}
+export {Comment};

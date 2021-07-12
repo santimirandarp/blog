@@ -1,8 +1,16 @@
 module.exports = {
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+    },
     "rules": {
-        "semi": ["warn", "always"],
+        "semi": 2,
         "quotes": ["warn", "double"]
     },
-    "extends": "eslint:recommended"
+    "extends": "eslint:recommended",
+    "env": {
+        "browser": true,
+        "node": true
+    }
 }
 

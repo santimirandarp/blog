@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-<%- include("includes/head", {title, page, cssPath}) -%>
+<%- include("includes/head.html", {title, page, cssPath}) -%>
 
 <body>
 
-<%- include("includes/navbar", navigationLinks) %>
+<%- include("includes/navbar.html", navigationLinks) %>
 
 <div class='banner'>
 <h1><%= title %></h1>
@@ -79,49 +79,11 @@ alt="Picture of Linda and Santi"
 We are now looking for new destinations in Europe<span style="font-size:2rem; color:red; font-weight:bold">!!!</span> Get in touch using the links below, or drop us an email at <a href="mailto:santi+linda@pm.me&subject=Volunteering">santi+linda@pm.me</a>.</p>
 </section>
 
-<%- include('includes/comments')%>
+<%- include('includes/comments.html')%>
 </main>
 
-<%- include('includes/footer')%>
+<%- include('includes/footer.html')%>
 <!--<script src="./javascripts/reviews.js"></script>-->
-<script >
-const spans = document.querySelectorAll('.places .reviewSpan')
-const form = document.getElementById('form')
-const toggleForm = document.getElementById('toggleForm')
-const getMsgs = (e)=>console.log(e)
-const postMsg = (e)=>{
-e.preventDefault();
-fetch('comments', {   
-   method: 'POST', // *GET, POST, PUT, DELETE, etc.
-   mode: 'cors', // no-cors, *cors, same-origin
-   cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-   credentials: 'same-origin', // include, *same-origin, omit
-   redirect: 'follow', // manual, *follow, error
-   referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-    body: new FormData(form)
-  })
-.then(r=>res.json(r))
-.then(c=>console.log(c))
-.catch(e=>console.log(e))
-}
-
-
-const toggler = element =>{
-  element.style.display=='' || element.style.display=='none'? 
-    element.style.display='block': element.style.display='none'
-}
-spans.forEach(span=> {
-    span.addEventListener('click', (e)=> {
-        const img = span.nextElementSibling
-        toggler(img)
-        })
-    })
-
-toggleForm.addEventListener('click', ()=> toggler(form))
-
-form.addEventListener('submit', postMsg)
-window.addEventListener('load', getMsgs)
-
-</script>
+<script src='/javascripts/index.js' > </script>
 </body>
 </html>
