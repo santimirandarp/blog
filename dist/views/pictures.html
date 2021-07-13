@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang='en'>
-<%- include("includes/head", {title, page,cssPath}) -%>
+<%- include("includes/head.html", {title, page,cssPath}) -%>
 <body>
 
-<%- include("includes/navbar",navigationLinks) %>
+<%- include("includes/navbar.html",navigationLinks) %>
 
 <div class='banner'>
 <h1> <%= title %> </h1>
@@ -23,7 +23,7 @@
 </div>
 </main>
 
-<%- include('includes/footer')%>
+<%- include('includes/footer.html')%>
 <!--		<script src="./javascripts/addCheckMarks.js"></script> -->
 </body>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-<%- include("includes/head", {title, page, cssPath}) -%>
+<%- include("includes/head.html", {title, page, cssPath}) -%>
 <body>
 <!--this Include is usful for reusing pieces of HTML-->
-<%- include("includes/navbar", navigationLinks) %>
+<%- include("includes/navbar.html", navigationLinks) %>
 
 <div class='banner'>
 <h1><%= title %></h1>
@@ -17,7 +17,7 @@
 <p>These days having a website shows many relevant skills: writing, IT awareness, design and coding.
 And more importantly, it's an efficient way to communicate with the world.</p>
 <p>The website was done from scratch. It's hosted on a EC2 instance in Amazon Cloud. It runs a <a href='https://expressjs.com/'>Node/Express</a> server, that renders part of the pages on the fly, using <a href='https://www.npmjs.com/package/ejs'>ejs</a>. The style on the other hand is written in <a href='https://sass-lang.com/dart-sass'>Sass</a>.</p>
-<p>There are no cookies; the only external link is to google fonts, and will be removed in the future.</p>
+<p>There are no cookies or analytics of any kind.</p>
 
 <h2>Other Projects</h2>
 <p>Linda is learning to produce music using Ableton, and brushing up statistics in SPSS. Santi is tinkering with raspberry pis.</p>
@@ -25,7 +25,7 @@ And more importantly, it's an efficient way to communicate with the world.</p>
 
 </main>
 
-<%- include('includes/footer')%>
+<%- include('includes/footer.html')%>
 
 </body>
 </html>

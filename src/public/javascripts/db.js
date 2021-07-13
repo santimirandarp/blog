@@ -6,7 +6,7 @@ const moreComments =document.getElementById("comments_moreComments");
 
 /** takes the @param form and sends the data */
 const post = async(form)=>{
-  const response = await fetch("comments", {   
+  const response = await fetch("/comments", {   
 method: "POST", 
 mode: "cors", 
 cache: "no-cache", 

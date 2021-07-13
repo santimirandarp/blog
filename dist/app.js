@@ -37,31 +37,19 @@ app.set("view engine", "html")
   for every type of request */
 app.use(logger("dev"));
 
-const parseForm = (req,res,next)=>{
-  if(req.headers["content-type"] && req.headers["content-type"].split(';')[0]==="multipart/form-data"){
-    let form  = new multiparty.Form();
-    form.parse(req, (err,fields,files) => {
-        if (err) console.log(err);
-        res.locals.comment=fields;
-        })
-  } 
- next() 
-}
-
 
 
 app.use("/reviews",express.static(path.join(__dirname,"public/images/reviews")));
 app.use("/public/gallery",express.static(path.join(__dirname,"public/images/gallery")));
 app.use("public/images",express.static(path.join(__dirname,"public/images/")));
 app.use("/favicon",express.static(path.join(__dirname,"public/images/meta")));
+app.use("/font", express.static(path.join(__dirname,"public/font")));
 app.use(express.static(path.join(__dirname,"public/")));
 
 /** enable routes for exact match on path */
 app.use("/", indexRouter);
 app.use("/pictures", picturesRouter);
 app.use("/about", aboutRouter);
-
-app.use(parseForm);
 app.use("/comments",commentsRouter);
 
 

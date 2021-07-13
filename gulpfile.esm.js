@@ -29,7 +29,7 @@ const tpath = {
 src:{ 
      docs:['src/local_modules/**/*.js', 'src/routes/**/*.js', '*.js'],
      lintPaths:['src/**/*.js', '!src/node_modules/**'],
-     copyRest:['src/**/*', 'src/**/.*', '!src/node_modules/**/*', '!src/public/**/*'], 
+     copyRest:['src/**/*', 'src/**/.*', '!src/node_modules/**/*', '!src/public/**/*', 'src/**/*.{ttf,woff,woff2,eof'], 
      images:'src/public/images/**/*.{png,svg,jpeg,jpg}', //case insensitive on src()
      scss:'src/public/stylesheets/**/*.scss',
      publicJS:['src/public/javascripts/utils/common.js', 'src/public/javascripts/*.js']
