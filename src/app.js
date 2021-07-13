@@ -21,8 +21,8 @@ import multiparty from "multiparty";
 const app = express();
 const mongo_opts = { 
 useNewUrlParser: true,
-                 useUnifiedTopology: true 
-                   useCreateIndex: true,
+                 useUnifiedTopology: true,
+                 useCreateIndex: true,
                  useFindAndModify: false,
                  autoIndex: false, // Don't build indexes specified in models.
                  poolSize: 10, // Maintain up to 10 socket connections
@@ -72,8 +72,8 @@ mongoose.connect(process.env.URI_DB,mongo_opts)
   // catch 404 and forward to error handler
   app.use(function(req, res, next) { next(createError(404)); });
 
-  
-/** Error handler. Comes directly here when we pass a parameter to next, So what does next do? Simple, it tells your app to run the next middleware. But what happens when you pass something to next? Express will abort the current stack and will run all the middleware that has 4 parameters. */
+
+  /** Error handler. Comes directly here when we pass a parameter to next, So what does next do? Simple, it tells your app to run the next middleware. But what happens when you pass something to next? Express will abort the current stack and will run all the middleware that has 4 parameters. */
 
   app.use(function(err, req, res, next) {
       // set locals, only providing error in development

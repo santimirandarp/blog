@@ -1,4 +1,10 @@
 import mongoose from "mongoose";
-const CommentSch = new mongoose.Schema({ name: String, email:String, msg:String, date:{type:Date, default:new Date() }});
+const CommentSch = new mongoose.Schema({
+name: {type:String, default:'Anonymous'},
+email:{type:String, default:''}, 
+msg:String, 
+date:{type:Date, default:new Date() },
+isPublic:{type:Boolean, default:false}
+});
 
 export {CommentSch};

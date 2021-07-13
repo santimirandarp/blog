@@ -16,7 +16,8 @@ const parseForm = (req,res,next)=>{
 
 const saveComment = (comment, done) => Comment.create(comment, done);
 const getComments = (skip, limit, done) => { Comment.find({})
-  .skip(parseInt(skip))
+    .sort({date:-1})
+    .skip(parseInt(skip))
     .limit(parseInt(limit))
     .exec(done);
 }
