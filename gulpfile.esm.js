@@ -91,11 +91,16 @@ const lint = () => {
 }
 
 const copy = () => src(tpath.src.copyRest).pipe(dest('./dist')) 
-
+/** Concatenate all public (browser) JS, 
+compile using babel,
+uglify (minify),
+and write the source map to easily spot errors in the browser console */
 const concatJS = ()=> src(tpath.src.publicJS)
-.pipe(babel())
+.pipe(sourcemaps.init())
 .pipe(concat('index.js'))
+.pipe(babel())
 .pipe(uglify())
+.pipe(sourcemaps.write())
 .pipe(dest(tpath.dest.publicJS));
 
 /** Watch this set of directories and run functions on change */
@@ -108,7 +113,8 @@ function watcher () {
     watch('dist/public/**/*', livereload)  
 }
 
-const build = series(genCSS, concatJS, minify, copy, makeDocs)
+const buildAndMinify = series(genCSS, concatJS, minify, copy, makeDocs)
+const build = series(genCSS, concatJS, copy, makeDocs)
 /*export each task so they can be run from command line using gulp <taskName>*/
 export {minify,genCSS,copy,makeDocs,concatJS,build}
 export default series(watcher)
