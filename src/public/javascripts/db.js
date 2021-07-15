@@ -6,13 +6,17 @@ const toggleForm = document.getElementById("comments_toggleForm");
 const commentList = document.getElementById("comments_commentList")
 const moreComments =document.getElementById("comments_moreComments");
 
-
 /** Pass the document comming from the database */ 
-const comment = ({name,msg,isPublic}) => {
-const preview = isPublic ? 'comments_message-preview':null;
-const alert = !isPublic ? 'display:none':'display:block';
-return `<li class="comments_message ${preview}">` 
-+ `<p class="small" style="${alert}">Success! Comment will be public shortly (this is a preview).</p> <h3>${name}</h3><p>${msg}</p>` 
+const comment = ({name,msg,isPublic:p}) => {
+const alert = p ? 'display:block':'display:none';
+return `<li class="comments_message" style="${alert}">` 
++ `<h3>${name}</h3><p>${msg}</p>` 
++ "</li>"
+}
+
+const preview = ({name,msg}) => {
+return `<li class="comments_message comments_message-preview">` 
++ `<p class="small">Success! Comment will be public shortly (this is a preview).</p> <h3>${name}</h3><p>${msg}</p>` 
 + "</li>"
 }
 
@@ -28,14 +32,15 @@ referrerPolicy: "no-referrer",
 //body: new FormData(form)
 body:JSON.stringify(data)
 })
-return response.json();
+return response;
 }
 
 const postMsg = (e)=>{
   e.preventDefault();
-  post({name:name,email:email,msg:theComment})
-    .then(doc=>{
-        commentList.insertAdjacentHTML("beforebegin", comment(doc))
+  const pp = {name:name,email:email,msg:theComment}
+  post(pp)
+    .then(c=>{
+        commentList.insertAdjacentHTML("beforebegin", preview(pp))
     return })
     .catch(e=>console.log(e));
 }
