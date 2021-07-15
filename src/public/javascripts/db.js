@@ -1,3 +1,6 @@
+import {mytoggler} from "./utils/common.js";
+
+
 /** Get form fields */
 const form = document.getElementById("form");
 const name = document.querySelector("#comments input[name='name']");
@@ -61,17 +64,17 @@ method: "GET",
 return response.json();
 };
 
-window.addEventListener("load", e => get(skipLimit(0))
+window.addEventListener("load", () => get(skipLimit(0))
     .then(dArr => loadDocsArray(dArr))
-    .catch(e => console.error("There was a problem")));
+    .catch( () => console.error("There was a problem")));
 
-moreComments.addEventListener("click", (e) => {
+moreComments.addEventListener("click", () => {
     const nOfComments = commentsList.children.length;
     get(skipLimit(nOfComments))
     .then(dArr=> loadDocsArray(dArr))
-    .catch(e=>console.error("There was a problem"));
+    .catch( () =>console.error("There was a problem"));
         });
 
-toggleForm.addEventListener("click", ()=> toggler(form));
+toggleForm.addEventListener("click", ()=> mytoggler(form));
 
 form.addEventListener("submit", postMsg);

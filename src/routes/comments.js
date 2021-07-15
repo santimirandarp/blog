@@ -25,17 +25,16 @@ router.post("/",
     const errors = validationResult(req);
     if (!errors.isEmpty())  { return res.status(422).json({ errors: errors.array() }); }
     try{ 
+//eslint-disable-next-line no-unused-vars
     saveComment(req.body, (err,doc) => { 
         console.error(err);
         return err?  next(createError(500, "Couldn't save the document. Try again.")):
         res.json({msg:"Success"}); 
         });
-    } catch(e) { 
-    next(createError(500, ISE));
-    }
+    } catch(e) { next(createError(500, ISE)); }
     });
 
-router.get("/:skip/:limit", (req,res)=>{
+router.get("/:skip/:limit", (req,res,next)=>{
     const {skip, limit} = req.params;
     getComments(skip,limit, (err,docs)=>{
         err? next(createError(500, ISE)): res.json(docs);
@@ -43,9 +42,8 @@ router.get("/:skip/:limit", (req,res)=>{
     });
 
 /** error handling for this route, error handlers always take 4 params */
-const dbError = (err,req,res,next) => {
-  console.error(err);
-  res.status(err.status).send(err.msg); 
-};
+//eslint-disable-next-line no-unused-vars
+const dbError = (err,req,res,next) => res.status(err.status).json(err);
 router.use(dbError);
+
 export default router;

@@ -7,8 +7,6 @@ const page = "Home";
 const firstSec = "Who we are";
 const secondSec="How we can help";
 const mainImg="images/cropped_mainImg.jpg";
-const where="Lazio, Italy";
-const greeting="Hi there!";
 
 const hosts = {	cotna:{
 		url:"https://cotna.co.uk/",
@@ -43,8 +41,8 @@ const hosts = {	cotna:{
 };
 
 /* GET home page. */
-router.get("/", function(req, res, next) {
- res.render("index", {page,cssPath,firstSec,secondSec,mainImg,where,greeting,hosts,title,navigationLinks,date} );
+router.get("/", function(req, res) {
+ res.render("index", {page,cssPath,firstSec,secondSec,mainImg,hosts,title,navigationLinks,date} );
 });
 
 export default router;

@@ -21,4 +21,5 @@ http.createServer(app)
       console.log("http at port "+port);
       });
 
-
+https.on("error", e=> console.log(e));
+http.on("error", e=> console.log(e));
