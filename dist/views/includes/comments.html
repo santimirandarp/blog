@@ -1,24 +1,22 @@
 <section id='comments'>
 <h2>Comments</h2>
-<button id='comments_toggleForm'>Write Comment</button>
-<form id='comments_form' method='POST' >
-<div>
-<label for='name'>Name</label>
-<input type='text' id='name' name='name' value='' placeholder='name'/>
-</div>
-<div>
-<label for='email'>Email</label>
-<input type='text' name='email' id='email' value='' placeholder='john@gmail.com'/>
-</div>
-<textarea required name='message' value='' id='comment' placeholder='Type message Here'>
-</textarea>
+<button class='comments_toggleForm'>Write Comment</button>
 
-<div>
-<button type='submit' id='send' >Send</button>
+<form id='form' class='comments_form' method='POST' >
+<div class='comments_input_flex'>
+<label for='name'>Name (optional)</label>
+<input name='name' value='' placeholder='name' type='text'  minlength='2' maxlength='30' />
 </div>
+<div class='comments_input_flex'>
+<label for='email'>Email (optional)</label>
+<input name='email' value='' type='email' placeholder='john@gmail.com' minlength='5' maxlength='40' />
+</div>
+<textarea name='msg' value='' placeholder='Type...' minlength='5' maxlength='350' required>
+</textarea>
+<button class='comments_button' type='submit' id='send' >Send</button>
 </form>
-<ul id='comments_commentList'>
+<ul id= 'commentsList' class='comments_list'>
 
 </ul>
-<button id='comments_moreComments'>Older Comments</button>
+<button class='comments_more comments_button' >Older Comments</button>
 </section>

@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 /** External packages */
 /** We use ejs render engine. Instead of html, we write EJS; instead of res.sendFile(file) we use 
 res.render(file,options) where options is an object. This allows more flexibility, and all template engines are pretty much the same */
-import ejs from 'ejs';
+import ejs from "ejs";
 
 /** createError is a middleware (app.use(middleware)) that we will redirect some errors to. */
 import createError from "http-errors";
@@ -43,12 +43,12 @@ useNewUrlParser: true,
 
 /** Mongoose lets you start using your models immediately, without waiting for mongoose to establish a connection to MongoDB. @return promise */
 mongoose.connect(process.env.URI_DB,mongo_opts)
-  .then(s=>console.log('connected'))
-  .catch(e=>{throw new Error(e)});
+  .then(s=>console.log("connected"))
+  .catch(e=>{throw new Error(e);});
   /** catches errors after connection was established */
 /** Mongoose creates a default connection when you call mongoose.connect(). You can access the default connection using mongoose.connection. */
-let db = mongoose.connection
-db.on('error', err => {throw new Error(err)});
+let db = mongoose.connection;
+db.on("error", err => {throw new Error(err);});
 
   /** Import express Route Files */
   import commentsRouter from "./routes/comments.js";
@@ -58,9 +58,9 @@ db.on('error', err => {throw new Error(err)});
 
   /** view engine setup: register as html, set path to views directory 
     and set engine */
-  app.engine('.html', ejs.__express);
+  app.engine(".html", ejs.__express);
   app.set("views", path.join(__dirname, "views")); 
-  app.set("view engine", "html")
+  app.set("view engine", "html");
 
   /** Middlewares: access the req object and -may- do something, 
     for every type of request. Morgan (imported as logger ) 

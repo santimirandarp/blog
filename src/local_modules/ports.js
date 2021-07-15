@@ -9,4 +9,4 @@ export default (SERVER) => {
 } else if (server==="REMOTE") {return  { portSecure: "443", port: "80" }; }
 else { return "server isnt REMOTE or LOCAL or is not defined";}
   } catch(err){ console.error(err); }
-}
+};

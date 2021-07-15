@@ -21,6 +21,6 @@ router.get("/", (req,res)=>{
         if (err)  throw err;
         const images = files.filter(file=>file.substring(0,7)==="gallery");
         res.render("pictures", {page,cssPath,images,title,navigationLinks,date});
-        }) });
+        }); });
 
 export default router;

@@ -90,6 +90,14 @@ const lint = () => {
         .pipe(eslint.failAfterError());
 }
 
+const lintFix = () => {
+    return src(tpath.src.lintPaths)
+        .pipe(eslint({fix:true}))
+        .pipe(eslint.format())
+        .pipe(dest(file=>file.base))
+        .pipe(eslint.failAfterError());
+}
+
 const copy = () => src(tpath.src.copyRest).pipe(dest('./dist')) 
 /** Concatenate all public (browser) JS, 
 compile using babel,
@@ -110,11 +118,12 @@ function watcher () {
     watch(tpath.src.publicJS, concatJS)
     watch(tpath.src.scss, genCSS)
     watch(tpath.src.images, minify)  
-    watch('dist/public/**/*', livereload)  
+    watch('dist/public/**/*', livereload())  
 }
 
-const buildAndMinify = series(genCSS, concatJS, minify, copy, makeDocs)
-const build = series(genCSS, concatJS, copy, makeDocs)
+const buildAndMinify = parallel(genCSS, series(lintFix,makeDocs,concatJS), minify, copy)
+const build = parallel(genCSS, series(lintFix,makeDocs,concatJS), copy)
+
 /*export each task so they can be run from command line using gulp <taskName>*/
-export {minify,genCSS,copy,makeDocs,concatJS,build}
-export default series(watcher)
+export {minify,genCSS,copy,makeDocs,concatJS,build,lintFix}
+export default watcher
