@@ -1,4 +1,7 @@
 const form = document.getElementById("comments_form");
+const name = document.getElementById("name");
+const email = document.getElementById("email");
+const theComment = document.getElementById("comment");
 const toggleForm = document.getElementById("comments_toggleForm");
 const commentList = document.getElementById("comments_commentList")
 const moreComments =document.getElementById("comments_moreComments");
@@ -14,7 +17,7 @@ return `<li class="comments_message ${preview}">`
 }
 
 /** takes the @param form and sends the data to server as multipart */
-const post = async(form)=>{
+const post = async(data)=>{
   const response = await fetch("/comments", {   
 method: "POST", 
 mode: "cors", 
@@ -22,14 +25,15 @@ cache: "no-cache",
 credentials: "same-origin", 
 redirect: "follow", 
 referrerPolicy: "no-referrer", 
-body: new FormData(form)
+//body: new FormData(form)
+body:JSON.stringify(data)
 })
 return response.json();
 }
 
 const postMsg = (e)=>{
   e.preventDefault();
-  post(form)
+  post({name:name,email:email,msg:theComment})
     .then(doc=>{
         commentList.insertAdjacentHTML("beforebegin", comment(doc))
     return })

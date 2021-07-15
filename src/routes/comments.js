@@ -1,19 +1,9 @@
 import {Comment} from "../db/models.js";
-import multiparty from "multiparty";
 import express from "express";
+import { body } from 'express-validator';
+
 const router = express.Router();
 const ISE = 'Internal Server Error. Please try again later.'
-
-/** Middleware for parsing multipart forms*/
-const parseForm = (req,res,next)=>{
-  try {
-    const hdr = req.headers["content-type"]
-      if(hdr && hdr.split(';')[0]==="multipart/form-data"){
-        let form  = new multiparty.Form();
-        form.parse(req, (err,fields,files) => { req.body=fields; next()})
-      } 
-  } catch(e){ next(createError(500, ISE )) }
-}
 
 /** Save comment to database using mongoose model, create method @param comment,  done. */
 const saveComment = (comment, done) => Comment.create(comment, done);
@@ -25,11 +15,14 @@ const getComments = (skip, limit, done) => { Comment.find({})
 }
 
 
-router.post('/', parseForm, (req,res,next)=>{
+app.use(express.json())
+router.post('/', 
+  body('email').isEmail().normalizeEmail(),
+  body('name').not().isEmpty().trim().escape(),
+  body('msg').not().isEmpty().trim().escape(),
+  (req,res,next)=>{
     try{ 
-    const {name,email,message}=req.body;
-    let comment = { name:name[0], email:email[0], msg:message[0] };
-    saveComment(comment, (err,doc) => { 
+    saveComment(req.body, (err,doc) => { 
         if(err) {
         next(createError(500, "Couldn't save the document. Try again."));
         }

@@ -11,15 +11,22 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 /** We use ejs render engine. Instead of html, we write EJS; instead of res.sendFile(file) we use 
 res.render(file,options) where options is an object. This allows more flexibility, and all template engines are pretty much the same */
 import ejs from 'ejs';
+
 /** createError is a middleware (app.use(middleware)) that we will redirect some errors to. */
 import createError from "http-errors";
 import express from "express";
 import path from "path";
 //import cookieParser from "cookie-parser";
-import logger from "morgan";
-import mongoose from "mongoose";
-import multiparty from "multiparty";
 
+/** this also logs data, probably overlaps function with debug*/
+import logger from "morgan";
+
+/**debug is like an augmented version of console.log, but unlike console.log, you don’t have to comment out debug logs in production code. Logging is turned off by default and can be conditionally turned on by using the DEBUG environment variable.*/
+import debug from "debug"; 
+debug("test:server");
+
+import mongoose from "mongoose";
+//import multiparty from "multiparty";
 /** Initialize express app & connect to mongo db using mongoose.connect */
 const app = express();
 const mongo_opts = { 
@@ -35,10 +42,12 @@ useNewUrlParser: true,
 };
 
 /** Mongoose lets you start using your models immediately, without waiting for mongoose to establish a connection to MongoDB. @return promise */
-const db = mongoose.connect(process.env.URI_DB,mongo_opts)
+mongoose.connect(process.env.URI_DB,mongo_opts)
   .then(s=>console.log('connected'))
   .catch(e=>{throw new Error(e)});
   /** catches errors after connection was established */
+/** Mongoose creates a default connection when you call mongoose.connect(). You can access the default connection using mongoose.connection. */
+let db = mongoose.connection
 db.on('error', err => {throw new Error(err)});
 
   /** Import express Route Files */
@@ -52,12 +61,14 @@ db.on('error', err => {throw new Error(err)});
   app.engine('.html', ejs.__express);
   app.set("views", path.join(__dirname, "views")); 
   app.set("view engine", "html")
+
   /** Middlewares: access the req object and -may- do something, 
-    for every type of request */
+    for every type of request. Morgan (imported as logger ) 
+will log every request on development mode. */
   app.use(logger("dev"));
 
 
-
+/** Serve Static Files */
   app.use("/reviews",express.static(path.join(__dirname,"public/images/reviews")));
   app.use("/public/gallery",express.static(path.join(__dirname,"public/images/gallery")));
   app.use("public/images",express.static(path.join(__dirname,"public/images/")));
@@ -71,6 +82,7 @@ but if no method+route match occurs,the requests ends on the error handler below
   app.use("/", indexRouter);
   app.use("/pictures", picturesRouter);
   app.use("/about", aboutRouter);
+
   app.use("/comments",commentsRouter);
 
 

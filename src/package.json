@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "nodemon": "nodemon server.js",
-    "start": "node server.js"
-    "startDev": "DEBUG=app.js:* node server.js"
+    "start": "node server.js",
+    "startDev": "DEBUG=express:* node server.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
