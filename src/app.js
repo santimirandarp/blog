@@ -71,7 +71,7 @@ will log every request on development mode. */
 /** Serve Static Files */
   app.use("/reviews",express.static(path.join(__dirname,"public/images/reviews")));
   app.use("/public/gallery",express.static(path.join(__dirname,"public/images/gallery")));
-  app.use("public/images",express.static(path.join(__dirname,"public/images/")));
+  app.use("public/images",express.static(path.join(__dirname,"public/images")));
   app.use("/favicon",express.static(path.join(__dirname,"public/images/meta")));
   app.use("/font", express.static(path.join(__dirname,"public/font")));
   app.use(express.static(path.join(__dirname,"public/")));

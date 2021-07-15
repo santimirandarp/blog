@@ -26,7 +26,7 @@ router.post("/",
     if (!errors.isEmpty())  { return res.status(422).json({ errors: errors.array() }); }
     try{ 
     saveComment(req.body, (err,doc) => { 
-        console.error(err)
+        console.error(err);
         return err?  next(createError(500, "Couldn't save the document. Try again.")):
         res.json({msg:"Success"}); 
         });

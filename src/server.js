@@ -11,8 +11,6 @@ import portOpts from "./local_modules/ports.js";
 const options = httpsOpts(NODE_ENV,KEYLOCAL,CERTLOCAL,KEYREMOTE,CERTREMOTE);
 const {portSecure, port} = portOpts(SERVER);
 
-//For example, before landing the site, we want NODE_ENV=development SERVER=REMOTE
-
 https.createServer(options,app)
   .listen(portSecure, function(){
       console.log("https at port "+portSecure);

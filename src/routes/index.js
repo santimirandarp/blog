@@ -6,7 +6,7 @@ const cssPath = "home";
 const page = "Home";
 const firstSec = "Who we are";
 const secondSec="How we can help";
-const mainImg="/images/cropped_mainImg.jpg";
+const mainImg="images/cropped_mainImg.jpg";
 const where="Lazio, Italy";
 const greeting="Hi there!";
 
