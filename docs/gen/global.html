@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#cleanFilename">cleanFilename</a></li><li><a href="global.html#concatJS">concatJS</a></li><li><a href="global.html#dbError">dbError</a></li><li><a href="global.html#genCSS">genCSS</a></li><li><a href="global.html#lint">lint</a></li><li><a href="global.html#minify">minify</a></li><li><a href="global.html#saveComment">saveComment</a></li><li><a href="global.html#watcher">watcher</a></li>
+					<li><a href="global.html#app">app</a></li><li><a href="global.html#comment">comment</a></li><li><a href="global.html#db">db</a></li><li><a href="global.html#dbError">dbError</a></li><li><a href="global.html#form">form</a></li><li><a href="global.html#post">post</a></li><li><a href="global.html#saveComment">saveComment</a></li>
 				</ul>
 			</li>
 			
@@ -138,32 +138,23 @@
     
 
     
-
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
 
         <dl>
             
 <hr>
-<dt>
-    <h4 class="name" id="cleanFilename"><span class="type-signature"></span>cleanFilename()</h4>
-    
+<dt class="name" id="app">
+    <h4 id="app"><span class="type-signature">&lt;constant> </span>app<span class="type-signature"></span></h4>
+
     
 </dt>
 <dd>
-
     
     <div class="description">
-        <p>Function used in @minify(). Replaces filename spaces with underscores,
-' and &quot; are removed, extension is lowercase.</p>
+        <p>Initialize express app &amp; connect to mongo db using mongoose.connect</p>
     </div>
     
 
-    
-
-    
-
-    
     
 
     
@@ -207,6 +198,34 @@
 
 
     
+</dd>
+
+        
+            
+<hr>
+<dt class="name" id="db">
+    <h4 id="db"><span class="type-signature"></span>db<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Mongoose creates a default connection when you call mongoose.connect(). You can access the default connection using mongoose.connection.</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
 
     
 
@@ -216,7 +235,27 @@
 
     
 
-    
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
 
     
 </dd>
@@ -224,8 +263,74 @@
         
             
 <hr>
+<dt class="name" id="form">
+    <h4 id="form"><span class="type-signature">&lt;constant> </span>form<span class="type-signature"></span></h4>
+
+    
+</dt>
+<dd>
+    
+    <div class="description">
+        <p>Get form fields</p>
+    </div>
+    
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+</dd>
+
+        </dl>
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<hr>
 <dt>
-    <h4 class="name" id="concatJS"><span class="type-signature"></span>concatJS()</h4>
+    <h4 class="name" id="comment"><span class="type-signature"></span>comment()</h4>
     
     
 </dt>
@@ -233,10 +338,7 @@
 
     
     <div class="description">
-        <p>Concatenate all public (browser) JS,
-compile using babel,
-uglify (minify),
-and write the source map to easily spot errors in the browser console</p>
+        <p>Pass the document comming from the database</p>
     </div>
     
 
@@ -384,7 +486,7 @@ and write the source map to easily spot errors in the browser console</p>
             
 <hr>
 <dt>
-    <h4 class="name" id="genCSS"><span class="type-signature"></span>genCSS()</h4>
+    <h4 class="name" id="post"><span class="type-signature">&lt;async> </span>post()</h4>
     
     
 </dt>
@@ -392,168 +494,7 @@ and write the source map to easily spot errors in the browser console</p>
 
     
     <div class="description">
-        <p>Generates prefixed, compressed single CSS file from the SCSS files.
-It holds a sourcemap used by the browser to link the CSS code line to source SCSS line (sourcemap).</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="lint"><span class="type-signature"></span>lint()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Lint uses gulp-eslint &amp; lint to inspect all js code on the project src.
-All the project uses ES6 javascript</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="minify"><span class="type-signature"></span>minify()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>minify jpg, png, svg images;
-replace whitespace with underscore
-improve the extension (all lowercase)
-move them to dist folder</p>
+        <p>takes the @param form and sends the data to server as multipart</p>
     </div>
     
 
@@ -697,84 +638,6 @@ move them to dist folder</p>
     
 </dd>
 
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="watcher"><span class="type-signature"></span>watcher()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Watch this set of directories and run functions on change</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
         </dl>
     
 
@@ -825,7 +688,7 @@ move them to dist folder</p>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a>
 	
-		on July 15th 2021, 5:26:42 pm
+		on July 16th 2021, 2:37:12 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

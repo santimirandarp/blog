@@ -1,0 +1,25 @@
+<section id='comments'>
+<h2>Comments</h2>
+<p>Hosts, helpers, or any visitor: feel free to leave your comment.</p>
+<button class='comments_toggleForm'>Write Comment</button>
+
+<form id='form' class='comments_form' method='POST' >
+<div class='comments_input_flex'>
+<label for='name'>Name (optional)</label>
+<input name='name' value='' placeholder='name' type='text'  minlength='2' maxlength='30' />
+</div>
+<div class='comments_input_flex'>
+<label for='email'>Email (optional)</label>
+<input name='email' value='' type='email' placeholder='john@gmail.com' minlength='5' maxlength='40' />
+</div>
+<textarea name='msg' value='' placeholder='Type...' minlength='5' maxlength='350' required>
+</textarea>
+<button class='comments_button' type='submit' id='send' >Send</button>
+</form>
+<span class='comments_info'></span>
+<ul id= 'commentsList' class='comments_list'>
+
+</ul>
+<span class='comments_thatsIt'></span>
+<button class='comments_more comments_button' >Older Comments</button>
+</section>

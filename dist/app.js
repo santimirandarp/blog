@@ -66,11 +66,11 @@ useNewUrlParser: true,
 /** Mongoose lets you start using your models immediately, without waiting for mongoose to establish a connection to MongoDB. @return promise */
 mongoose.connect(process.env.URI_DB,mongo_opts)
   .then( () =>console.log("connected"))
-  .catch(e=>{throw new Error(e);});
+  .catch(e=>{console.error(e);});
 
   /** Mongoose creates a default connection when you call mongoose.connect(). You can access the default connection using mongoose.connection. */
   let db = mongoose.connection;
-  db.on("error", err => {throw new Error(err);}); //catch errors AFTER connection is successful.
+  db.on("error", err => {console.error(err);}); //catch errors AFTER connection is successful.
 
 
   app.use("/comments",commentsRouter);

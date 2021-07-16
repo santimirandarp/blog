@@ -1,4 +1,4 @@
-console.log(process.env);
+//console.log(process.env);
 const {NODE_ENV,SERVER,KEYLOCAL,CERTLOCAL,KEYREMOTE,CERTREMOTE} = process.env;
 
 import https from "https";

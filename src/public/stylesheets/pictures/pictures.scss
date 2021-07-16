@@ -1,4 +1,13 @@
-@use '../home';
+@use "../variables" as *;
+@use "../resets";
+@use "../fonts";
+@use "../body";
+@use "../general";
+@use "../banner";
+@use "../navbar"; 
+@use "../form"; 
+@use "../footer";
+
 @mixin fitIt(){
 height:100%;
        object-fit:cover;
