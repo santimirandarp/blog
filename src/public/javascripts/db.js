@@ -1,5 +1,3 @@
-import {mytoggler} from "./utils/common.js";
-
 
 /** Get form fields */
 const form = document.getElementById("form");
