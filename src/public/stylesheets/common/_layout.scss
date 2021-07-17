@@ -1,0 +1,39 @@
+@use "variables" as "*";
+
+/*grid*/
+body{ 
+grid-template-areas: 
+"banner"
+"main"
+"news"
+"footer"
+@include gridCenter; 
+position:relative;
+background-color:$bodyBackground;
+color:$bodyColor;
+}
+
+main {grid-area:main}
+div.banner{ grid-area:banner;}
+.news{ grid-area:news}
+//ul.navbar{ grid-area:navbar;}
+footer{ grid-area:footer;}
+
+@media screen and (min-width:750px){
+body{
+grid-template-areas: 
+"banner banner"
+"news main"
+"footer footer"
+grid-template-columns: minmax(1fr, 35ch) 1fr 1fr;
+} }
+
+@media screen and (min-width:900px){
+body { 
+min-width:750px;
+max-width:1400px; 
+grid-template-areas: 
+"banner banner banner"
+"news main ."
+"footer footer footer"
+} }

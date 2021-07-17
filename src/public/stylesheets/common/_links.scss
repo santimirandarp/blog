@@ -1,0 +1,10 @@
+a {
+font:$serif;
+color: $bodyColor;
+     background-color: $linkBackground;
+     &:hover{ 
+transition: all 0.1s linear; 
+            background-color:transparent;
+color:$linkColorHover;
+       }
+}

@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 import date from "../views/settings/date.js";
 import {title, navigationLinks } from "../views/settings/variables.js";
-const cssPath = "home";
+const cssPath = "home/home";
 const page = "Home";
 const firstSec = "Who we are";
 const secondSec="How we can help";

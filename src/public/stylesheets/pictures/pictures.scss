@@ -1,19 +1,10 @@
-@use "../variables" as *;
-@use "../resets";
-@use "../fonts";
-@use "../body";
-@use "../general";
-@use "../banner";
-@use "../navbar"; 
-@use "../form"; 
-@use "../footer";
+@use "../common/variables" as *;
+@use "../common/common";
 
-@mixin fitIt(){
-height:100%;
-       object-fit:cover;
-}
-main {width:75%}
-.imgGal { display: grid;
+@mixin fitIt(){ height:100%; object-fit:cover; }
+
+.imgGal { 
+display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-auto-rows: 200px;
   grid-auto-flow: dense;
@@ -27,12 +18,11 @@ position:relative;
          @include fitIt;
          figcaption{position:absolute; bottom:0;
 width:100%; text-align:center;
-
       background-color:rgba(255,255,255,0.5);
          }
          img {
 @include fitIt;
-&:hover{transform:scale(1.05); transition:0.5s ease-out transform}
+&:hover{transform:scale(1.05); transition:all 0.5s ease-out;}
 }
         }}}
 

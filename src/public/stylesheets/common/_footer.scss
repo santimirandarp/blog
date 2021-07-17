@@ -1,0 +1,11 @@
+@use "./variables" as *;
+
+.footer{ 
+	align-self:end;
+       &_ul  { width:100%; margin:0; @include gridCenter;
+	a {background-color:transparent}
+	.helpx{background-color:#314d6d}
+}
+&_lastUpdated{ color:#333;align-self:end; font-size:1rem}
+}
+

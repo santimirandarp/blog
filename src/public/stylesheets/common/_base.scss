@@ -1,0 +1,28 @@
+@use "./variables" as *;
+
+main {
+@media screen and (min-width:420px){ main {padding:calc(2rem + 5vw)}}
+@media screen and (min-width:900px){main {width:75%; margin:auto; padding:0 }}
+li {margin-bottom:1rem; }
+}
+
+p { margin-bottom: 1rem; max-width:80ch }
+
+h2 { text-align:right; color:$darkBlue; text-shadow:1px 1px 0.1px rgba(0,0,0,0.7)}
+
+img{ border-radius:5px; box-shadow:1px 1px 2px $bodyColor; }
+
+.navbar{ box-shadow: 0px 0px 3px $bodyColor; }
+
+button {
+padding:1rem; 
+//border:1px solid rgba(0,0,0,0.6); 
+box-shadow:1px 1px rgba(30,30,30,0.4);
+color:white;
+background-color:$btnBackground;
+border-radius:5px; 
+font-weight:bold;
+&:hover{
+background-color:rgba(125,125,125,0.5);
+transition:0.3s all ease-in-out; 
+}}

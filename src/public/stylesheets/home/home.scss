@@ -1,32 +1,10 @@
-@use "./variables" as *;
-@use "./resets";
-@use "./fonts";
-@use "./body";
-@use "./general";
-@use "./banner";
-@use "./navbar"; 
-@use "./form"; 
-@use "./footer";
+@use "../common/common";
+@use "../variables/variables" as *;
+@use "welcome";
+@use "form";
 
 // welcome image
 $imageSize:16rem;
-
-.welcome{ 
-  @include flexColumn;	
-  align-items:center; //h center
-  &_figure { 
-width: $imageSize;
-height:$imageSize;
-       margin-bottom:1rem;
-       img { 
-padding:1rem;
-transform:rotateZ(0deg);
-          &:hover{ 
-transform:rotateZ(2deg);
-transition:all 0.3s linear; 
-padding:0.5rem;
-        background-color:$yellow;
-          } } } } 
 
 ul.tasks > li {
   @include flexRow;
