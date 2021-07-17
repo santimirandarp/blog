@@ -1,10 +1,8 @@
 @use "../common/common";
-@use "../variables/variables" as *;
+@use "../common/variables" as *;
 @use "welcome";
 @use "form";
 
-// welcome image
-$imageSize:16rem;
 
 ul.tasks > li {
   @include flexRow;

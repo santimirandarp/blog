@@ -1,15 +1,16 @@
+@use "../common/variables" as *;
 @use "variables" as v;
 
 .welcome{ 
   @include flexColumn;	
   align-items:center; 
   &_figure { 
-width: $imageSize;
-height:$imageSize;
+width: v.$imageSize;
+height:v.$imageSize;
 margin-bottom:1rem;
      img { 
 transition:all 0.3s linear; 
 padding:1rem;
 //transform:rotateZ(0deg);
-&:hover{ transform:rotateZ(2deg); padding:0.5rem; background-color:$v.yellow; } } } } 
+&:hover{ transform:rotateZ(2deg); padding:0.5rem; background-color:v.$yellow; } } } } 
 

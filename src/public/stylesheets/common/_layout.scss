@@ -1,4 +1,4 @@
-@use "variables" as "*";
+@use "variables" as *;
 
 /*grid*/
 body{ 
@@ -6,7 +6,7 @@ grid-template-areas:
 "banner"
 "main"
 "news"
-"footer"
+"footer";
 @include gridCenter; 
 position:relative;
 background-color:$bodyBackground;
@@ -24,7 +24,7 @@ body{
 grid-template-areas: 
 "banner banner"
 "news main"
-"footer footer"
+"footer footer";
 grid-template-columns: minmax(1fr, 35ch) 1fr 1fr;
 } }
 
@@ -35,5 +35,5 @@ max-width:1400px;
 grid-template-areas: 
 "banner banner banner"
 "news main ."
-"footer footer footer"
+"footer footer footer";
 } }

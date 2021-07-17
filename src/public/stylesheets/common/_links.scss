@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 a {
 font:$serif;
 color: $bodyColor;
