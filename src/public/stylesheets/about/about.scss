@@ -1,15 +1,6 @@
-@use "../variables" as *;
-@use "../resets";
-@use "../fonts";
-@use "../body";
-@use "../general";
-@use "../banner";
-@use "../navbar"; 
-@use "../form"; 
-@use "../footer";
+@use "../common/common";
 
 // tag, general styling
-
 
 .welcome{
   @include flexColumn;	
