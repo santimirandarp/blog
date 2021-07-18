@@ -1,18 +1,18 @@
 @use "variables" as *;
 
 /*grid*/
-body{ 
+body { 
 grid-template-areas: 
-"banner"
-"main"
-"news"
-"footer";
+"banner banner banner"
+". main ."
+". news ."
+"footer footer footer";
+grid-template-columns: 2rem 1fr 2rem;
 @include gridCenter; 
 position:relative;
 background-color:$bodyBackground;
 color:$bodyColor;
-grid-row-gap:1rem;
-row-gap:1rem;
+row-gap:1.5rem;
 }
 
 main { grid-area:main }
@@ -24,11 +24,10 @@ footer{ grid-area:footer;}
 @media screen and (min-width:750px){
 body{
 grid-template-areas: 
-"banner banner"
-"news main"
-"footer footer";
-grid-template-columns: minmax(1fr, 35ch) 1fr 1fr;
-grid-row-gap:2rem;
+"banner banner banner"
+"news main ."
+"footer footer footer";
+grid-template-columns: minmax(100px, 25ch) 1fr  4rem;
 row-gap:2rem;
 } }
 
@@ -36,10 +35,6 @@ row-gap:2rem;
 body { 
 min-width:750px;
 max-width:1400px; 
-grid-template-areas: 
-"banner banner banner"
-"news main ."
-"footer footer footer";
-grid-row-gap:3rem;
+grid-template-columns: minmax(100px, 25ch) 1fr  minmax(100px,15ch);
 row-gap:3rem;
 } }

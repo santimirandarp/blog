@@ -15,14 +15,16 @@ img{ border-radius:5px; box-shadow:1px 1px 2px $bodyColor; }
 .navbar{ box-shadow: 0px 0px 3px $bodyColor; }
 
 button {
+border:none;
 padding:1rem; 
-//border:1px solid rgba(0,0,0,0.6); 
-box-shadow:1px 1px rgba(30,30,30,0.4);
-color:white;
+//box-shadow:1px 1px 2px rgba(30,30,30,0.4);
+color:$bodyBackground;
 background-color:$btnBackground;
 border-radius:5px; 
 font-weight:bold;
+box-shadow:1px 1px 1px $bodyColor;
 &:hover{
-background-color:rgba(125,125,125,0.5);
-transition:0.3s all ease-in-out; 
+background-color:$btnBackgroundHover;
+transform:scale(1.03);
+transition:0.2s all ease-out; 
 }}
