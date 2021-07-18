@@ -2,7 +2,7 @@
 ul.navbar{ 
 	@include flexRow;
 	font-weight:600; 
-	font-size:1.0rem;
+	font-size:1rem;
 	z-index:10;
 	position:absolute;
 	top:0;
@@ -11,6 +11,4 @@ ul.navbar{
 	> li a {padding:0.7rem }
 } 
 
-@media screen and (min-width:900px){
-	ul.navbar {font-size:1.5rem;}
-}
+@media screen and (min-width:750px){ ul.navbar {font-size:1.5rem;} }
