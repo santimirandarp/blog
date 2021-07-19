@@ -1,5 +1,5 @@
 //console.log(process.env);
-const {NODE_ENV,SERVER,KEYLOCAL,CERTLOCAL,KEYREMOTE,CERTREMOTE} = process.env;
+const {SERVER} = process.env;
 
 import https from "https";
 import http from "http";
@@ -7,8 +7,9 @@ import app from "./app.js";
 
 //return path to the TLS certificate and private key
 import httpsOpts from "./local_modules/https.js";
+const options = httpsOpts(process.env);
+
 import portOpts from "./local_modules/ports.js";
-const options = httpsOpts(NODE_ENV,KEYLOCAL,CERTLOCAL,KEYREMOTE,CERTREMOTE);
 const {portSecure, port} = portOpts(SERVER);
 
 https.createServer(options,app)

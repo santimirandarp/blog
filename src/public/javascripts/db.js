@@ -1,6 +1,6 @@
-
 /** Get form fields */
 const form = document.getElementById("form");
+const toggleForm = document.getElementById("toggleForm");
 const name = document.querySelector("#comments input[name='name']");
 const email = document.querySelector("#comments input[name='email']");
 const msg = document.querySelector("#comments textarea[name='msg']");
@@ -9,9 +9,9 @@ const info = document.querySelector("#comments .comments_info");
 const thatsIt = document.querySelector("#comments .comments_thatsIt");
 info.style.display="none";
 thatsIt.style.display="none";
-const toggleForm = document.querySelector("#comments .comments_toggleForm");
+
 const commentsList = document.getElementById("commentsList");
-const moreComments =document.querySelector("#comments .comments_more");
+const moreComments =document.getElementBy("loadOlderComments");
 
 const loadDocsArray = (docsArray) => {
      console.log(docsArray);
@@ -54,7 +54,7 @@ const postMsg = (e)=>{
 };
 
 const skipLimit = (nOfComments) => [nOfComments, nOfComments+10];
-const get = async(arr)=>{
+const get = async(arr) => {
   let url = `comments/${arr[0]}/${arr[1]}`;
   const response = await fetch(url, {   
 method: "GET", 
@@ -66,7 +66,7 @@ window.addEventListener("load", () => get(skipLimit(0))
     .then(dArr => loadDocsArray(dArr))
     .catch( () => console.error("There was a problem")));
 
-moreComments.addEventListener("click", () => {
+loadOlderComments.addEventListener("click", () => {
     const nOfComments = commentsList.children.length;
     get(skipLimit(nOfComments))
     .then(dArr=> loadDocsArray(dArr))

@@ -17,14 +17,17 @@ img{ border-radius:5px; box-shadow:1px 1px 2px $bodyColor; }
 button {
 border:none;
 padding:1rem; 
-//box-shadow:1px 1px 2px rgba(30,30,30,0.4);
-color:$bodyBackground;
-background-color:$btnBackground;
 border-radius:5px; 
 font-weight:bold;
 box-shadow:1px 1px 1px $bodyColor;
 &:hover{
-background-color:$btnBackgroundHover;
 transform:scale(1.03);
 transition:0.2s all ease-out; 
+}}
+
+.button_green{
+color:$bodyBackground;
+background-color:$btnBackground;
+&:hover{
+background-color:$btnBackgroundHover;
 }}

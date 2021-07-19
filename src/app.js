@@ -40,6 +40,7 @@ useNewUrlParser: true,
   import indexRouter from "./routes/index.js";
   import picturesRouter from "./routes/pictures.js";
   import aboutRouter from "./routes/about.js";
+  import posts from "./routes/posts.js";
 
   /* Register View Engine, EJS */
   app.engine(".html", ejs.__express);
@@ -61,6 +62,7 @@ useNewUrlParser: true,
   app.use("/", indexRouter);
   app.use("/pictures", picturesRouter);
   app.use("/about", aboutRouter);
+  app.use("/posts", postsRouter);
 
 
 /** Mongoose lets you start using your models immediately, without waiting for mongoose to establish a connection to MongoDB. @return promise */
