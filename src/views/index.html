@@ -7,9 +7,7 @@
 
 <%- include("includes/navbar.html", navigationLinks) %>
 
-<div class='banner'>
-<h1><%= title %></h1>
-</div>
+<%- include("includes/banner.html"%>
 
 <main>
 
@@ -65,9 +63,9 @@ alt="Picture of Linda and Santi"
 <ul class="places">
 <li><a href="<%= hosts.cotna.url %>"><%= hosts.cotna.aname %></a> <%= hosts.cotna.plus %> (<%= hosts.cotna.howLong %>), <%= hosts.cotna.area %>.
 </li>
-<li><a href="<%= hosts.jonathan.url %>"><%= hosts.jonathan.aname %></a> <%= hosts.jonathan.plus %> (<%= hosts.jonathan.howLong %>), <%= hosts.jonathan.area %>. <span class='reviewSpan'>See Review</span><img class='reviewImg' src='reviews/jonathan.png'/>
+<li><a href="<%= hosts.jonathan.url %>"><%= hosts.jonathan.aname %></a> <%= hosts.jonathan.plus %> (<%= hosts.jonathan.howLong %>), <%= hosts.jonathan.area %>. <span class='reviewSpan'>See Review</span><img class='reviewImg' src='images/reviews/jonathan.png'/>
 </li>
-<li><a href="<%= hosts.skye.url %>"><%= hosts.skye.aname %></a> <%= hosts.skye.plus %> (<%= hosts.skye.howLong %>), <%= hosts.skye.area %>.  <span class='reviewSpan' >See Review</span> <img class='reviewImg' src='reviews/skye.png'/>
+<li><a href="<%= hosts.skye.url %>"><%= hosts.skye.aname %></a> <%= hosts.skye.plus %> (<%= hosts.skye.howLong %>), <%= hosts.skye.area %>.  <span class='reviewSpan' >See Review</span> <img class='reviewImg' src='images/reviews/skye.png'/>
 </li>
 <li><a href="<%= hosts.bosavern.url %>"><%= hosts.bosavern.aname %></a> <%= hosts.bosavern.plus %> (<%= hosts.bosavern.howLong %>), <%= hosts.bosavern.area %>.
 </li>

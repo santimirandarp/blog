@@ -5,18 +5,16 @@
 
 <%- include("includes/navbar.html",navigationLinks) %>
 
-<div class='banner'>
-<h1> <%= title %> </h1>
-</div>
+<%- include("includes/banner.html"%>
 
 <main>
 <div class='imgGal'>
 <% images.forEach(img => { %>
 <%const bigImageName=img.slice(8,)%>
     <%const text= bigImageName.replace(/_/g, " ").split('.')[0]%>
-    <a href="public/gallery/<%= bigImageName %>">
+    <a href="images/gallery/<%= bigImageName %>">
     <figure class="pictures">
-    <img loading='lazy' src='public/gallery/<%=img%>' alt='<%= text %>'/>
+    <img loading='lazy' src='images/gallery/<%=img%>' alt='<%= text %>'/>
     <figcaption><%= text %></figcaption>
     </figure></a>
     <%})%>
