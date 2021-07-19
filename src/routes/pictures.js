@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 //local
 import date from "../views/settings/date.js";
 import {title, navigationLinks} from "../views/settings/variables.js";
-const cssPath = "pictures/pictures";
+const cssPath = "pictures/pictures.css";
 const page = "Pictures";
 
 router.get("/", (req,res)=>{	

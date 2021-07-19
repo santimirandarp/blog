@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-<%- include("includes/head.html", {title, page, cssPath}) -%>
+<%- include("../includes/head.html", {title, page, cssPath}) -%>
 
 <body>
 
-<%- include("includes/navbar.html", navigationLinks) %>
+<%- include("../includes/navbar.html", navigationLinks) %>
 
-<%- include("includes/banner.html"%>
+<%- include("../includes/banner.html") %>
 
 <main>
 
@@ -19,7 +19,7 @@
 
 <figure class="welcome_figure">
 <img 
-src="<%= mainImg %>" 
+src="images/cropped_mainImg.jpg" 
 alt="Picture of Linda and Santi"
 />
 <figcaption>Ischia, 2021</figcaption>
@@ -28,7 +28,7 @@ alt="Picture of Linda and Santi"
 </div>
 
 <section id="firstSec" class="firstSec">
-<h2><%= firstSec %></h2>
+<h2>Who we are</h2>
 <p>Although the internet brings the distant close, reading isn't the same as first-hand experiences. We have both been volunteering on and off for the last few years after finishing university, where we studied Chemistry (Santi) and Social Sciences (Linda), and spent several years living in the UK.</p>
 
 <p>We like getting to know new places and cultures, people and ideas. We are interested in sustainability and enjoy learning new building and gardening skills. We love spending time in nature and doing various activities such as running, swimming, yoga and meditation. Santi is interested in everything related to technology and Linda loves cooking; it would be great to evolve these skills while volunteering.
@@ -37,7 +37,7 @@ alt="Picture of Linda and Santi"
 
 <section class="secondSec" id="secondSec" >
 
-<h2><%= secondSec %></h2>
+<h2>How can we help</h2>
 <p> In 2021, we have been involved in: </p>
 
 <div class="taskImgFlex">
@@ -77,10 +77,10 @@ alt="Picture of Linda and Santi"
 We are now looking for new destinations in Europe<span style="font-size:2rem; color:red; font-weight:bold">!!!</span> Get in touch using the links below, or drop us an email at <a href="mailto:santi+linda@pm.me&subject=Volunteering">santi+linda@pm.me</a>.</p>
 </section>
 
-<%- include('includes/comments.html')%>
+<%- include('../includes/comments.html')%>
 </main>
 
-<%- include('includes/footer.html')%>
+<%- include('../includes/footer.html')%>
 <!--<script src="./javascripts/reviews.js"></script>-->
 <script src='javascripts/index.js' > </script>
 </body>

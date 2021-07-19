@@ -11,7 +11,7 @@ info.style.display="none";
 thatsIt.style.display="none";
 
 const commentsList = document.getElementById("commentsList");
-const moreComments =document.getElementBy("loadOlderComments");
+const loadOlderComments = document.getElementBy("loadOlderComments");
 
 const loadDocsArray = (docsArray) => {
      console.log(docsArray);
