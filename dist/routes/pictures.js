@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 //local
 import date from "../views/settings/date.js";
 import {title, navigationLinks} from "../views/settings/variables.js";
-const cssPath = "pictures/pictures";
+const cssPath = "pictures/pictures.css";
 const page = "Pictures";
 
 router.get("/", (req,res)=>{	
@@ -20,7 +20,7 @@ router.get("/", (req,res)=>{
     fs.readdir(gallery, (err, files) => {
         if (err)  throw err;
         const images = files.filter(file=>file.substring(0,7)==="gallery");
-        res.render("pictures", {page,cssPath,images,title,navigationLinks,date});
+        res.render("pictures/index", {page,cssPath,images,title,navigationLinks,date});
         }); });
 
 export default router;

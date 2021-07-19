@@ -5,7 +5,9 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-import express from "express";
+
+
+/* ================ IMPORTS  ================= */ import express from "express";
 
 /* Instead of: html -> EJS; res.sendFile(file) -> res.render(file,options). 
   +flexibility. All template engines are pretty much the same. */
@@ -13,7 +15,6 @@ import ejs from "ejs";
 
 import createError from "http-errors";
 import path from "path";
-
 
 /**debug is like console.log, but turned on using DEBUG=* node app.js .*/
 import debug from "debug"; debug("test:server");
@@ -35,11 +36,12 @@ useNewUrlParser: true,
                  family: 4 // Use IPv4, skip trying IPv6
 };
 
-  /* ROUTES */
+  /* ===================== ROUTES ===================== */
+  import indexRouter from "./routes/home.js";
   import commentsRouter from "./routes/comments.js";
-  import indexRouter from "./routes/index.js";
   import picturesRouter from "./routes/pictures.js";
   import aboutRouter from "./routes/about.js";
+  import blogRouter from "./routes/blog.js";
 
   /* Register View Engine, EJS */
   app.engine(".html", ejs.__express);
@@ -50,17 +52,15 @@ useNewUrlParser: true,
 
 
   /* Static Files */
-  app.use("/reviews",express.static(path.join(__dirname,"public/images/reviews")));
-  app.use("/public/gallery",express.static(path.join(__dirname,"public/images/gallery")));
-  app.use("public/images",express.static(path.join(__dirname,"public/images")));
-  app.use("/favicon",express.static(path.join(__dirname,"public/images/meta")));
+  app.use("/images",express.static(path.join(__dirname,"public/images")));
   app.use("/font", express.static(path.join(__dirname,"public/font")));
-  app.use(express.static(path.join(__dirname,"public/")));
-
+  app.use("/stylesheets",express.static(path.join(__dirname,"public/stylesheets")));
+  app.use("/javascripts",express.static(path.join(__dirname,"public/javascripts")));
 
   app.use("/", indexRouter);
   app.use("/pictures", picturesRouter);
   app.use("/about", aboutRouter);
+  app.use("/blog", blogRouter);
 
 
 /** Mongoose lets you start using your models immediately, without waiting for mongoose to establish a connection to MongoDB. @return promise */

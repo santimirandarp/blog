@@ -8,7 +8,7 @@ const cssPath = "about/index.css";
 const page = "About";
 /* GET users listing. */
 
-router.get("/", (req,res)=> res.render("about", {
+router.get("/", (req,res)=> res.render("about/index", {
       page,
       cssPath,
       title,
