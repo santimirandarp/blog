@@ -11,6 +11,7 @@ margin-bottom:1rem;
      img { 
 transition:all 0.3s linear; 
 padding:1rem;
-//transform:rotateZ(0deg);
 &:hover{ transform:rotateZ(2deg); padding:0.5rem; background-color:v.$yellow; } } } } 
 
+
+.welcome{ padding:2rem 0; } 

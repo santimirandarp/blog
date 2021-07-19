@@ -3,7 +3,6 @@
 @use "welcome";
 @use "form";
 
-
 ul.tasks > li {
   @include flexRow;
   align-items:start; //helps with the checkmark
@@ -34,7 +33,6 @@ ul.places > li::before {@include symbol("\2014",0.4rem)} //include em dash
   }
 @media screen and (min-width:900px){
   ul.navbar {font-size:1.5rem;}
-  .welcome{ flex-direction:row; padding:2rem 0; } 
   .quoteLikePar{ border-left:3px dashed $darkBlue; padding-left:1rem;}
   .roundFig_img { border-radius:0px; clip-path:circle(192px at 196px 339px);
     max-height:500px; }
