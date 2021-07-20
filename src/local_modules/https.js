@@ -4,4 +4,4 @@ export default ({NODE_ENV:env, KEYLOCAL:kl, CERTLOCAL:cl, KEYREMOTE:kr,CERTREMOT
   if(env=="production") return { key: fs.readFileSync(kr), cert: fs.readFileSync(cr) };
   //will be catch by express (sync function).
   throw new Error("NODE_ENV != development or production");
-}
+};

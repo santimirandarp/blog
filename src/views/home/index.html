@@ -7,7 +7,7 @@
 
 <%- include("../includes/navbar.html", navigationLinks) %>
 
-<%- include("../includes/banner.html"), title %>
+<%- include("../includes/banner.html", title) %>
 
 <main>
 
@@ -18,10 +18,7 @@
 </div>
 
 <figure class="welcome_figure">
-<img 
-src="images/cropped_mainImg.jpg" 
-alt="Picture of Linda and Santi"
-/>
+<img src="images/cropped_mainImg.jpg" alt="Picture of Linda and Santi" />
 <figcaption>Ischia, 2021</figcaption>
 <figure>
 
@@ -57,7 +54,7 @@ alt="Picture of Linda and Santi"
 </figure>
 </div> 
 
-<p class='blueBox'>Check out our <a href='/pictures'>pictures</a>  to see some of the things we've done.</p>
+<p class='blueBox'>Check out our <a href='#gallery'>pictures</a> to see some of the things we've done.</p>
 
 <h3>Places we've worked in</h3>
 <ul class="places">
@@ -70,18 +67,20 @@ alt="Picture of Linda and Santi"
 <li><a href="<%= hosts.bosavern.url %>"><%= hosts.bosavern.aname %></a> <%= hosts.bosavern.plus %> (<%= hosts.bosavern.howLong %>), <%= hosts.bosavern.area %>.
 </li>
 
-
 </ul>
 <h3>Heads up!</h3>
 <p class="quoteLikePar">
 We are now looking for new destinations in Europe<span style="font-size:2rem; color:red; font-weight:bold">!!!</span> Get in touch using the links below, or drop us an email at <a href="mailto:santi+linda@pm.me&subject=Volunteering">santi+linda@pm.me</a>.</p>
 </section>
 
+<section class='imgGal' id='gallery'>
+<h2>Some pictures</h2>
+</section>
+
 <%- include('../includes/comments.html')%>
 </main>
 
 <%- include('../includes/footer.html')%>
-<!--<script src="./javascripts/reviews.js"></script>-->
 <script src='javascripts/index.js' > </script>
 </body>
 </html>

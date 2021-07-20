@@ -1,17 +1,20 @@
-/** Get form fields */
-const form = document.getElementById("form");
-const toggleForm = document.getElementById("toggleForm");
-const name = document.querySelector("#comments input[name='name']");
-const email = document.querySelector("#comments input[name='email']");
-const msg = document.querySelector("#comments textarea[name='msg']");
+/* every JS target should be targeted from the section */
+const comments = document.getElementById("#comments");
+const form = comments.querySelector("form");
+const name = form.querySelector("input[name='name']");
+const email = form.querySelector("input[name='email']");
+const msg = form.querySelector("textarea[name='msg']");
 
-const info = document.querySelector("#comments .comments_info");
-const thatsIt = document.querySelector("#comments .comments_thatsIt");
+const toggleForm = document.getElementById("toggleForm");
+
+const info = comments.querySelector(".comments_info");
+const thatsIt = comments.querySelector(".comments_thatsIt");
+
 info.style.display="none";
 thatsIt.style.display="none";
 
-const commentsList = document.getElementById("commentsList");
-const loadOlderComments = document.getElementBy("loadOlderComments");
+const commentsList = comments.getElementById("commentsList");
+const loadOlderComments = comments.getElementById("loadOlderComments");
 
 const loadDocsArray = (docsArray) => {
      console.log(docsArray);
@@ -31,9 +34,8 @@ const comment = ({name,msg}, preview=true) => {
     + "</li>";
 };
 
-/** takes the @param form and sends the data to server as multipart */
 const post = async(data)=>{
-  const response = await fetch("/comments", {   
+const response = await fetch("/comments", {   
 method: "POST", 
 headers: { "Content-Type": "application/json" },
 body:JSON.stringify(data)

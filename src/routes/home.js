@@ -39,8 +39,17 @@ const hosts = {	cotna:{
 
 /* GET home page. */
 router.get("/", function(req, res) {
-console.log(req);
- res.render("home/index", {page,cssPath,hosts,title,navigationLinks,date} );
+
+const gallery =  path.join(__dirname, "../public/images/gallery/");
+
+fs.readdir(gallery, (err, files) => {
+    if (err)  throw err;
+  const images = files.filter(file=>file.substring(0,7)==="gallery");
+
+res.render("home/index", {page,cssPath,hosts,title,navigationLinks,date,images} );
 });
+
+
+
 
 export default router;

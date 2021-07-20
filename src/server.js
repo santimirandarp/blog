@@ -1,13 +1,8 @@
-//console.log(process.env);
 const {SERVER} = process.env;
-
-import https from "https";
-import http from "http";
+import https from "https"; import http from "http";
 import app from "./app.js";
-
-//return path to the TLS certificate and private key
 import httpsOpts from "./local_modules/https.js";
-const options = httpsOpts(process.env);
+const options = httpsOpts(process.env); //TLS cert & key
 
 import portOpts from "./local_modules/ports.js";
 const {portSecure, port} = portOpts(SERVER);
