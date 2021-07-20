@@ -6,7 +6,6 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 
-
 /* ================ IMPORTS  ================= */ import express from "express";
 
 /* Instead of: html -> EJS; res.sendFile(file) -> res.render(file,options). 

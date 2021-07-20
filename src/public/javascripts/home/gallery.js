@@ -8,7 +8,7 @@ return response.json();
 };
 
 window.addEventListener("load", ()=>{
-const images = await loadGallery("gallery")
+const images = (await loadGallery("gallery")).images
 images.forEach(img => {
 const bigImageName = img.slice(8,) 
 const text= bigImageName.replace(/_/g, " ").split('.')[0] 
