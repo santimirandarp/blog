@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-<%- include("../includes/head.html", {title, page, cssPath}) -%>
+<%- include("../includes/head.html", {title, page, cssPath}) %>
 
 <body>
-
 <%- include("../includes/navbar.html", navigationLinks) %>
-
 <%- include("../includes/banner.html", title) %>
 
 <main>
@@ -73,14 +71,15 @@
 We are now looking for new destinations in Europe<span style="font-size:2rem; color:red; font-weight:bold">!!!</span> Get in touch using the links below, or drop us an email at <a href="mailto:santi+linda@pm.me&subject=Volunteering">santi+linda@pm.me</a>.</p>
 </section>
 
-<section class='imgGal' id='gallery'>
+<section id='gallery'>
 <h2>Some pictures</h2>
+<div class='imgGal'></div>
 </section>
 
-<%- include('../includes/comments.html')%>
+<%- include('../includes/comments.html') %>
 </main>
 
-<%- include('../includes/footer.html')%>
-<script src='javascripts/index.js' > </script>
+<%- include('../includes/footer.html') %>
+<script src='javascripts/home/index.js'></script>
 </body>
 </html>

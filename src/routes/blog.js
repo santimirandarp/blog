@@ -10,13 +10,6 @@ import { fileURLToPath } from "url";
 import date from "../views/settings/date.js";
 import {title, navigationLinks} from "../views/settings/variables.js";
 
-  /* Static Files */
-//app.use("/images",express.static(path.join(__dirname,"public/images")));
-//app.use("/font", express.static(path.join(__dirname,"public/font")));
-//app.use("/stylesheets",express.static(path.join(__dirname,"public/stylesheets")));
-//app.use("/javascripts",express.static(path.join(__dirname,"public/javascripts")));
-
-
 router.get("/", (req,res)=> {
 const cssPath = "blog/index.css";
 const page = "Blog";
