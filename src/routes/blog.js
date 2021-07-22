@@ -1,7 +1,10 @@
+import dotenv from "dotenv";
+dotenv.config();
 import express from "express";
 const router = express.Router();
 import path from "path";
-
+import mongoose from "mongoose";
+import blogModel from "blogModel";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 //const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -9,6 +12,10 @@ import { fileURLToPath } from "url";
 // local
 import date from "../views/settings/date.js";
 import {title, navigationLinks} from "../views/settings/variables.js";
+
+mongoose.connect(process.env.URI_DB, {useNewUrlParser:true});
+
+const postsMetadataFromDB = async() => (await blogModel.find({}).exec(cb()));
 
 router.get("/", (req,res)=> {
 const cssPath = "blog/index.css";
@@ -41,5 +48,10 @@ res.render(loc, {
 });
 
 });
+
+router.get("listOfPosts", async(req,res) => {
+const posts = await postsMetadataFromDB()
+return posts;
+})
 
 export default router;
