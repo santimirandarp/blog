@@ -48,7 +48,7 @@ router.get("/gallery", async (req,res) => {
     const files = await fs.readdir(gallery, (err, files) => {
         if (err)  throw err;
         const images = files.filter(file => file.substring(0,7)==="gallery");
-        res.json({images:images})
-        })})
+        res.json({images:images});
+        });});
 
 export default router;

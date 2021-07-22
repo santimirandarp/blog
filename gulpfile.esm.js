@@ -33,7 +33,7 @@ src:{ nAll: "!src/**/*",
       allJS:["src/**/*.js", notNode], 
       views:"src/views/**/*.html", 
       topLevelNotJS:["!src/*.js", "src/.*", "src/*"], 
-      publicJS:[ SPUB+"/javascripts/utils/*.js", SPUB+"/javascripts/*.js" ],
+      publicJS:SPUB+"/javascripts/**/*.js",
       scss:SPUB+"/stylesheets/**/*.scss",
       font:SPUB+"/font/*.{ttf,woff,woff2,eof}", 
       images:SPUB+"/images/**/*.{png,svg,jpeg,jpg}"
@@ -157,9 +157,9 @@ const concatJS = ()=> src(tpath.src.publicJS, {since:lastRun(concatJS), sourcema
     watch(tpath.src.images, minify);  
   };
 
-  const buildAndMinify = parallel(genCSS, series(lintFix,makeDocs,concatJS), minify, copy)
+const buildAndMinify = parallel(genCSS, series(lintFix,makeDocs,concatJS), minify, copy)
 const build = parallel(genCSS, series(lintFix,makeDocs,concatJS), copy)
 
   /*export each task so they can be run from command line using gulp <taskName>*/
-  export {buildAndMinify,minify,genCSS,copy,makeDocs,concatJS,build,lint,lintFix};
+export {buildAndMinify,minify,genCSS,copy,makeDocs,concatJS,build,lint,lintFix};
 export default watcher;

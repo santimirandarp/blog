@@ -8,16 +8,12 @@
 <%- include("../includes/navbar.html", navigationLinks) %>
 <%- include("../includes/banner.html"), title %>
 
-<main >
-
-<ul class="listOfPosts" id="listOfPosts">
-</ul>
-
-<%- include('../includes/comments.html')%>
+<main>
+<%= post %>
 </main>
 
 <%- include('../includes/footer.html')%>
 
-<script src='javascripts/blog/index.js' > </script>
+<script src='javascripts/blog/posts.js' > </script>
 </body>
 </html>

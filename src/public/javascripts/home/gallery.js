@@ -1,7 +1,7 @@
 const gallery = $("#gallery .imgGal");
 
 window.addEventListener("load", ()=>{
-const response = await fetch("gallery");
+const response = await fetch("/gallery");
 const images = response.json().images;
 images.forEach(img => {
 const bigImageName = img.slice(8,);

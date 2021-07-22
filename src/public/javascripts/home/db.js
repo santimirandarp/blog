@@ -9,6 +9,17 @@ thatsIt.style.display="none";
 const info = $("#comments .comments_info");
 info.style.display="none";
 
+/** Called from postMsg, asynchronous call to DB using data from form.*/
+const post = async(data)=>{
+const response = await fetch("/comments", {   
+method: "POST", 
+headers: { "Content-Type": "application/json" },
+body:JSON.stringify(data)
+});
+return response.json();
+};
+
+
 const postMsg = e => {
   //get the elements
   const form = $("#comments form");
@@ -27,27 +38,18 @@ const postMsg = e => {
       }).catch( () => console.log("There was an error"));
 };
 
-const post = async(data)=>{
-  const response = await fetch("/comments", {   
-method: "POST", 
-headers: { "Content-Type": "application/json" },
-body:JSON.stringify(data)
-});
-return response.json();
-};
-
+/** pass array of objects from database */
 const commentToDOM = docsArray => {
   if(docsArray.length!=0){ docsArray.forEach(
       doc => commentsList.insertAdjacentHTML("beforeend", commentToHTML(doc)));
   } else { 
-
-thatsIt.innerHTML = "All comments were loaded.";
-    thatsIt.style.display="block";
-    setTimeout(()=>thatsIt.style.display="none",3000);
+    thatsIt.innerHTML = "All comments were loaded.";
+    thatsIt.style.display = "block";
+    setTimeout(() => thatsIt.style.display = "none",3000);
   } };
 
 
-/** document coming from the database => HTML elements */ 
+/** document => HTML elements */ 
 const commentToHTML = ({name,msg,date}, preview=true) => {
   preview = preview ? "comments_message-preview": null;
   return `<li class="comments_message ${preview}">` 
@@ -59,20 +61,20 @@ const commentToHTML = ({name,msg,date}, preview=true) => {
 const skipLimit = (nOfComments) => [nOfComments, nOfComments+10];
 const getComments = async(arr) => {
   let url = `comments/${arr[0]}/${arr[1]}`;
-  const response = await fetch(url)
-  return response.json()
+  const response = await fetch(url);
+    return response.json();
 };
 
-  window.addEventListener("load", () => getComments(skipLimit(0))
-      .then(dArr => commentToDOM(dArr))
-      .catch( () => console.error("There was a problem")));
+window.addEventListener("load", () => getComments(skipLimit(0))
+    .then(dArr => commentToDOM(dArr))
+    .catch( () => console.error("There was a problem")));
 
-  loadOlderComments.addEventListener("click", () => {
-      const nOfComments = commentsList.children.length;
-      get(skipLimit(nOfComments))
-      .then(dArr=> commentToDOM(dArr))
-      .catch( () =>console.error("There was a problem"));
-      });
+loadOlderComments.addEventListener("click", () => {
+    const nOfComments = commentsList.children.length;
+    get(skipLimit(nOfComments))
+    .then(dArr=> commentToDOM(dArr))
+    .catch( () =>console.error("There was a problem"));
+    });
 
 toggleForm.addEventListener("click", ()=> mytoggler($("#comments form")));
 form.addEventListener("submit", postMsg);

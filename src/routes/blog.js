@@ -4,7 +4,7 @@ import express from "express";
 const router = express.Router();
 import path from "path";
 import mongoose from "mongoose";
-import blogModel from "blogModel";
+import {Post} from "../db/models.js";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 //const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -50,8 +50,8 @@ res.render(loc, {
 });
 
 router.get("listOfPosts", async(req,res) => {
-const posts = await postsMetadataFromDB()
+const posts = await postsMetadataFromDB();
 return posts;
-})
+});
 
 export default router;

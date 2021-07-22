@@ -7,4 +7,11 @@ date:{type:Date, default:new Date() },
 isPublic:{type:Boolean, default:false}
 });
 
-export {CommentSch};
+const PostSch = new mongoose.Schema({
+title: {type:String,required:true},
+brief:{type:String, default:""}, 
+date:{type:Date, default:new Date() },
+location:{type:String}
+});
+
+export {CommentSch, PostSch};

@@ -38,7 +38,6 @@ useNewUrlParser: true,
   /* ===================== ROUTES ===================== */
   import indexRouter from "./routes/home.js";
   import commentsRouter from "./routes/comments.js";
-  import picturesRouter from "./routes/pictures.js";
   import aboutRouter from "./routes/about.js";
   import blogRouter from "./routes/blog.js";
 
@@ -57,7 +56,6 @@ useNewUrlParser: true,
   app.use("/javascripts",express.static(path.join(__dirname,"public/javascripts")));
 
   app.use("/", indexRouter);
-  app.use("/pictures", picturesRouter);
   app.use("/about", aboutRouter);
   app.use("/blog", blogRouter);
 
