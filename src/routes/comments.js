@@ -34,9 +34,9 @@ router.post("/",
     } catch(e) { next(createError(500, ISE)); }
     });
 
-router.get("/:skip/:limit", (req,res,next)=>{
+router.get("/:skip/:limit", (req,res,next) => {
     const {skip, limit} = req.params;
-    getComments(skip,limit, (err,docs)=>{
+    getComments(skip,limit, (err,docs) => {
         err? next(createError(500, ISE)): res.json(docs);
         });
     });

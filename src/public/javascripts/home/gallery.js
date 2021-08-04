@@ -1,6 +1,6 @@
 const gallery = $("#gallery .imgGal");
 
-window.addEventListener("load", ()=>{
+window.addEventListener("load", async()=>{
 const response = await fetch("/gallery");
 const images = response.json().images;
 images.forEach(img => {

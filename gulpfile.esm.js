@@ -1,6 +1,5 @@
 import {src,lastRun,dest,watch,series,parallel} from "gulp";
 
-
 //workaround for __dirname
 import { dirname } from "path";
 import { fileURLToPath } from "url";
@@ -44,7 +43,7 @@ dest:{ images:DPUB+"/images/",
      }
 }
 
-const makeDocs = cb => src(tpath.src.allJS,{read: false}).pipe(jsdoc(cb))
+const makeDocs = cb => src(tpath.src.allJS,{read: false}).pipe(jsdoc(cb));
 
   /**
     Generates prefixed, compressed single CSS file from the SCSS files. 
@@ -149,17 +148,17 @@ const concatJS = ()=> src(tpath.src.publicJS, {since:lastRun(concatJS), sourcema
 
   /** Watch this set of directories and run functions on change */
   function watcher () {
-    livereload.listen()
-      watch(tpath.src.allJS, lint);
+    livereload.listen();
+    watch(tpath.src.allJS, lint);
     watch(["src/**/*", ...tpath.src.topLevelNotJS, notNode, "!"+SPUB+"/**/*"], copy); 
     watch(tpath.src.publicJS, concatJS);
     watch(tpath.src.scss, genCSS);
     watch(tpath.src.images, minify);  
   };
 
-const buildAndMinify = parallel(genCSS, series(lintFix,makeDocs,concatJS), minify, copy)
-const build = parallel(genCSS, series(lintFix,makeDocs,concatJS), copy)
+const buildAndMinify = parallel(genCSS, series(lintFix,makeDocs,concatJS), minify, copy);
+const build = parallel(genCSS, series(lintFix,makeDocs,concatJS), copy);
 
-  /*export each task so they can be run from command line using gulp <taskName>*/
+/*export each task so they can be run from command line using gulp <taskName>*/
 export {buildAndMinify,minify,genCSS,copy,makeDocs,concatJS,build,lint,lintFix};
 export default watcher;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-<%- include("../includes/head.html", {title, page, cssPath}) -%>
+<%- include("../includes/head.html", {title, page, cssPath}) %>
 <body>
 
 <%- include("../includes/navbar.html", navigationLinks) %>
@@ -12,9 +12,9 @@
 
 <h2>This Website</h2>
 <p>After several days working together, we manage to get a very basic website up and running.</p>
-<p>The website was done from scratch and with just 2$USD for the first year. The domain name was bought in GoDaddy.</p> 
-<p>The site is hosted on a EC2 instance on Amazon Cloud. The backend is a <a href='https://expressjs.com/'>Node/Express</a> server, linked to a MongoDB database to store comments. The server uses <a href='https://www.npmjs.com/package/ejs'>ejs</a> template engine to render HTML on the fly.</p>
-<p>The frontend style is written in <a href='https://sass-lang.com/dart-sass'>Sass</a>. It is not using frameworks but Bootstrap or Tailwind and JQuery may be implemented.</p>
+<p>The website was done from scratch, the domain name was bought in GoDaddy.</p> 
+<p>The site is hosted on a EC2 instance on Amazon Cloud. The backend is a <a href='https://expressjs.com/'>Node/Express</a> server, linked to a MongoDB database. The server uses <a href='https://www.npmjs.com/package/ejs'>ejs</a> template engine to render HTML on the fly.</p>
+<p>The frontend stylesheets are compiled to CSS from <a href='https://sass-lang.com/dart-sass'>Sass</a>. Bootstrap, Tailwind, JQuery may be added in the future.</p>
 <p>The source code can be found at <a href="https://github.com/santimirandarp/">Github.</a></p>
 
 <h2>Other Projects</h2>
@@ -22,7 +22,9 @@
 
 </main>
 
-<%- include('../includes/footer.html')%>
+<%- include('../includes/footer.html') %>
 
+<script type="module" src="/javascripts/common/index.js"></script>
+<script type="module" src="/javascripts/about/index.js"></script>
 </body>
 </html>

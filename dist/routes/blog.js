@@ -50,8 +50,8 @@ res.render(loc, {
 });
 
 router.get("listOfPosts", async(req,res) => {
-const posts = await postsMetadataFromDB()
+const posts = await postsMetadataFromDB();
 return posts;
-})
+});
 
 export default router;

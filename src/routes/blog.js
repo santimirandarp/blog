@@ -1,13 +1,14 @@
-import dotenv from "dotenv";
-dotenv.config();
+import dotenv from "dotenv"; dotenv.config();
 import express from "express";
 const router = express.Router();
-import path from "path";
+
 import mongoose from "mongoose";
-import {Post} from "../db/models.js";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-//const __dirname = dirname(fileURLToPath(import.meta.url));
+import { Post } from "../db/models.js";
+
+//import path from "path";
+//import { dirname } from "path";
+//import { fileURLToPath } from "url";
+////const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // local
 import date from "../views/settings/date.js";
@@ -15,7 +16,13 @@ import {title, navigationLinks} from "../views/settings/variables.js";
 
 mongoose.connect(process.env.URI_DB, {useNewUrlParser:true});
 
-const postsMetadataFromDB = async() => (await blogModel.find({}).exec(cb()));
+const postsMetadataFromDB = () => {
+return Post.find({}).exec((e,d) => { 
+console.log(e,d);
+console.log("finding posts' metadata from  db");
+});
+}
+;
 
 router.get("/", (req,res)=> {
 const cssPath = "blog/index.css";
@@ -30,14 +37,12 @@ res.render("blog/index", {
 });
 });
 
-// posts/post_1, posts/posts_2 etc.
-router.get(":post", (req,res)=> {
-const post = req.params.post;
-const postNum = post.split("_")[1];
-
-const loc =`blog/${post}/index`;
-const cssPath="blog/index.css";
-const page=`Post ${postNum}`;
+// posts/1, posts/2 etc.
+router.get(":post", (req,res) => {
+const {post} = req.params;
+const loc = `blog/${post}/index`;
+const cssPath = "blog/index.css";
+const page = `Post ${post}`;
 
 res.render(loc, {
       page,
@@ -51,7 +56,7 @@ res.render(loc, {
 
 router.get("listOfPosts", async(req,res) => {
 const posts = await postsMetadataFromDB();
-return posts;
+return res.json({posts:posts});
 });
 
 export default router;

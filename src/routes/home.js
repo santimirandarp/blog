@@ -1,3 +1,9 @@
+import path from "path"; 
+import {dirname} from "path"; 
+import { fileURLToPath } from "url";
+import fs from "fs";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+    
 import express from "express";
 const router = express.Router();
 import date from "../views/settings/date.js";
@@ -39,12 +45,12 @@ url:"https://www.bosaverncommunityfarm.org.uk/",
 
 /* GET home page. */
 router.get("/", function(req, res) {
-    res.render("home/index", {page,cssPath,hosts,title,navigationLinks,date,images} );
+    res.render("home/index", {page,cssPath,hosts,title,navigationLinks,date} );
     });
 
 /* Get Images */
 router.get("/gallery", async (req,res) => {
-    const gallery =  path.join(__dirname, "../public/images/gallery/");
+    const gallery = path.join(__dirname, "../public/images/gallery/");
     const files = await fs.readdir(gallery, (err, files) => {
         if (err)  throw err;
         const images = files.filter(file => file.substring(0,7)==="gallery");
