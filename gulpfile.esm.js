@@ -7,7 +7,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 import path from "path";
 import imagemin from "gulp-imagemin";
 import rename from "gulp-rename";
-import livereload from "gulp-livereload";
+//import livereload from "gulp-livereload";
 
 import jsdoc from "gulp-jsdoc3";
 import eslint from "gulp-eslint";
@@ -54,7 +54,7 @@ const makeDocs = cb => src(tpath.src.allJS,{read: false}).pipe(jsdoc(cb));
       .pipe(postcss([autoprefixer()],{syntax: postcssScss}))
       .pipe(sass.sync({outputStyle:"compressed"}).on("error", sass.logError))
       .pipe(dest(tpath.dest.css))
-      .pipe(livereload())
+      //.pipe(livereload())
   }
 
 /** Function used in @minify(). Replaces filename spaces with underscores, 
@@ -83,7 +83,7 @@ const minify = () => {
           path.basename, path.extname = cleanFilename(path.basename, path.extname)
           }))
   .pipe(dest(tpath.dest.images))
-    .pipe(livereload())
+ //   .pipe(livereload())
 }
 
 /** Lint uses gulp-eslint & lint to inspect all js code on the project src.
@@ -107,18 +107,15 @@ const lintFix = () => {
 const copyViews = () => {
   return src(tpath.src.views, {since:lastRun(copy)})
     .pipe(dest("./dist/views")) 
-    .pipe(livereload())
 }
 const copyJS = () => {
   return src(tpath.src.serverJS, {since:lastRun(copy)})
     .pipe(dest("./dist")) 
-    .pipe(livereload())
 }
 
 const copyHidden = () => {
   return src( tpath.src.topLevelNotJS, {since:lastRun(copy)})
     .pipe(dest("./dist")) 
-    .pipe(livereload())
 }
 
 const copyFonts = () => {
@@ -144,11 +141,9 @@ const concatJS = ()=> src(tpath.src.publicJS, {since:lastRun(concatJS), sourcema
   .pipe(babel())
   .pipe(uglify())
   .pipe(dest(tpath.dest.publicJS))
-.pipe(livereload())
 
   /** Watch this set of directories and run functions on change */
   function watcher () {
-    livereload.listen();
     watch(tpath.src.allJS, lint);
     watch(["src/**/*", ...tpath.src.topLevelNotJS, notNode, "!"+SPUB+"/**/*"], copy); 
     watch(tpath.src.publicJS, concatJS);

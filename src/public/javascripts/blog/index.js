@@ -12,6 +12,7 @@ const listing = `
 <p>${brief}</p>
 <p>${date}</p>
 <p>${tags}</p>
+<a href=${path}> Read Full Post </a>
 </div>
 `;
 HTMLel.insertAdjacentHTML("afterstart",listing);

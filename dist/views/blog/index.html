@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-<%- include("../includes/head.html", {title, page, cssPath}) -%>
+<%- include("../includes/head.html", {title, page, cssPath}) %>
 
 <body>
 
 <%- include("../includes/navbar.html", navigationLinks) %>
 <%- include("../includes/banner.html"), title %>
 
-<main >
+<main>
 
-<ul class="listOfPosts" id="listOfPosts">
-</ul>
+<ul class="listOfPosts" id="listOfPosts"> </ul>
 
-<%- include('../includes/comments.html')%>
+<%- include('../includes/comments.html') %>
 </main>
 
-<%- include('../includes/footer.html')%>
+<%- include('../includes/footer.html') %>
 
-<script src='javascripts/blog/index.js' > </script>
+<script src='/javascripts/common/index.js'> </script>
+<script src='/javascripts/blog/index.js'> </script>
 </body>
 </html>

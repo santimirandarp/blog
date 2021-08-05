@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang='en'>
 
-<%- include("../includes/head.html", {title, page, cssPath}) -%>
+<%- include("../includes/head.html", {title, page, cssPath}) %>
 
 <body>
 
 <%- include("../includes/navbar.html", navigationLinks) %>
 <%- include("../includes/banner.html"), title %>
 
-<main>
-<%= post %>
-</main>
+<main> <%= post %> </main>
 
 <%- include('../includes/footer.html')%>
 
-<script src='javascripts/blog/posts.js' > </script>
+<script src='/javascripts/common/posts.js' > </script>
+<script src='/javascripts/blog/posts.js' > </script>
 </body>
 </html>
