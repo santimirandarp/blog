@@ -57,10 +57,10 @@ app.use("/blog", blogRouter);
 /* ===============  DATABASE ================= */ 
 /** Mongoose start using models immediately, without waiting for mongoose to establish a connection to MongoDB. @return promise*/
 mongoose.connect(process.env.URI_DB, mongo_opts)
-  .catch(e => console.log(e, "ERROR!!!!"));
+  .catch(e => console.error(e, "no connection to database"));
   /** Mongoose creates a default connection when you call mongoose.connect(). You can access the default connection using mongoose.connection.*/
  let db = mongoose.connection;
-  db.on("error", e => console.log(e))//catch errors AFTER connection is successful.
+  db.on("error", e => console.log(e));//catches errors AFTER connection is successful.
 
   app.use("/comments", commentsRouter);
 

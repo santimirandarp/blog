@@ -3,7 +3,7 @@ import express from "express";
 const router = express.Router();
 
 import mongoose from "mongoose";
-import { Post } from "../db/models.js";
+//import { Post } from "../db/models.js";
 
 //import path from "path";
 //import { dirname } from "path";
@@ -14,15 +14,15 @@ import { Post } from "../db/models.js";
 import date from "../views/settings/date.js";
 import {title, navigationLinks} from "../views/settings/variables.js";
 
-mongoose.connect(process.env.URI_DB, {useNewUrlParser:true});
+//mongoose.connect(process.env.URI_DB, {useNewUrlParser:true});
 
-const postsMetadataFromDB = () => {
-return Post.find({}).exec((e,d) => { 
-console.log(e,d);
-console.log("finding posts' metadata from  db");
-});
-}
-;
+//const postsMetadataFromDB = () => {
+//return Post.find({}).exec((e,d) => { 
+//console.log(e,d);
+//console.log("finding posts' metadata from  db");
+//});
+//}
+//;
 
 router.get("/", (req,res)=> {
 const cssPath = "blog/index.css";
@@ -55,8 +55,8 @@ res.render(loc, {
 });
 
 router.get("listOfPosts", async(req,res) => {
-const posts = await postsMetadataFromDB();
-return res.json({posts:posts});
+//const posts = await postsMetadataFromDB();
+return res.json({posts:"hello"});//posts});
 });
 
 export default router;
