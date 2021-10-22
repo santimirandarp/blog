@@ -1,4 +1,4 @@
-import $ from "./../common/index.js";
+import {$} from "./../common/common.js";
 const gallery = $("#gallery .imgGal");
 
 window.addEventListener("load", async()=>{

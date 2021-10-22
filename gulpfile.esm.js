@@ -1,4 +1,5 @@
 import {src,lastRun,dest,watch,series,parallel} from "gulp";
+//console.log(process.cwd()); directory paths are resolved to.
 
 //workaround for __dirname
 import { dirname } from "path";
@@ -127,9 +128,14 @@ const copy = (cb) => {
   compile using babel,
   uglify (minify),
   and write the source map to easily spot errors in the browser console */
-const concatFn = dirname=> src(`${SPUB}/javascripts/${dirname}/*.js`, {since:lastRun(concatFn), sourcemaps:true})
-  .pipe(concat(`index.js`))
-  .pipe(babel())
+const concatFn = dirname => src(`${SPUB}/javascripts/${dirname}/**/*`, {since:lastRun(concatFn), sourcemaps:true})
+  .pipe(concat("index.js"))
+  .pipe(babel({
+cwd:process.cwd(), 
+filename:"gulpfile.esm.js", 
+configFile:"babel.config.json",
+browserslistConfigFile:true,
+presets:["@babel/preset-env"]}))
   .pipe(uglify())
   .pipe(dest(`${DPUB}/javascripts/${dirname}`))
 

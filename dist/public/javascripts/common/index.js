@@ -1,1 +1,0 @@
-const $=document.querySelector,mytoggler=e=>{""==e.style.display||"none"==e.style.display?e.style.display="block":e.style.display="none"};export{mytoggler,$};

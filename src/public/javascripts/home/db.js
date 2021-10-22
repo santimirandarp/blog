@@ -1,4 +1,4 @@
-import {$,mytoggler} from "./../common/index.js";
+import {$,mytoggler} from "./../common/common.js";
 
 const comments = $("#comments");
 const commentsList = comments.getElementById("commentsList");
