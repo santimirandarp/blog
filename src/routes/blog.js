@@ -2,7 +2,7 @@ import dotenv from "dotenv"; dotenv.config();
 import express from "express";
 const router = express.Router();
 
-import mongoose from "mongoose";
+//import mongoose from "mongoose";
 //import { Post } from "../db/models.js";
 
 //import path from "path";

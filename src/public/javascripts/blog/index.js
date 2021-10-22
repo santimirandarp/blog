@@ -1,3 +1,5 @@
+import $ from "./../common/index.js";
+
 // When the /blog page loads we call the database for the metadata and display a grid.
 const ULOfPosts = $("#listOfPosts");
 

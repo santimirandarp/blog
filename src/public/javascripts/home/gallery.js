@@ -1,3 +1,4 @@
+import $ from "./../common/index.js";
 const gallery = $("#gallery .imgGal");
 
 window.addEventListener("load", async()=>{

@@ -5,3 +5,4 @@ const mytoggler = element => {
     element.style.display="block": element.style.display="none";
 };
 
+export {mytoggler, $};

@@ -1,6 +1,8 @@
-const comments = $("#comments");
+import {$,mytoggler} from "./../common/index.js";
 
+const comments = $("#comments");
 const commentsList = comments.getElementById("commentsList");
+const form = comments.getElementById("form");
 const loadOlderComments = comments.getElementById("loadOlderComments");
 
 const thatsIt = comments.querySelector(".comments_thatsIt");
@@ -71,11 +73,11 @@ window.addEventListener("load", () => getComments(skipLimit(0))
 
 loadOlderComments.addEventListener("click", () => {
     const nOfComments = commentsList.children.length;
-    get(skipLimit(nOfComments))
+    getComments(skipLimit(nOfComments))
     .then(dArr=> commentToDOM(dArr))
     .catch( () =>console.error("There was a problem"));
     });
 
-toggleForm.addEventListener("click", ()=> mytoggler($("#comments form")));
+commentsList.addEventListener("click", ()=> mytoggler($("#comments form")));
 form.addEventListener("submit", postMsg);
 

@@ -1,3 +1,4 @@
+import mytoggler from "./../common/index.js";
 const spans = document.querySelectorAll(".places .reviewSpan");
 
 spans.forEach(span => {
