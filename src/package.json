@@ -22,5 +22,4 @@
     "morgan": "^1.10.0",
     "nodemon": "2.0.11"
   },
-  "browserslist": "last 8 version"
 }
