@@ -1,30 +1,25 @@
 //it was written with "import" but webpack configuration file has to be
 // written in es5, so i roll back to require.
-import {src,lastRun,dest,watch,series,parallel} from "gulp";
+const {src,lastRun,dest,watch,series,parallel} = require("gulp");
 //console.log(process.cwd()); directory paths are resolved to.
 
 //workaround for __dirname
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-const __dirname = dirname(fileURLToPath(import.meta.url));
-import path from "path";
-import imagemin from "gulp-imagemin";
-import rename from "gulp-rename";
+//const { path } = require("path");
+const imagemin = require("gulp-imagemin");
+const rename = require("gulp-rename");
 
-import jsdoc from "gulp-jsdoc3";
-import eslint from "gulp-eslint";
-import webpack from "webpack-stream";
-import webpackConfig from "./webpack.config.js";
-import babel from "gulp-babel";
-import uglify from "gulp-uglify";
-import TerserPlugin from "terser-webpack-plugin";
+const jsdoc = require("gulp-jsdoc3");
+const eslint = require("gulp-eslint");
+const webpack = require("webpack-stream");
+const webpackConfig = require("./webpack.config.js");
+const babel = require("gulp-babel");
+const uglify = require("gulp-uglify");
+const TerserPlugin = require("terser-webpack-plugin");
 
-import gulpSass from "gulp-sass";
-import sassBin from "sass";
-const sass = gulpSass(sassBin);
-import postcss from "gulp-postcss";
-import postcssScss from "postcss-scss" 
-import autoprefixer from "autoprefixer";
+const gulpSass = require("gulp-sass")(require("sass"));
+const postcss = require("gulp-postcss");
+const postcssScss = require("postcss-scss");
+const autoprefixer = require("autoprefixer");
 
 
 const SPUB = "src/public";
@@ -157,5 +152,5 @@ const buildAndMinify = parallel(genCSS, series(lintFix,makeDocs,frontEndJS), min
 const build = parallel(genCSS, series(lintFix,makeDocs,frontEndJS), copy);
 
 /*export each task so they can be run from command line using gulp <taskName>*/
-export {buildAndMinify,minify,genCSS,copy,makeDocs,frontEndJS,build,lint,lintFix};
-export default watcher;
+module.exports =  {buildAndMinify,minify,genCSS,copy,makeDocs,frontEndJS,build,lint,lintFix};
+exports.default =  watcher;

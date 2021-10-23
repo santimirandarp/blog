@@ -33,8 +33,6 @@
     "terser-webpack-plugin": "^5.2.4",
     "webpack-stream": "^7.0.0"
   },
-  "type": "module",
-  "module": "esm",
   "browserslist": [
     "defaults",
     "not IE 11"

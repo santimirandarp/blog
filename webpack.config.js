@@ -1,4 +1,5 @@
-export default {
+
+module.exports = {
 output:{ filename:`bundle.js`}, 
 mode:"development", 
 target:"web",
