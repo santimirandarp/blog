@@ -12,11 +12,11 @@ const jsdoc = require("gulp-jsdoc3");
 const eslint = require("gulp-eslint");
 const webpack = require("webpack-stream");
 const webpackConfig = require("./webpack.config.js");
+console.log(webpackConfig);
 const babel = require("gulp-babel");
 const uglify = require("gulp-uglify");
-const TerserPlugin = require("terser-webpack-plugin");
 
-const gulpSass = require("gulp-sass")(require("sass"));
+const sass = require("gulp-sass")(require("sass"));
 const postcss = require("gulp-postcss");
 const postcssScss = require("postcss-scss");
 const autoprefixer = require("autoprefixer");
@@ -131,7 +131,7 @@ const copy = (cb) => {
   uglify (minify),
   write source map to spot errors in browser console */
 const bundle = dirname => src(`${SPUB}/javascripts/${dirname}/entry.js`,{sourcemaps:true, since:lastRun(bundle)})
-  .pipe(webpack(webpackConfig))
+.pipe(webpack(webpackConfig))
 .pipe(dest(`${DPUB}/javascripts/${dirname}`))
 
   const bundleEach = listOfDirs => listOfDirs.forEach(dir=>bundle(dir));

@@ -1,13 +1,16 @@
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-output:{ filename:`bundle.js`}, 
-mode:"development", 
-target:"web",
+entry:"./src/public/javascripts/home/entry.js",
+output:{ filename:"./public/javascripts/home/bundle.js"}, 
+resolve: { modules: ["./src/public/javascripts", "./src/node_modules"] },
+//mode:"development", 
+//target:"web",
 module:{
-rules:[{use:"babel-loader", options: { presets: ['@babel/preset-env'] }}]
+rules:[{test: /\.js$/i, use:{ loader:"babel-loader", options: { presets: ['@babel/preset-env'] }}}]
 },
   optimization: {
     minimize: true,
-    minimizer: [new TerserPlugin()],
-  }
+   minimizer: [new TerserPlugin()],
+ }
 }

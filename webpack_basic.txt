@@ -37,3 +37,7 @@ module.exports = {
 mode and target are also options from the main JSON that should be properly set ex `mode:"development"|"production", target:"web"|"node"`.
 
 Loaders follow the standard module resolution. In most cases it will be loaded from the module path (think npm install, node_modules).
+
+### Links
+
+An important question is what happens when webpack compiles the JS, places it into a suitable location that is linked to the html, with all the rest of the links. Because now probably the directory structure has changed. For this, the css-loader replaces the background images witht he right link on css/sass, and the html loader does this for the html written images.

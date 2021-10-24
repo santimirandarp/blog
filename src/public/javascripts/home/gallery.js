@@ -1,4 +1,4 @@
-import {$} from "./../common/common.js";
+import $ from "jquery";
 const gallery = $("#gallery .imgGal");
 
 window.addEventListener("load", async()=>{

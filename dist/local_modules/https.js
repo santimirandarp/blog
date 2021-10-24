@@ -1,3 +1,16 @@
+/*
+// Named exports
+export var Count = 5;
+export function Multiply(a, b) {
+  return a * b;
+}
+
+// Default export
+export default {
+  // Some data...
+};
+*/
+
 import fs from "fs";
 export default ({
 NODE_ENV:env,
