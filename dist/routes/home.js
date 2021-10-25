@@ -11,6 +11,11 @@ import {title, navigationLinks } from "../views/settings/variables.js";
 const cssPath = "home/index.css";
 const page = "Home";
 
+
+import cors from "cors";
+
+router.use(cors());
+
 const hosts = {	cotna:{
 url:"https://cotna.co.uk/",
       aname:"Cotna",
@@ -52,10 +57,13 @@ router.get("/", function(req, res) {
 router.get("/gallery", (req,res) => {
     const gallery = path.join(__dirname, "../public/images/gallery/");
     fs.readdirSync(gallery, (err, files) => {
-        if (err) { console.log(err); throw err; res.end(); }
-        console.log(files);
+        console.log(gallery);
+        if (err) { console.log(err);return 0;}
         const images = files.filter(file => file.substring(0,7)==="gallery");
+        console.log("sending files", files, images);
         res.json({images:images});
-        });});
+        });
+return 0;
+});
 
 export default router;

@@ -1,8 +1,8 @@
 import {$} from "../common/common.js";
 const gallery = $("#gallery .imgGal");
 
-const insertImg = (imgName)=>{
-//build name for the big scale image
+const insertImg = imgName=>{
+//name for the big scale image
 const bigImageName = imgName.slice(8,);
 
 //build the description text.
@@ -15,11 +15,12 @@ const imageHTML = ` <a href="images/gallery/${bigImageName}">
 gallery.insertAdjacentHTML("beforeend", imageHTML);
 };
 
+
+
 window.addEventListener("load", ()=>{
-fetch("/gallery")
-.json(r=>r.json())
-.then(imgFilenames=>imgFilenames.forEach(imgName => insertImg(imgName)))
+fetch("/gallery").then(r=>{console.log(r); return r.json();})
+.then(imgFilenames=>{imgFilenames.forEach(imgName => insertImg(imgName));return 0;})
 .catch(e=>{ 
 gallery.innerHTML = "We couldn't load the images. Please refresh the page or try again later.";
-console.error("There was a problem loading the images",e);
+console.error(e);
 });});
