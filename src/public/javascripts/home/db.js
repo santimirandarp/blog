@@ -61,7 +61,7 @@ if(docsArray.length==0){
     //If it is not an array
     thatsIt.innerHTML = "There was an error. Please try again.";
     thatsIt.style.display = "block";
-}}
+}};
 //
 //
 ///** document => HTML elements */ 

@@ -1,21 +1,19 @@
 # What is Webpack
-
-Webpack is used to compile JavaScript modules. Use it as CLI or Node API. (Loading webpack into a js file, or webpack-stream for gulp).
+Webpack is used to compile JavaScript modules. Use it as CLI or NodeJS script (js file, or webpack-stream for gulp).
+Best thing is we can use import and require for the front end files, bundle into one, and plug the result in the html files.
+In the bundling, loads of processing can be done, like traspiling with babel.
 
 ## How to Install and Run
-npm install webpack [webpack-cli] [webpack-streams] --save-dev
+`npm install [webpack] [webpack-cli] [webpack-streams] --save-dev`
 
 ## Import/Export
 Webpack will resolve the import/export graph.
-
 Note that webpack will not alter any code other than import and export statements. If you are using other ES2015 features, make sure to use a transpiler such as Babel via webpack's loader system.
 
-
 ## Loaders
+Loaders are transformations that are applied to the source code of a module. Pre-process files as you import or “load” them. Thus, loaders are like “tasks” in other build tools.
 
-Loaders are transformations that are applied to the source code of a module. They allow you to pre-process files as you import or “load” them. Thus, loaders are kind of like “tasks” in other build tools and provide a powerful way to handle front-end build steps.
-
-module.rules allows you to specify several loaders within your webpack configuration. This is a concise way to display loaders, and helps to maintain clean code. It also offers you a full overview of each respective loader.
+Within `module.rules` array we specify several loaders within your webpack configuration. 
 
 Loaders are evaluated/executed from right to left (or from bottom to top). 
 
