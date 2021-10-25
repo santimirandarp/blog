@@ -54,15 +54,16 @@ router.get("/", function(req, res) {
     });
 
 /* Get Images */
-router.get("/gallery", (req,res) => {
+router.get("/gallery", async(req,res) => {
     const gallery = path.join(__dirname, "../public/images/gallery/");
-    fs.readdirSync(gallery, (err, files) => {
+    await fs.readdir(gallery, (err, files) => {
         console.log(gallery);
-        if (err) { console.log(err);return 0;}
+        if (err) { console.log(err); res.json({e:err});}
         const images = files.filter(file => file.substring(0,7)==="gallery");
         console.log("sending files", files, images);
         res.json({images:images});
         });
+console.log("getting out of here...");
 return 0;
 });
 

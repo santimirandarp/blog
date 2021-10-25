@@ -18,8 +18,8 @@ gallery.insertAdjacentHTML("beforeend", imageHTML);
 
 
 window.addEventListener("load", ()=>{
-fetch("/gallery").then(r=>{console.log(r); return r.json();})
-.then(imgFilenames=>{imgFilenames.forEach(imgName => insertImg(imgName));return 0;})
+fetch("/gallery").then(r=>r.json())
+.then(imgFilenames=>imgFilenames.images.forEach(imgName => insertImg(imgName)))
 .catch(e=>{ 
 gallery.innerHTML = "We couldn't load the images. Please refresh the page or try again later.";
 console.error(e);
