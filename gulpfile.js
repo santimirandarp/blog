@@ -12,7 +12,6 @@ const jsdoc = require("gulp-jsdoc3");
 const eslint = require("gulp-eslint");
 const webpack = require("webpack-stream");
 const webpackConfig = require("./webpack.config.js");
-console.log(webpackConfig);
 const babel = require("gulp-babel");
 const uglify = require("gulp-uglify");
 
