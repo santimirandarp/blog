@@ -2,6 +2,7 @@
 @use "../common/variables" as *;
 @use "welcome";
 @use "form";
+@use "pictures";
 
 ul.tasks > li {
   @include flexRow;
