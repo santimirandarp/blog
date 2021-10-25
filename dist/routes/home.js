@@ -49,10 +49,11 @@ router.get("/", function(req, res) {
     });
 
 /* Get Images */
-router.get("/gallery", async (req,res) => {
+router.get("/gallery", (req,res) => {
     const gallery = path.join(__dirname, "../public/images/gallery/");
     fs.readdirSync(gallery, (err, files) => {
-        if (err)  throw err;
+        if (err) { console.log(err); throw err; res.end(); }
+        console.log(files);
         const images = files.filter(file => file.substring(0,7)==="gallery");
         res.json({images:images});
         });});

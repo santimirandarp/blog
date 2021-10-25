@@ -151,5 +151,5 @@ const buildAndMinify = parallel(genCSS, series(lintFix,makeDocs,frontEndJS), min
 const build = parallel(genCSS, series(lintFix,makeDocs,frontEndJS), copy);
 
 /*export each task so they can be run from command line using gulp <taskName>*/
-module.exports =  {buildAndMinify,minify,genCSS,copy,makeDocs,frontEndJS,build,lint,lintFix};
+module.exports =  {buildAndMinify,minify,genCSS,copy,makeDocs,frontEndJS,build,lint,lintFix, watcher};
 exports.default =  watcher;

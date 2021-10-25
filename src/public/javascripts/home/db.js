@@ -6,6 +6,7 @@ const comments = $("#comments");
 const commentsList = comments.querySelector("#commentsList");
 const form = comments.querySelector("#form");
 const loadOlderComments = comments.querySelector("#loadOlderComments");
+const toggleFormBtn = comments.querySelector("#comments_toggleForm");
 
 const thatsIt = comments.querySelector(".comments_thatsIt");
 thatsIt.style.display="none";
@@ -92,7 +93,7 @@ loadOlderComments.addEventListener("click", () => {
     .catch( () =>console.error("There was a problem"));
     });
 //
-commentsList.addEventListener("click", ()=> mytoggler(form));
+toggleFormBtn.addEventListener("click", ()=> mytoggler(form));
 form.addEventListener("submit", postMsg);
 
 
