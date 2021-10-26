@@ -20,30 +20,33 @@ import date from "../views/settings/date.js";
 import {title, navigationLinks} from "../views/settings/variables.js";
 
 router.get("/", (req,res)=> {
-const cssPath = "blog/index.css";
-const page = "Blog";
-res.render("blog/index", { page, cssPath, title, navigationLinks, date }); 
-});
+    const cssPath = "blog/index.css";
+    const page = "Blog";
+    res.render("blog/index", {title,navigationLinks,date,cssPath,page}); 
+    });
 
-router.get("/:post", (req,res) => {
-let toRender = {};
-toRender.post = req.params.post;
-toRender.loc = "blog/blog_template";
-toRender.cssPath = "blog/index.css";
-toRender.page = `Post ${toRender.post}`;
-toRender.data = fs.readdirSync(path.join(__dirname, "../views/blog/", toRender.post));
+router.get("/post/:post", (req,res) => {
+    try{
+    console.log("trying");
+    const {post} = req.params.post;
+    const loc = "blog/blog_template";
+    const cssPath = "blog/index.css";
+    const page = `Post ${post}`;
+    const data = fs.readdirSync(path.join(__dirname, "../views/blog/", post));
+    res.render(loc,{post,cssPath,page,data,navigationLinks,date,title});
+    } catch(e){next(createError(404));}
 
-res.render(toRender.loc, toRender);
-
-});
+    });
 
 router.get("/listOfPosts", async(req,res) => {
-await Post.find({}).exec((err,posts) => { 
-if(err) { console.error(err); 
-next(createError(500, ISE));
-} 
-res.json(posts);
-});
-});
+    try{ await Post.find({}).exec((err,posts) => { 
+        if(err) { console.error(err); 
+        next(createError(500, ISE));
+        } else res.json(posts);
+        });} 
+    catch(e) { console.error(e);
+    next(createError(500,ISE));
+    }
+    });
 
 export default router;
