@@ -25,16 +25,15 @@ router.get("/", (req,res)=> {
     res.render("blog/index", {title,navigationLinks,date,cssPath,page}); 
     });
 
-router.get("/post/:post", (req,res) => {
+router.get("/post/:num", (req,res) => {
     try{
-    console.log("trying");
-    const {post} = req.params.post;
-    const loc = "blog/blog_template";
+    const {num} = req.params.num;
+    const template = "blog/blog_template";
     const cssPath = "blog/index.css";
-    const page = `Post ${post}`;
-    const data = fs.readdirSync(path.join(__dirname, "../views/blog/", post));
-    res.render(loc,{post,cssPath,page,data,navigationLinks,date,title});
-    } catch(e){next(createError(404));}
+    const page = `Post ${num}`;
+    const data = fs.readFileSync(path.join(__dirname, "../views/blog/", num, "index.html"));
+    res.render(template,{num,cssPath,page,data,navigationLinks,date,title});
+    } catch(e){next(createError(404))}
 
     });
 
