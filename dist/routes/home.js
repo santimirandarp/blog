@@ -11,24 +11,27 @@ import {title, navigationLinks } from "../views/settings/variables.js";
 const cssPath = "home/index.css";
 const page = "Home";
 
-
-//import cors from "cors";
-
-//router.use(cors());
-
-const hosts = {	cotna:{
+const hosts = {	
+thabarwa:{
+url:"https://thabarwanaturecentre.org",
+      aname:"Thabarwa Nature Centre",
+      plus:"",
+      howLong:"3 months",
+      area:"Piedmont, Italy"
+},
+cotna:{
 url:"https://cotna.co.uk/",
       aname:"Cotna",
       plus:"Eco Retreat",
       howLong:"6 weeks",
-      area:"Cornwall"
+      area:"Cornwall, UK"
 },
 jonathan:{ 
-url:"https://www.theenchantedwilderness.co.uk/",
+url:"https://theenchantedwilderness.co.uk/",
     aname:"Enchanted Wilderness",
     plus:"", 
     howLong:"2 months", 
-    area:"Devon",
+    area:"Devon, UK",
     review:"/images/reviews/jonathan.jpg"
          },
 skye:{
@@ -36,15 +39,15 @@ url:"http://skyebackpackers.com/",
     aname:"Skye Backpackers",
     plus:"Hostel", 
     howLong:"5 months", 
-    area:"Isle Of Skye",
+    area:"Isle Of Skye, UK",
     review:"/images/reviews/skye.jpg"
      },
 bosavern:{
-url:"https://www.bosaverncommunityfarm.org.uk/",
+url:"https://bosaverncommunityfarm.org.uk/",
     aname:"Bosavern",
     plus:"Community Farm", 
     howLong:"5 weeks", 
-    area:"Cornwall"
+    area:"Cornwall, UK"
          }
 };
 
@@ -57,14 +60,10 @@ router.get("/", function(req, res) {
 router.get("/gallery", async(req,res) => {
     const gallery = path.join(__dirname, "../public/images/gallery/");
     await fs.readdir(gallery, (err, files) => {
-        console.log(gallery);
         if (err) { console.log(err); res.json({e:err});}
         const images = files.filter(file => file.substring(0,7)==="gallery");
-        console.log("sending files", files, images);
         res.json({images:images});
         });
-console.log("getting out of here...");
-return 0;
 });
 
 export default router;

@@ -12,12 +12,14 @@ import createError from "http-errors";
 import path from "path";
 
 /** debug is like console.log, but turned on using DEBUG=* node app.js */
-import debug from "debug"; debug("test:server");
+//import debug from "debug"; debug("test:server");
 import logger from "morgan"; /* another middleware to log data */
 import mongoose from "mongoose";
 
 /** Initialize express App & connect to mongo db using mongoose.connect */
 const app = express();
+
+/* ===============  DATABASE ================= */ 
 const mongo_opts = { 
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -29,6 +31,16 @@ const mongo_opts = {
   socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
   family: 4 // Use IPv4, skip trying IPv6
 };
+
+/** Mongoose starts using models immediately, without waiting for mongoose to establish a connection to MongoDB. @return promise*/
+mongoose.connect(process.env.URI_DB, mongo_opts)
+  .catch(e => console.error(e, "Connection to DB failed."));
+  /** Mongoose creates a default connection when you call mongoose.connect(). You can access the default connection using mongoose.connection.*/
+ let db = mongoose.connection;
+ db.on("error", e => console.log(e));//catches errors AFTER connection is successful.
+
+
+
 
 /* ===================== ROUTES ===================== */
 import indexRouter from "./routes/home.js";
@@ -42,7 +54,8 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "html");
 
 
-app.use(logger("dev")); //Morgan, logs every request (not time)
+app.use(logger("dev")); //Morgan, logs every request. Useful.
+
 /* Static Files */
 app.use("/images",express.static(path.join(__dirname,"public/images")));
 app.use("/font", express.static(path.join(__dirname,"public/font")));
@@ -53,20 +66,8 @@ app.use("/", indexRouter);
 app.use("/about", aboutRouter);
 app.use("/blog", blogRouter);
 app.use("/comments", commentsRouter);
-
-
-/* ===============  DATABASE ================= */ 
-/** Mongoose start using models immediately, without waiting for mongoose to establish a connection to MongoDB. @return promise*/
-mongoose.connect(process.env.URI_DB, mongo_opts)
-  .catch(e => console.error(e, "no connection to database"));
-  /** Mongoose creates a default connection when you call mongoose.connect(). You can access the default connection using mongoose.connection.*/
- let db = mongoose.connection;
-  db.on("error", e => console.log(e));//catches errors AFTER connection is successful.
-
-
-  /* Only gets here if none of prev routes was a match catch 404 and forward to error handler */
-  app.use((req, res, next) =>  next(createError(404)));
-
+/* Only gets here if none of prev routes was a match catch 404 and forward to error handler */
+app.use((req, res, next) =>  next(createError(404)));
 
   /** What does next do? Simple, it tells your app to run the next middleware. What happens when you pass something to next? Express will abort the current stack and will run all the middleware that has 4 parameters.(stackoverflow) 
     Error-handling middleware always takes four arguments. You must provide four arguments to identify it as an error-handling middleware function. Even if you don’t need to use the next object, you must specify it to maintain the signature. Otherwise, the next object will be interpreted as regular middleware and will fail to handle errors.(express docs)  */
