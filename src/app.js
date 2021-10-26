@@ -52,6 +52,7 @@ app.use("/javascripts",express.static(path.join(__dirname,"public/javascripts"))
 app.use("/", indexRouter);
 app.use("/about", aboutRouter);
 app.use("/blog", blogRouter);
+app.use("/comments", commentsRouter);
 
 
 /* ===============  DATABASE ================= */ 
@@ -62,7 +63,6 @@ mongoose.connect(process.env.URI_DB, mongo_opts)
  let db = mongoose.connection;
   db.on("error", e => console.log(e));//catches errors AFTER connection is successful.
 
-  app.use("/comments", commentsRouter);
 
   /* Only gets here if none of prev routes was a match catch 404 and forward to error handler */
   app.use((req, res, next) =>  next(createError(404)));

@@ -12,9 +12,9 @@ const cssPath = "home/index.css";
 const page = "Home";
 
 
-import cors from "cors";
+//import cors from "cors";
 
-router.use(cors());
+//router.use(cors());
 
 const hosts = {	cotna:{
 url:"https://cotna.co.uk/",

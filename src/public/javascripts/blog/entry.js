@@ -1,6 +1,6 @@
 import {$} from "../common/common.js";
 
-// When the /blog page loads we call the database for the metadata and display a grid.
+// After blog page loads get metadata and display a grid.
 const ULOfPosts = $("#listOfPosts");
 
 const listOfPostsToHTML= (postsMetadata, HTMLel) => {
@@ -17,11 +17,13 @@ const listing = `
 <a href=${path}> Read Full Post </a>
 </div>
 `;
-HTMLel.insertAdjacentHTML("afterstart",listing);
+HTMLel.insertAdjacentHTML("afterbegin",listing);
+return 0;
 });};
 
-window.addEventListener("load", async() => {
-const response = await fetch("postsMetadata");
-const postsMetadata = response.json();
-listOfPostsToHTML(postsMetadata, ULOfPosts);
+window.addEventListener("load", () => {
+fetch("/blog/listOfPosts")
+.then(r=>r.json())
+.then(r=>listOfPostsToHTML(r, ULOfPosts))
+.catch(e=>e);
 });
