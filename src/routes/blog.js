@@ -1,6 +1,12 @@
 // find metadata about the posts.
 // the metadata is loaded manually to the mongo database.
 
+import path from "path"; 
+import {dirname} from "path"; 
+import { fileURLToPath } from "url";
+import fs from "fs";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 import dotenv from "dotenv"; dotenv.config();
 import express from "express";
 const router = express.Router();
@@ -31,18 +37,20 @@ return 0;
 });
 
 // posts/1, posts/2 etc.
-router.get("/posts/:post", (req,res) => {
+router.get("/:post", (req,res) => {
 const {post} = req.params;
-const loc = `blog/${post}/index`;
+const loc = "blog/blog_template";
 const cssPath = "blog/index.css";
 const page = `Post ${post}`;
+const data = fs.readdirSync(path.join(__dirname, "../views/blog/", post));
 
 res.render(loc, {
       page,
       cssPath,
       title,
       navigationLinks,
-      date
+      date,
+      data
 });
 
 });
