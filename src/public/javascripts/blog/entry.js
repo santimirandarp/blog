@@ -25,5 +25,5 @@ window.addEventListener("load", () => {
 fetch("/blog/listOfPosts")
 .then(r=>r.json())
 .then(r=>listOfPostsToHTML(r, ULOfPosts))
-.catch(e=>e);
+.catch(e => e);
 });
