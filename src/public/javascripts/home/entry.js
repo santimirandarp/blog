@@ -1,3 +1,9 @@
-import database from "./db.js";
-import gallery from "./gallery.js";
-import reviews from "./reviews.js";
+import {enableComments} from "../common/db.js";
+import {loadImages} from "./gallery.js";
+import {loadReviews} from "./reviews.js";
+
+enableComments();
+loadImages();
+loadReviews();
+
+

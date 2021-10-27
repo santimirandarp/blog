@@ -1,5 +1,7 @@
 import {$} from "../common/common.js";
+import {enableComments} from "../common/db.js";
 
+enableComments();
 // After blog page loads get metadata and display a grid.
 const ULOfPosts = $("#listOfPosts");
 
@@ -9,13 +11,15 @@ const listOfPostsToHTML= (postsMetadata, HTMLel) => {
 postsMetadata.forEach(post => {
 const {title,tags,brief,date,path} = post;
 const listing = `
-<div class="postGridElement">
+<li class="postListItem">
+<article>
 <h2>${title}</h2>
 <p>${brief}</p>
 <p>${date}</p>
 <p>${tags}</p>
 <a href=/blog/post/${path}> Read Full Post </a>
-</div>
+</article>
+</li>
 `;
 HTMLel.insertAdjacentHTML("afterbegin",listing);
 return 0;

@@ -2,6 +2,7 @@
 <html lang='en'>
 
 <%- include("../includes/head.html", {title, page, cssPath}) %>
+
 <body>
 
 <%- include("../includes/navbar.html", navigationLinks) %>
@@ -11,14 +12,21 @@
 <main>
 
 <h2>This Website</h2>
-<p>After several days working together, we manage to get a very basic website up and running.</p>
-<p>The website was done from scratch, the domain name was bought in GoDaddy.</p> 
-<p>The site is hosted on a EC2 instance on Amazon Cloud. The backend is a <a href='https://expressjs.com/'>Node/Express</a> server, linked to a MongoDB database. The server uses <a href='https://www.npmjs.com/package/ejs'>ejs</a> template engine to render HTML on the fly.</p>
-<p>The frontend stylesheets are compiled to CSS from <a href='https://sass-lang.com/dart-sass'>Sass</a>. Bootstrap, Tailwind, JQuery may be added in the future.</p>
-<p>The source code can be found at <a href="https://github.com/santimirandarp/">Github.</a></p>
+<p>We were curious about how to create a website from the ground up, and noew - after several months, it's here. The tools and basic steps we followed to build the site are:</p>
+<ul>
+<li>Buy a domain name in Godaddy (for about a dollar a year.)</li>
+<li>Set up an EC2 instance on Amazon Cloud (this is a computer that we access remotely, and the one serving the website). There is a configuration overhead for opening connection ports (80 and 43). But it is for free (for a year).</li>
+<li>Backend for handling http(s) requests. We use <a href='https://expressjs.com/'>Node/Express</a>.</li>
+<li>Database to store information and communicate with the backend. We use MongoDB-Atlas and Mongoose.</li>
+<li>Because blogposts follow a similar layout, we use a template engine that greatly simplifies the structure of the blog. We used express-handlebars but later switched to  <a href='https://www.npmjs.com/package/ejs'>ejs</a>.</li>
+<li>The frontend stylesheets are compiled to CSS from <a href='https://sass-lang.com/dart-sass'>Sass</a>.</li>
+<li>On development Gulp 4 and Webpack are used to handle tedious tasks.</li>
+</ul>
+
+<p>All the code we execute is open to anyone for reading. The source code can be found at <a href="https://github.com/santimirandarp/">Github.</a></p>
 
 <h2>Other Projects</h2>
-<p>Linda is learning to produce music using Ableton, and brushing up statistics in SPSS. Santi is tinkering with raspberry pis.</p>
+<p>In August 2021 we started climbing, and so far it has been real fun. We hope to upload some blogposts soon.</p>
 
 </main>
 

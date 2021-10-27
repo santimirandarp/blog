@@ -16,7 +16,7 @@ gallery.insertAdjacentHTML("beforeend", imageHTML);
 };
 
 
-
+const loadImages = ()=>{
 window.addEventListener("load", ()=>{
 fetch("/gallery").then(r=>r.json())
 .then(imgFilenames=>imgFilenames.images.forEach(imgName => insertImg(imgName)))
@@ -24,3 +24,5 @@ fetch("/gallery").then(r=>r.json())
 gallery.innerHTML = "We couldn't load the images. Please refresh the page or try again later.";
 console.error(e);
 });});
+}
+export {loadImages};
