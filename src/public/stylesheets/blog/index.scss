@@ -1,10 +1,12 @@
 @use "../common/_common.scss";
-
-article:nth-child(even){
+article{
+padding:0.5rem;
+&:nth-child(even){
 background: rgba(50, 14,0, 0.2);
 }
-article:nth-child(odd){
+&:nth-child(odd){
 background: rgba(0,14,50,0.2);
+}
 }
 .postListItem{
 &_head{

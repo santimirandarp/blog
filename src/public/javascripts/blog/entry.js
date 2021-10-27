@@ -15,7 +15,7 @@ const listing = `
 <li class="postListItem">
 <article>
 <div class="postListItem_head">
-<div class="dateAndTag">
+<div class="dateAndTags">
 <p class="small">Posted in: ${formatDate(date)}</p>  
 <p class="small">Tags: ${formatTags(tags).join(" ")} </p>
 </div>
