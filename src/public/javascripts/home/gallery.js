@@ -24,5 +24,5 @@ fetch("/gallery").then(r=>r.json())
 gallery.innerHTML = "We couldn't load the images. Please refresh the page or try again later.";
 console.error(e);
 });});
-}
+};
 export {loadImages};

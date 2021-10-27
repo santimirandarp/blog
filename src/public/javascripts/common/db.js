@@ -16,7 +16,7 @@ info.style.display="none";
 ///** Called from postMsg, asynchronous call to DB using data from form.*/
 //Returns a promise
 const post = async(data)=>{
-const response = await fetch("/comments", {   
+  const response = await fetch("/comments", {   
 method: "POST", 
 headers: { "Content-Type": "application/json" },
 body:JSON.stringify(data)
@@ -27,13 +27,12 @@ return response.json();
 //
 const postMsg = e => {
   //get the elements
-  const comments = $("#comments");
-  const form = comments.querySelector("form");//it's ok even though it is defined above also.
+  const form = document.getElementById("#form");//it's ok even though it is defined above also.
   const name = form.querySelector("input[name='name']");
   const email = form.querySelector("input[name='email']");
   const msg = form.querySelector("textarea[name='msg']");
-  const commentsList = comments.querySelector("#commentsList");
-  const info = comments.querySelector(".comments_info");
+  const commentsList = document.getElementById("#commentsList");
+  const info = $("#comments .comments_info");
 
   e.preventDefault();
   const data = {name:name.value,email:email.value,msg:msg.value};
@@ -48,23 +47,24 @@ const postMsg = e => {
 //
 ///** pass array of objects from database */
 const commentToDOM = docsArray => {
-if(Array.isArray(docsArray)){
-if(docsArray.length==0){
-//displays alert to user
-const thatsIt = comments.querySelector(".comments_thatsIt");
-    thatsIt.innerHTML = "All comments were loaded.";
-    thatsIt.style.display = "block";
-    setTimeout(() => thatsIt.style.display = "none",3000);
-    return 0;
-} else {
-//inserts the comments
-   docsArray.forEach( doc => commentsList
-     .insertAdjacentHTML("beforeend", commentToHTML(doc)));
+  if(Array.isArray(docsArray)){
+    const commentsList= $("#commentsList");
+    if(docsArray.length==0){
+      //displays alert to user
+      const thatsIt = $("#comments .comments_thatsIt");
+      thatsIt.innerHTML = "All comments were loaded.";
+      thatsIt.style.display = "block";
+      setTimeout(() => thatsIt.style.display = "none",3000);
       return 0;
-}} else {
-    //If it is not an array
-    thatsIt.innerHTML = "There was an error. Please try again.";
-
+    } else {
+      //inserts the comments
+      docsArray.forEach( doc => commentsList
+          .insertAdjacentHTML("beforeend", commentToHTML(doc)));
+      return 0;
+    }} else {
+      //If it is not an array
+      thatsIt.innerHTML = "There was an error. Please try again.";
+    }};
 ///** document => HTML elements */ 
 const commentToHTML = ({name,msg,date}, preview=true) => {
   preview = preview ? "comments_message-preview": null;
@@ -79,24 +79,27 @@ const getComments = async(arr) => {
   thatsIt.innerHTML = "Fetching Comments from Database...";
   let url = `comments/${arr[0]}/${arr[1]}`;
   const response = await fetch(url);
-    return response.json();
+  return response.json();
 };
 
-const enableComments = ()=>{
+const enableComments = ()=> {
+const form= $("#form");
+  window.addEventListener("load", () => getComments(skipLimit(0))
+      .then(dArr => commentToDOM(dArr))
+      .catch( () => console.error("There was a problem")));
 
-window.addEventListener("load", () => getComments(skipLimit(0))
-    .then(dArr => commentToDOM(dArr))
-    .catch( () => console.error("There was a problem")));
+  loadOlderComments.addEventListener("click", () => {
 
-loadOlderComments.addEventListener("click", () => {
-    const nOfComments = commentsList.children.length;
-    getComments(skipLimit(nOfComments))
-    .then(dArr=> commentToDOM(dArr))
-    .catch( () =>console.error("There was a problem"));
-    });
+      const commentsList= $("#commentsList");
+      const nOfComments = commentsList.children.length;
+      getComments(skipLimit(nOfComments))
+      .then(dArr=> commentToDOM(dArr))
+      .catch( () =>console.error("There was a problem"));
+      });
 
-toggleFormBtn.addEventListener("click", ()=> mytoggler(form));
-form.addEventListener("submit", postMsg);
-return 
-}
+  toggleFormBtn.addEventListener("click", ()=> mytoggler($("#form")));
+  form.addEventListener("submit", postMsg);
+  return 0;
+};
+
 export {enableComments};

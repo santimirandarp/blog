@@ -6,6 +6,6 @@ const loadReviews = ()=>{spans.forEach(span => {
         const img = span.nextElementSibling;
         mytoggler(img);
         });
-    });}
+    });};
 
 export {loadReviews};
