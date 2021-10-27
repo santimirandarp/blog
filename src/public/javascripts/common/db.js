@@ -1,41 +1,31 @@
-import {$,mytoggler} from "./common.js";
+import {$,mytoggler,formatDate} from "./common.js";
 
-//Comments Area, contains the list of comments, 
-//the post-comment form, and other buttons.
-const comments = $("#comments");
-const loadOlderComments = comments.querySelector("#loadOlderComments");
-const toggleFormBtn = comments.querySelector("#comments_toggleForm");
 
-const thatsIt = comments.querySelector(".comments_thatsIt");
-thatsIt.style.display="none";
-
-const info = comments.querySelector(".comments_info");
-info.style.display="none";
-
-//
 ///** Called from postMsg, asynchronous call to DB using data from form.*/
 //Returns a promise
 const post = async(data)=>{
-  const response = await fetch("/comments", {   
+const response = await fetch("/comments", {   
 method: "POST", 
 headers: { "Content-Type": "application/json" },
 body:JSON.stringify(data)
 });
 return response.json();
 };
-//
-//
+
+
 const postMsg = e => {
+  e.preventDefault();
+
   //get the elements
-  const form = document.getElementById("#form");//it's ok even though it is defined above also.
-  const name = form.querySelector("input[name='name']");
-  const email = form.querySelector("input[name='email']");
-  const msg = form.querySelector("textarea[name='msg']");
+  const form = document.getElementById("#form");
   const commentsList = document.getElementById("#commentsList");
   const info = $("#comments .comments_info");
 
-  e.preventDefault();
+  const name = form.querySelector("input[name='name']");
+  const email = form.querySelector("input[name='email']");
+  const msg = form.querySelector("textarea[name='msg']");
   const data = {name:name.value,email:email.value,msg:msg.value};
+
   post(data).then(suc => { 
       form.style.display="none";
       info.style.display="block";
@@ -44,14 +34,14 @@ const postMsg = e => {
       setTimeout( ()=>{ info.style.display="none"; info.innerHTML="";},3000);
       }).catch( () => console.log("There was an error")); //still need to deal with this error.
 };
-//
+
 ///** pass array of objects from database */
 const commentToDOM = docsArray => {
+  const thatsIt = $("#comments .comments_thatsIt");
+  const commentsList= $("#commentsList");
   if(Array.isArray(docsArray)){
-    const commentsList= $("#commentsList");
     if(docsArray.length==0){
       //displays alert to user
-      const thatsIt = $("#comments .comments_thatsIt");
       thatsIt.innerHTML = "All comments were loaded.";
       thatsIt.style.display = "block";
       setTimeout(() => thatsIt.style.display = "none",3000);
@@ -64,18 +54,25 @@ const commentToDOM = docsArray => {
     }} else {
       //If it is not an array
       thatsIt.innerHTML = "There was an error. Please try again.";
+      return 0;
     }};
-///** document => HTML elements */ 
+
+/** document => HTML elements */ 
 const commentToHTML = ({name,msg,date}, preview=true) => {
   preview = preview ? "comments_message-preview": null;
-  return `<li class="comments_message ${preview}">` 
-    + `<h3>${name}</h3><p>${msg}</p><p>${date}</p>` 
-    + "</li>";
+  return `
+    <li class="comments_message ${preview}">
+    <h1><span style="font-size:1rem">by&nbsp;</span>${name}</h1><p>${msg}</p><p>${formatDate(date)}</p>
+    </li>
+`;
 };
-//
-//
+
+
+
 const skipLimit = (nOfComments) => [nOfComments, nOfComments+10];
+
 const getComments = async(arr) => {
+  const thatsIt = $("#comments .comments_thatsIt");
   thatsIt.innerHTML = "Fetching Comments from Database...";
   let url = `comments/${arr[0]}/${arr[1]}`;
   const response = await fetch(url);
@@ -83,12 +80,18 @@ const getComments = async(arr) => {
 };
 
 const enableComments = ()=> {
-const form= $("#form");
+//Comments Area, contains the list of comments, 
+//the post-comment form, and other buttons.
+const comments = $("#comments");
+const loadOlderComments = comments.querySelector("#loadOlderComments");
+const toggleFormBtn = comments.querySelector("#comments_toggleForm");
+const form = $("#form");
+
   window.addEventListener("load", () => getComments(skipLimit(0))
       .then(dArr => commentToDOM(dArr))
       .catch( () => console.error("There was a problem")));
 
-  loadOlderComments.addEventListener("click", () => {
+    loadOlderComments.addEventListener("click", () => {
 
       const commentsList= $("#commentsList");
       const nOfComments = commentsList.children.length;

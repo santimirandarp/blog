@@ -17,9 +17,9 @@ const listing = `
 <div class="postListItem_head">
 <div class="dateAndTags">
 <p class="small">Posted in: ${formatDate(date)}</p>  
-<p class="small">Tags: ${formatTags(tags).join(" ")} </p>
+<p class="small">Tags: ${formatTags(tags).join(" ")}</p>
 </div>
-<h2>${title}</h2>
+<h1>${title}</h1>
 </div>
 <p>${brief}</p>
 <a href=/blog/post/${path}> Read Full Post </a>
@@ -31,8 +31,15 @@ return 0;
 });};
 
 window.addEventListener("load", () => {
+const xhrInfo = $("#lastPosts .lastPosts_info");
 fetch("/blog/listOfPosts")
-.then(r=>r.json())
-.then(r=>listOfPostsToHTML(r, ULOfPosts))
+.then(r=>{ 
+xhrInfo.innerHTML = "Querying the Database for last posts...";
+return r.json();
+})
+.then(r=>{
+xhrInfo.innerHTML = "";
+return listOfPostsToHTML(r, ULOfPosts);
+})
 .catch(e => e);
 });

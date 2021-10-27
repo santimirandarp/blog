@@ -29,7 +29,7 @@ router.get("/post/:num", (req,res) => {
     try{
     const {num} = req.params;
     const template = "blog/blog_template";
-    const cssPath = "blog/index.css";
+    const cssPath = `blog/${num}/index.css`;
     const page = `Post ${num}`;
     const data = fs.readFileSync(path.join(__dirname, "../views/blog/", num, "index.html"));
     res.render(template,{num,cssPath,page,data,navigationLinks,date,title});
