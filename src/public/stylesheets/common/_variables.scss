@@ -26,3 +26,10 @@ $serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", 
 @mixin flexRow(){ display:flex; flex-direction:row }
 @mixin flexColumn(){ display:flex; flex-direction:column }
 @mixin gridCenter(){ display:grid; place-items:center; }
+@mixin titleOrSection(){
+  margin: 3rem 0 1.38rem;
+  font-weight: 300;
+  line-height: 1.3;
+  font-family: $serif;
+font-size: 3.998rem;
+}

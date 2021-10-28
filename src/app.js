@@ -37,7 +37,7 @@ mongoose.connect(process.env.URI_DB, mongo_opts)
   .catch(e => console.error(e, "Connection to DB failed."));
   /** Mongoose creates a default connection when you call mongoose.connect(). You can access the default connection using mongoose.connection.*/
  let db = mongoose.connection;
- db.on("error", e => console.log(e));//catches errors AFTER connection is successful.
+ db.on("error", e => console.error(e));//catches errors AFTER connection is successful.
 
 
 

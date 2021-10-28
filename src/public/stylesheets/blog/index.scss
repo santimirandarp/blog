@@ -1,23 +1,18 @@
 @use "../common/_common.scss";
-article{
-padding:0.5rem;
-&:nth-child(even){
-background: rgba(50, 14,0, 0.2);
-}
-&:nth-child(odd){
-background: rgba(0,14,50,0.2);
-}
-}
 .postListItem{
+&:nth-child(even){ background: rgba(50, 14,0, 0.1); }
+&:nth-child(odd){ background: rgba(0,14,50,0.1); }
+padding:0.5rem;
 box-shadow:1px 1px 1px rgba(0,0,0,0.7);
-&_head{
-text-align:right;
-h1 {font-size:1.5rem;
+border-radius:1rem;
+h1 {
+font-size:1.5rem;
 padding:1rem;
 margin:0;
 text-align:center;
 }
 .dateAndTags{
+text-align:right;
 display:flex;
 flex-direction:row;
 justify-content:flex-end;
@@ -26,7 +21,6 @@ font-weight:bold;
 border-radius:0.6rem;
 padding:0.3rem;
 margin:0
-}
 }
 }
 }

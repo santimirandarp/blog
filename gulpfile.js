@@ -3,8 +3,6 @@
 const {src,lastRun,dest,watch,series,parallel} = require("gulp");
 //console.log(process.cwd()); directory paths are resolved to.
 
-//workaround for __dirname
-//const { path } = require("path");
 const imagemin = require("gulp-imagemin");
 const rename = require("gulp-rename");
 
@@ -48,7 +46,7 @@ const makeDocs = () => src(tpath.src.allJS,{read: false}).pipe(jsdoc());
 
 /**
   Generates prefixed, compressed single CSS file from the SCSS files. 
-  It holds a sourcemap used by the browser to link the CSS code line to source SCSS line (sourcemap).
+  Includes a sourcemap used by the browser to link the CSS code line to source SCSS line (sourcemap).
  */
 const genCSS = () => src(tpath.src.scss, {sourcemaps:true})
 .pipe(postcss([autoprefixer()],{syntax: postcssScss}))
@@ -111,7 +109,7 @@ const copyFonts = () => {
 }
 
 const copyHidden = () => {
-  return src( tpath.src.topLevelNotJS, {since:lastRun(copy)})
+  return src(tpath.src.topLevelNotJS, {since:lastRun(copy)})
     .pipe(dest("./dist")) 
 }
 
@@ -125,9 +123,7 @@ const copy = (cb) => {
 }
 
 
-/** Concatenate all public (browser) JS, 
-  traspile for running on any browser using babel,
-  uglify (minify),
+/** Bundle transpile and minify JS.
   write source map to spot errors in browser console */
 const bundle = dirname => src(`${SPUB}/javascripts/${dirname}/entry.js`,{sourcemaps:true, since:lastRun(bundle)})
 .pipe(webpack(webpackConfig))
@@ -139,12 +135,13 @@ const bundle = dirname => src(`${SPUB}/javascripts/${dirname}/entry.js`,{sourcem
   const frontEndJS = cb => { frontEndBundle(); cb() }
 
   /** Watch this set of directories and run functions on change */
-  function watcher () {
+  function watcher (cb) {
     watch(tpath.src.allJS, lint);
     watch(["src/**/*", ...tpath.src.topLevelNotJS, notNode, "!"+SPUB+"/**/*"], copy); 
     watch(tpath.src.publicJS, frontEndJS);
     watch(tpath.src.scss, genCSS);
     watch(tpath.src.images, minify);  
+   cb()
   };
 
 const buildAndMinify = parallel(genCSS, series(lintFix,makeDocs,frontEndJS), minify, copy);

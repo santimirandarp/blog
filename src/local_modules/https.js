@@ -12,6 +12,8 @@ export default {
 */
 
 import fs from "fs";
+// {a:b} when def a function extracts the param a and renames to b
+// so NODE_ENV is extracted from the object argument and renamed "env".
 export default ({
 NODE_ENV:env,
 KEYLOCAL:kl,

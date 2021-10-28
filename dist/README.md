@@ -1,6 +1,6 @@
 # TwoTravellers Blog
 
-July 2th 2021
+## July 2th 2021
 
 First draft of the website
 
@@ -11,7 +11,7 @@ The pictures page is a grid of preview images + a slug, and you can click each i
 The reviews will be comments written by Hosts.
 
 
-July 8th 
+## July 8th 
 
 Site is now hosted on an Linux EC2 instance in AWS.
 
@@ -22,9 +22,9 @@ Site is now hosted on an Linux EC2 instance in AWS.
 Uses Gulp to compile scss, minify images, etc.
 
 **Support**
-We want to use the last CSS and JS inventions  [In JS these new tools are released by ECMA every year.] but some browsers (or node) don't support all of them. For the former, the *postcss* with autoprefixer (and cssnano to minify) are used; for the latter Babel.
+We want to use latest CSS and ES6 [In JS these new tools are released by ECMA every year.] but some browsers (or node) don't support all of them. For the former, the *postcss* with autoprefixer (and cssnano to minify) are used; for the latter Gulp/Webpack/Babel.
 
-July 16th
+## July 16th
 
 Using ES6 and Import/Export, babel, linters and JS minifiers. 
 
@@ -39,3 +39,9 @@ A commenting system is almost finished
 Documentation is generated automatically with JSDocs
 
 The plan is to extend it to a proper blog.
+
+## October 28th
+
+Webpack is used to bundle and transpile javascript. There is a standard way to write sass and js such that is easy to understand and read. 
+
+The blog posts are generated using a template engine which reduces the overhead if we want to modify headers, footer, etc.

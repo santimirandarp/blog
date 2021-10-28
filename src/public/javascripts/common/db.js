@@ -62,7 +62,9 @@ const commentToHTML = ({name,msg,date}, preview=true) => {
   preview = preview ? "comments_message-preview": null;
   return `
     <li class="comments_message ${preview}">
-    <h1><span style="font-size:1rem">by&nbsp;</span>${name}</h1><p>${msg}</p><p>${formatDate(date)}</p>
+    <h1><span style="font-size:1rem">by&nbsp;</span>${name}</h1>
+    <p>${msg}</p>
+    <small>${formatDate(date)}</small>
     </li>
 `;
 };

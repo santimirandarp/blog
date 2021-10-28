@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const CommentSch = new mongoose.Schema({
 name:{type:String, default:"Anonymous"},
 email:{type:String, default:""}, 
-msg:String, 
+msg:{type:String, required:true}, 
 date:{type:Date, default:new Date()},
 isPublic:{type:Boolean, default:false},
 commentOn:{type:String, default:"/"}

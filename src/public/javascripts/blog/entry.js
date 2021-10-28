@@ -13,7 +13,6 @@ postsMetadata.forEach(post => {
 const {title,tags,brief,date,path} = post;
 const listing = `
 <li class="postListItem">
-<article>
 <div class="postListItem_head">
 <div class="dateAndTags">
 <p class="small">Posted in: ${formatDate(date)}</p>  
@@ -23,7 +22,6 @@ const listing = `
 </div>
 <p>${brief}</p>
 <a href=/blog/post/${path}> Read Full Post </a>
-</article>
 </li>
 `;
 HTMLel.insertAdjacentHTML("afterbegin",listing);
