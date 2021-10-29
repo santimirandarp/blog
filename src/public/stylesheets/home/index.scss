@@ -4,13 +4,6 @@
 @use "../common/form";
 @use "pictures";
 
-ul.tasks > li {
-  @include flexRow;
-  align-items:start; //helps with the checkmark
-  .tasks_checkmark {@include checkMark($checkMarkSize, $checkMarkMargin)}
-  &::before{@include symbol("\2705",0.4rem)} //includes checkmark
-}
-
 ul.places > li::before {@include symbol("\2014",0.4rem)} //include em dash
 
 .taskImgFlex{@include flexColumn;align-self:center}

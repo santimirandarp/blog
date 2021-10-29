@@ -1,7 +1,3 @@
 @use "../index.scss";
 @use "../../common/variables" as v;
-article{
-h1{
-@include v.titleOrSection;
-}
-}
+

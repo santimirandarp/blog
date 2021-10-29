@@ -19,8 +19,7 @@ $sans: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, 
 $serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 //symbol
-@mixin symbol($code, $margin){ content:"#{$code}"; margin-right:$margin;};
-@mixin checkMark($margin, $size){ content:"✅"; margin-right:$margin; font-size:$size};
+@mixin symbol($code, $margin, $size){ content:$code; margin-right:$margin;};
 
 //quick align
 @mixin flexRow(){ display:flex; flex-direction:row }
@@ -33,3 +32,19 @@ $serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", 
   font-family: $serif;
 font-size: 3.998rem;
 }
+
+//Checkmarked!
+
+.checkMarkedListItem > li {
+  @include flexRow;
+  align-items:start; //helps with the checkmark
+  &::before{@include symbol("\2705",0.4rem)} //includes checkmark
+}
+
+.websiteStepsListItem > li {
+  @include flexRow;
+  align-items:start; //helps with the checkmark
+  &::before{@include symbol("\1F463",0.4rem, 1rem)} //includes checkmark
+}
+
+article{ h1{ @include titleOrSection; } }
