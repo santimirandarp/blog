@@ -1,10 +1,8 @@
 @use "../common/common";
 @use "../common/variables" as *;
 @use "welcome";
-@use "../common/form";
 @use "pictures";
 
-ul.places > li::before {@include symbol("\2014",0.4rem)} //include em dash
 
 .taskImgFlex{@include flexColumn;align-self:center}
 

@@ -4,8 +4,12 @@ $linkBackground:#65bb462b;
 $bodyBackground:#f4f4f4;
 $bodyColor:#333;
 $darkBlue:#1c3e68;
-$btnBackground:rgba(15,125,15,0.8);
-$btnBackgroundHover:rgba(15,195,55,0.9);
+
+//Buttons
+$primaryBtnBg:rgba(15,125,15,0.8);
+$primaryBtnBgHover:rgba(15,195,55,0.9);
+$secondaryBtnBg:rgba(80,80,80,0.75);
+$secondaryBtnBgHover:rgba(80,80,80,0.9);
 
 $checkMark:✅;
 $checkMarkSize:1.5rem;
@@ -19,7 +23,7 @@ $sans: "Source Sans Pro", system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, 
 $serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", "Droid Serif", Times, serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 //symbol
-@mixin symbol($code, $margin, $size){ content:$code; margin-right:$margin;};
+@mixin symbol($code, $margin, $size){ content:$code; margin-right:$margin;font-size:$size};
 
 //quick align
 @mixin flexRow(){ display:flex; flex-direction:row }
@@ -33,18 +37,22 @@ $serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", 
 font-size: 3.998rem;
 }
 
-//Checkmarked!
+// list custom style
 
-.checkMarkedListItem > li {
+.checkMarkedListItem {
+li{
   @include flexRow;
-  align-items:start; //helps with the checkmark
-  &::before{@include symbol("\2705",0.4rem)} //includes checkmark
+  align-items:center; //helps with the checkmark
+}
+> li::before { @include symbol("\2705",0.4rem, 1rem)} //includes checkmark
 }
 
-.websiteStepsListItem > li {
+.websiteStepsListItem {
+li{
   @include flexRow;
-  align-items:start; //helps with the checkmark
-  &::before{@include symbol("\1F463",0.4rem, 1rem)} //includes checkmark
+  align-items:center; //helps with the checkmark
+}
+ > li::before{ @include symbol("\1F463",0.4rem, 1rem)} //includes checkmark 
 }
 
 article{ h1{ @include titleOrSection; } }

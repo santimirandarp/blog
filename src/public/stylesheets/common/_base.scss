@@ -25,9 +25,17 @@ transform:scale(1.03);
 transition:0.2s all ease-out; 
 }}
 
-.button_green{
+.button-secondary{
 color:$bodyBackground;
-background-color:$btnBackground;
+background-color:$secondaryBtnBg;
 &:hover{
-background-color:$btnBackgroundHover;
+background-color:$secondaryBtnBgHover;
+}}
+
+
+.button-primary{
+color:$bodyBackground;
+background-color:$primaryBtnBg;
+&:hover{
+background-color:$primaryBtnBgHover;
 }}
