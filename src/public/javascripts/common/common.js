@@ -1,8 +1,10 @@
-const $ = document.querySelector.bind(document);
+import {$} from "jquery";
+//const $ = document.querySelector.bind(document);
 
 const mytoggler = element => {
-  element.style.display=="" || element.style.display=="none"? 
-    element.style.display="block": element.style.display="none";
+$(element).toggle();
+  //element.style.display=="" || element.style.display=="none"? 
+   // element.style.display="block": element.style.display="none";
 };
 
 const formatTags = tags =>{

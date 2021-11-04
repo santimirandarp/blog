@@ -25,7 +25,7 @@ router.get("/", (req,res)=> {
     res.render("blog/index", {title,navigationLinks,date,cssPath,page}); 
     });
 
-router.get("/post/:num", (req,res) => {
+router.get("/post/:num", (req,res,next) => {
     try{
     const {num} = req.params;
     const template = "blog/blog_template";
@@ -33,18 +33,14 @@ router.get("/post/:num", (req,res) => {
     const page = `Post ${num}`;
     const data = fs.readFileSync(path.join(__dirname, "../views/blog/", num, "index.html"));
     res.render(template,{num,cssPath,page,data,navigationLinks,date,title});
-    } catch(e){next(createError(404));}
+    } catch(e){next(createError(404));} //if client requests /post/x, return error.
     });
 
-router.get("/listOfPosts", async(req,res) => {
-    try{ await Post.find({}).exec((err,posts) => { 
-        if(err) { console.error(err); 
-        next(createError(500, ISE));
-        } else res.json(posts);
-        });} 
-    catch(e) { console.error(e);
+router.get("/listOfPosts", async(req,res,next) => {
+     await Post.find({}).exec((err,posts) => res.json(posts)) 
+    .catch(e => {console.error(e);
     next(createError(500,ISE));
-    }
+    });
     });
 
 export default router;

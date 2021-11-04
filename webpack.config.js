@@ -2,7 +2,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
 output:{ filename:"bundle.js"}, 
-resolve: { modules: ["./src/public/javascripts"] },
+resolve: { modules: ["./src/public/javascripts", "./src/node_modules/"] },
 mode:"development", 
 target:"web",
 module:{

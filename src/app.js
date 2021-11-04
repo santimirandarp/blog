@@ -5,6 +5,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+
 /* ================  IMPORTS  ================= */ 
 import express from "express";
 import ejs from "ejs";
@@ -19,6 +20,16 @@ import mongoose from "mongoose";
 /** Initialize express App & connect to mongo db using mongoose.connect */
 const app = express();
 
+
+
+/* ===================== ROUTES ===================== */
+import indexRouter from "./routes/home.js";
+import blogRouter from "./routes/blog.js";
+import aboutRouter from "./routes/about.js";
+import commentsRouter from "./routes/comments.js";
+
+
+
 /* ===============  DATABASE ================= */ 
 const mongo_opts = { 
   useNewUrlParser: true,
@@ -32,8 +43,12 @@ const mongo_opts = {
   family: 4 // Use IPv4, skip trying IPv6
 };
 
+main().catch(err => console.error(err));
+
+async function main() {
+
 /** Mongoose starts using models immediately, without waiting for mongoose to establish a connection to MongoDB. @return promise*/
-mongoose.connect(process.env.URI_DB, mongo_opts)
+ mongoose.connect(process.env.URI_DB, mongo_opts)
   .catch(e => console.error(e, "Connection to DB failed."));
   /** Mongoose creates a default connection when you call mongoose.connect(). You can access the default connection using mongoose.connection.*/
  let db = mongoose.connection;
@@ -41,12 +56,6 @@ mongoose.connect(process.env.URI_DB, mongo_opts)
 
 
 
-
-/* ===================== ROUTES ===================== */
-import indexRouter from "./routes/home.js";
-import blogRouter from "./routes/blog.js";
-import aboutRouter from "./routes/about.js";
-import commentsRouter from "./routes/comments.js";
 
 /* Register View Engine, EJS */
 app.engine(".html", ejs.__express);
@@ -84,4 +93,6 @@ app.use((req, res, next) =>  next(createError(404)));
       res.render("error/index",err);
       });
 
+
+}
 export default app;
