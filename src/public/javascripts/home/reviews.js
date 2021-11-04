@@ -1,10 +1,11 @@
-import {mytoggler} from "./../common/common.js";
-const spans = document.querySelectorAll(".places .reviewSpan");
-
-const loadReviews = ()=>{spans.forEach(span => {
-    span.addEventListener("click", () => {
-        const img = span.nextElementSibling;
-        mytoggler(img);
+import {$} from "./../common/common.js";
+const spans = $(".places .reviewSpan");
+const loadReviews = ()=>{
+spans.each((index,span) => {
+    span = $(span);
+    span.click(() => {
+        const img = span.next();
+        img.toggle();
         });
     });};
 

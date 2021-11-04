@@ -1,5 +1,4 @@
-import {$,mytoggler,formatDate} from "./common.js";
-
+import {$,formatDate} from "./common.js";
 
 ///** Called from postMsg, asynchronous call to DB using data from form.*/
 //Returns a promise
@@ -17,21 +16,21 @@ const postMsg = e => {
   e.preventDefault();
 
   //get the elements
-  const form = document.getElementById("#form");
-  const commentsList = document.getElementById("#commentsList");
+  const form = $("#form");
+  const commentsList = $("#commentsList");
   const info = $("#comments .comments_info");
 
-  const name = form.querySelector("input[name='name']");
-  const email = form.querySelector("input[name='email']");
-  const msg = form.querySelector("textarea[name='msg']");
-  const data = {name:name.value,email:email.value,msg:msg.value};
+  const name = form.find("input[name='name']");
+  const email = form.find("input[name='email']");
+  const msg = form.find("textarea[name='msg']");
+  const data = {name:name.val(),email:email.val(),msg:msg.val()};
 
   post(data).then(suc => { 
-      form.style.display="none";
-      info.style.display="block";
+      form.hide();
+      info.show();
       info.innerHTML=`<happy/>; ${suc.msg}. Your comment will be public shortly (we show a preview).`; 
       commentsList.insertAdjacentHTML("afterbegin", commentToHTML(data));
-      setTimeout( ()=>{ info.style.display="none"; info.innerHTML="";},3000);
+      setTimeout( ()=>{ info.hide(); info.innerHTML="";},3000);
       }).catch( () => console.log("There was an error")); //still need to deal with this error.
 };
 
@@ -43,13 +42,12 @@ const commentToDOM = docsArray => {
     if(docsArray.length==0){
       //displays alert to user
       thatsIt.innerHTML = "All comments were loaded.";
-      thatsIt.style.display = "block";
-      setTimeout(() => thatsIt.style.display = "none",3000);
+      thatsIt.show();
+      setTimeout(() => thatsIt.hide(),3000);
       return 0;
     } else {
       //inserts the comments
-      docsArray.forEach( doc => commentsList
-          .insertAdjacentHTML("beforeend", commentToHTML(doc)));
+      docsArray.forEach( doc => commentsList.append(commentToHTML(doc)));
       return 0;
     }} else {
       //If it is not an array
@@ -85,15 +83,15 @@ const enableComments = ()=> {
 //Comments Area, contains the list of comments, 
 //the post-comment form, and other buttons.
 const comments = $("#comments");
-const loadOlderComments = comments.querySelector("#loadOlderComments");
-const toggleFormBtn = comments.querySelector("#comments_toggleForm");
+const loadOlderComments = comments.find("#loadOlderComments");
+const toggleFormBtn = comments.find("#comments_toggleForm");
 const form = $("#form");
 
   window.addEventListener("load", () => getComments(skipLimit(0))
       .then(dArr => commentToDOM(dArr))
       .catch( () => console.error("There was a problem")));
-
-    loadOlderComments.addEventListener("click", () => {
+//same as loadOlderComments.addEventListener('click',()=>...)
+    loadOlderComments.click(() => {
 
       const commentsList= $("#commentsList");
       const nOfComments = commentsList.children.length;
@@ -102,8 +100,8 @@ const form = $("#form");
       .catch( () =>console.error("There was a problem"));
       });
 
-  toggleFormBtn.addEventListener("click", ()=> mytoggler($("#form")));
-  form.addEventListener("submit", postMsg);
+  toggleFormBtn.click(()=> $("#form").toggle());
+  form.submit(postMsg);
   return 0;
 };
 

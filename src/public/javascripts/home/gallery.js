@@ -12,7 +12,8 @@ const imageHTML = ` <a href="images/gallery/${bigImageName}">
     <img loading='lazy' src='images/gallery/${imgName}' alt='${text}'/>
     <figcaption>${text}</figcaption>
     </figure></a>`;
-gallery.insertAdjacentHTML("beforeend", imageHTML);
+//gallery.insertAdjacentHTML("beforeend", imageHTML);
+gallery.append(imageHTML);
 };
 
 

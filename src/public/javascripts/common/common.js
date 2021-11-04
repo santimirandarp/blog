@@ -1,11 +1,4 @@
-import {$} from "jquery";
-//const $ = document.querySelector.bind(document);
-
-const mytoggler = element => {
-$(element).toggle();
-  //element.style.display=="" || element.style.display=="none"? 
-   // element.style.display="block": element.style.display="none";
-};
+import $ from "jquery";
 
 const formatTags = tags =>{
 let newTags = [];
@@ -22,4 +15,4 @@ return newTags;
 
 const formatDate = (date)=>date.slice(0,10).replace(/-/g,"/");
 
-export {$,mytoggler,formatTags,formatDate};
+export {$,formatTags,formatDate};
