@@ -6,7 +6,10 @@ $bodyColor:#333;
 $darkBlue:#1c3e68;
 $red:#ff00005e;
 $lightRed:#ff000069;
-
+$green:rgba(10,100,10,.8);
+$lightGreen:rgba(25,100,10,.3);
+$lightBlue: #093e82bd;
+$blue: #093e82;
 //Buttons
 $primaryBtnBg:#093e82bd;
 $primaryBtnBgHover:#093e82;
@@ -38,7 +41,14 @@ $serif: "Source Serif Pro", "Apple Garamond", "Baskerville", "Times New Roman", 
   font-family: $serif;
 font-size: 3.998rem;
 }
-
+@mixin infoBox($color, $background){
+border:2px dotted $color;
+border-radius:1rem;
+background-color:$background;
+font-weight:bold;
+text-align:center;
+padding:1rem;
+}
 // list custom style
 
 .checkMarkedListItem {
