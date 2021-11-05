@@ -43,18 +43,13 @@ const mongo_opts = {
   family: 4 // Use IPv4, skip trying IPv6
 };
 
-main().catch(err => console.error(err));
 
-async function main() {
 
 /** Mongoose starts using models immediately, without waiting for mongoose to establish a connection to MongoDB. @return promise*/
- mongoose.connect(process.env.URI_DB, mongo_opts)
-  .catch(e => console.error(e, "Connection to DB failed."));
-  /** Mongoose creates a default connection when you call mongoose.connect(). You can access the default connection using mongoose.connection.*/
- let db = mongoose.connection;
- db.on("error", e => console.error(e));//catches errors AFTER connection is successful.
+mongoose.connect(process.env.URI_DB, mongo_opts).catch(e=>console.log(e));
 
-
+let db = mongoose.connection;
+db.on("error", e => console.error(e));//catches errors AFTER connection is successful.
 
 
 /* Register View Engine, EJS */
@@ -93,6 +88,9 @@ app.use((req, res, next) =>  next(createError(404)));
       res.render("error/index",err);
       });
 
+process.on("uncaughtException", err => {
+  console.error("There was an uncaught error", err);
+  process.exit(1); //mandatory (as per the Node.js docs)
+});
 
-}
 export default app;

@@ -4,7 +4,7 @@
 <button class='button-primary' id='comments_toggleForm'>Write Comment</button>
 
 <form id='form' class='comments_form' method='POST' >
-<p>Your Email won't be shown to other users, only the display Name.</p>
+<p>Your Email won't be shown to other users, it is optional in case you would like an answer from us.</p>
 <div class='comments_input_flex'>
 <label for='name'>Name (optional)</label>
 <input name='name' value='' placeholder='name' type='text'  minlength='2' maxlength='30' />
@@ -13,8 +13,11 @@
 <label for='email'>Email (optional)</label>
 <input name='email' value='' type='email' placeholder='john@gmail.com' minlength='5' maxlength='40' />
 </div>
+<div>
+<p>Write your message:</p>
 <textarea name='msg' value='' placeholder='Type...' minlength='5' maxlength='350' required>
 </textarea>
+</div>
 <button id='submitForm' class='button-primary' type='submit' id='send' >Send</button>
 </form>
 <span class='comments_info'></span>

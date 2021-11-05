@@ -22,3 +22,16 @@ process.on("uncaughtException", function(err) {
 });
 
 ```
+
+
+```
+mongoose.connect('mongodb://localhost:27017/test').
+  catch(error => handleError(error));
+
+// Or:
+try {
+  await mongoose.connect('mongodb://localhost:27017/test');
+} catch (error) {
+  handleError(error);
+}
+```

@@ -50,9 +50,10 @@ li{
 .websiteStepsListItem {
 li{
   @include flexRow;
-  align-items:center; //helps with the checkmark
+  align-items:first baseline; //helps with the checkmark
+> span {margin-left:0}
+&::before{ @include symbol("\1F463",0.4rem, 1rem)} //includes checkmark 
 }
- > li::before{ @include symbol("\1F463",0.4rem, 1rem)} //includes checkmark 
 }
 
 article{ h1{ @include titleOrSection; } }

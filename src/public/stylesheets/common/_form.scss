@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 #form, .comments_thatsIt, .comments_info{ display:none; }
 
 #comments {
@@ -16,8 +18,17 @@ h1{ font-size:1.5rem; padding:0; margin:0}
 margin-top:2rem;
 background-color:rgba(25,100,10,0.3); border:2px dotted rgba(10,100,10,0.8);
 }
-#form { width:100%; textarea {width:100%}}
+#form { width:100%; textarea {width:100%;min-height:100px}; 
+input{padding:0.5rem; 
+border:none; 
+border-bottom:1px solid $darkBlue;
+display:block;
+width:100%;
+margin-bottom:0.5rem;
+} }
 
 @media screen and (min-width:900px){
-#form {width:65%; margin:auto;}
+#form {width:65%; margin:auto;
+input{padding:1rem; margin-bottom:1rem; border-bottom:2px solid $darkBlue;}
+}
 }
