@@ -29,18 +29,14 @@ const postMsg = e => {
   removeOldClasses(boxClasses,info);
   info.addClass("info"); info.show();
   post(data).then(r=>r.json()).then(suc => { 
-      form.hide(); 
-      console.log(suc);
+      form.hide(2000); 
       commentsList.prepend(commentToHTML(data));
       info.html(`<happy/>; ${suc.msg}. (The Message is a preview).`);
-      info.removeClass("info"); info.addClass("success");
-      info.hide(3000);})
+      info.removeClass("info"); info.addClass("success");})
       .catch( (e) => {
-console.log(e);
 removeOldClasses(boxClasses,info);
 info.html("There was an error. Try again Later");
 info.show();
-
 }); //still need to deal with this error.
 };
 
@@ -110,7 +106,7 @@ const form = $("#form");
       .catch( () =>console.error("There was a problem"));
       });
 
-  toggleFormBtn.click(()=> $("#form").toggle());
+  toggleFormBtn.click(()=> $("#form").toggle(1000));
   form.submit(postMsg);
   return 0;
 };
