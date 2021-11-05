@@ -30,13 +30,12 @@ return 0;
 
 window.addEventListener("load", () => {
 const xhrInfo = $("#lastPosts .lastPosts_info");
-console.log(xhrInfo);
-fetch("/blog/listOfPosts")
-.then(r=>{ 
+xhrInfo.show();
 xhrInfo.html("Querying the Database for last posts...");
-return r.json();
-})
+fetch("/blog/listOfPosts")
+.then(r=>r.json())
 .then(r=>{
+xhrInfo.hide();
 xhrInfo.html("");
 return listOfPostsToHTML(r, ULOfPosts);
 })

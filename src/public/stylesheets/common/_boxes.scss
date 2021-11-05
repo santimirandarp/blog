@@ -1,0 +1,10 @@
+@use "variables" as *;
+.warning {
+border:1px solid $red;
+border-radius:1rem;
+background-color:$lightRed;
+font-weight:bold;
+text-align:center;
+padding:1rem;
+}
+
