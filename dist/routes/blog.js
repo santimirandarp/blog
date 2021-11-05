@@ -36,9 +36,9 @@ router.get("/post/:num", (req,res,next) => {
     } catch(e){next(createError(404));} //if client requests /post/x, return error.
     });
 
-router.get("/listOfPosts", (req,res,next) => {
+router.get("/listOfPosts", async(req,res,next) => {
 try{
-    Post.find({}).exec((err,posts) => res.json(posts)); 
+    await Post.find({}).exec((err,posts) => res.json(posts)); 
 }catch(e){console.error(e); next(createError(500,ISE)); }
     });
 

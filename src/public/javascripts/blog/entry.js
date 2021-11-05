@@ -24,19 +24,20 @@ const listing = `
 <a href=/blog/post/${path}> Read Full Post </a>
 </li>
 `;
-HTMLel.insertAdjacentHTML("afterbegin",listing);
+HTMLel.append(listing);
 return 0;
 });};
 
 window.addEventListener("load", () => {
 const xhrInfo = $("#lastPosts .lastPosts_info");
+console.log(xhrInfo);
 fetch("/blog/listOfPosts")
 .then(r=>{ 
-xhrInfo.innerHTML = "Querying the Database for last posts...";
+xhrInfo.html("Querying the Database for last posts...");
 return r.json();
 })
 .then(r=>{
-xhrInfo.innerHTML = "";
+xhrInfo.html("");
 return listOfPostsToHTML(r, ULOfPosts);
 })
 .catch(e => e);
