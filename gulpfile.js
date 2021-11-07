@@ -50,7 +50,7 @@ const makeDocs = () => src(tpath.src.allJS,{read: false}).pipe(jsdoc());
  */
 const genCSS = () => src(tpath.src.scss, {sourcemaps:true})
 .pipe(postcss([autoprefixer()],{syntax: postcssScss}))
-  .pipe(sass.sync({outputStyle:"compressed"}).on("error", sass.logError))
+.pipe(sass.sync({outputStyle:"compressed"}).on("error", sass.logError))
 .pipe(dest(tpath.dest.css))
 
   /** Function used in @minify(). Replaces filename spaces with underscores, 
