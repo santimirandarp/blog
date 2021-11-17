@@ -20,8 +20,8 @@ const postMsg = e => {
   const info = $("#comments .comments_info");
   const boxClasses = ["success","warning","info"];
 
-  const name = form.find("input[name='name']").val();
-  const email = form.find("input[name='email']").val();
+  const name = form.find("input[name='name']").val()||"Anonymous";
+  const email = form.find("input[name='email']").val()||null;
   const msg = form.find("textarea[name='msg']").val();
   const data = {name,email,msg};
 
@@ -31,7 +31,7 @@ const postMsg = e => {
   post(data).then(r=>r.json()).then(suc => { 
       form.hide(2000); 
       commentsList.prepend(commentToHTML(data));
-      info.html(`<happy/>; ${suc.msg}. (The Message is a preview).`);
+      info.html(`&#128512; &nbsp; ${suc.msg}. (The Message is a preview).`);
       info.removeClass("info"); info.addClass("success");})
       .catch( (e) => {
 removeOldClasses(boxClasses,info);

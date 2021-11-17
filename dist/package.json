@@ -7,8 +7,8 @@
   "scripts": {
     "nodemon": "nodemon server.js",
     "start": "node server.js",
-    "startDev": "DEBUG=express:* node server.js",
-    "startNodemon": "DEBUG=express:* nodemon server.js --watch ."
+    "startDev": "DEBUG=express:blog node server.js",
+    "startNodemon": "DEBUG=express:blog nodemon server.js --watch ."
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
