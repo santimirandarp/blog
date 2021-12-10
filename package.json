@@ -36,6 +36,7 @@
     "not IE 11"
   ],
   "dependencies": {
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "sdf-parser": "^5.0.0"
   }
 }
